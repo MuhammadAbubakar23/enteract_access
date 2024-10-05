@@ -1,0 +1,27 @@
+<nav id="left-sidebar-expand" class="toggled">
+    <div class="leftbar-console-expanded">
+      <div class="sidebar-header pe-3 ps-3">
+        <h5 class="fw-bold mt-3 ms-1">
+          <a >{{customVal[2]}}</a>
+        </h5>
+      </div>
+      <ul class="list-group console-list mt-2" data-scrollbar="data-scrollbar">
+
+
+        <li class="list-group-item list-group-item-action">
+          <a [routerLink]="[customVal[4]]" class="d-flex align-items-center">
+            <i class="{{customVal[6]}} pe-2"></i>
+            {{customVal[2]}}
+          </a>
+        </li>
+        <li class="list-group-item list-group-item-action">
+          <a [routerLink]="[customVal[5]]" class="d-flex align-items-center">
+            <i class="{{customVal[7]}} pe-2"></i>
+            {{customVal[3]}}
+          </a>
+        </li>
+
+      </ul>
+    </div>
+    <a class="panelToggle" (click)="toggleNavTest()"></a>
+  </nav>

@@ -1,0 +1,730 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+<div class="content-box-wrapper d-flex w-100">
+    <div class="middle-content d-flex">
+      
+<div class="page-content-wrapper dashboard console-body-wrapper" data-scrollbar="true" tabindex="-1" style="overflow: auto; outline: none;"><div class="scroll-content" style="transform: translate3d(0px, 0px, 0px);">
+<div class="w-auto w-100 inbox-container chat-message-component">
+<div class="d-flex main-body-wrapper">
+<div class="agent-page-main-content">
+
+
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade active show" id="executive-tab-pane" role="tabpanel" aria-labelledby="executive-tab" tabindex="0">
+      <div class="w-100 p-4">
+        <div class="filter-toolbar mb-4">
+          <div class="d-flex align-items-center">
+            <ul class="list-inline m-0 d-flex align-items-center">
+
+              <li class="list-inline-item">
+                <select
+                  class="form-select"
+                  placeholder="Locations"
+                  [(ngModel)]="department"
+                  (change)="getData()"
+                >
+                  <option value="" selected disabled>Departments</option>
+                  <option *ngFor="let dep of departments" [value]="dep">
+                    {{ dep }}
+                  </option>
+                </select>
+              </li>
+              <li class="list-inline-item">
+                <!-- <select class="form-select" [(ngModel)]="location" (change)="getData()"> -->
+                  <!-- <option selected="" value="" disabled=""> Location</option> -->
+                  <!-- <option *ngFor="let location of locations" [value]="location"> {{location}}</option> -->
+                <select name="" id="" class="form-select" [(ngModel)]="location" (change)="getData()">
+                    <option value="" selected="" disabled="">Select Location</option>
+                    <option *ngFor="let loc of locations" [value]="loc.id">{{loc.name}}</option>
+                </select>
+              </li>
+              <li class="list-inline-item hideclass">
+                <div class="daterangepicker">
+                  <input class="form-control flatpickr-input" id="datepicker" name="daterange" placeholder=" Start Date Time" type="datetime-local" [(ngModel)]="dateTime" (change)="getData()">
+                </div>
+              </li>
+            </ul>
+            <div class="ms-auto">
+
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-start mb-3">
+          <div class="col-4">
+            <div class="card border-0 cardshadow">
+              <div class="border-bottom p-3">
+                <h5 class="m-0">Total Check In’s Employee</h5>
+              </div>
+              <div class="card-body">
+                <div class="graphcontainer py-4 d-flex align-items-center justify-content-center">
+                  <div  id="checkInGraph" style="height: 250px; width: 500px;"></div>
+                  <!-- <img src="../../../../assets/Images/g1.svg"alt=""> -->
+                </div>
+
+                <ul class="list-group list-group-flush">
+                  <li class="py-3 list-group-item d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <span class="iconButton medium mintTransBg"><i class="fa-regular fa-calendar"></i></span>
+                      <h6 class="m-0 ms-2">Schedule Check-In</h6>
+                    </div>
+                    <span>{{employeeCheckInDto?.scheduledCheckIn}} / {{employeeCheckInDto?.totalCheckIn}}</span>
+                  </li>
+                  <li class="py-3 list-group-item d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <span class="iconButton medium cherryTransBg">
+                        <i class="fa-regular fa-calendar-circle-exclamation"></i>
+                      </span>
+                      <h6 class="m-0 ms-2">Unschedule Check-In</h6>
+                    </div>
+                    <span>{{employeeCheckInDto?.unscheduledCheckIn}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card border-0 cardshadow">
+              <div class="border-bottom p-3">
+                <h5 class="m-0">Productivity</h5>
+              </div>
+              <div class="card-body">
+                <div class="graphcontainer py-4 d-flex align-items-center justify-content-center">
+                  <!-- <img src="../images/g2.svg" alt=""> -->
+                  <div  id="productivityGraph" style="height: 249px; width: 500px;"></div>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                  <li class="py-3 list-group-item d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <span class="iconButton medium mintTransBg">
+                        <i class="fa-regular fa-arrow-up-from-arc"></i>
+                      </span>
+                      <h6 class="m-0 ms-2">Productive</h6>
+                    </div>
+                    <span>{{productivityHrsDto?.productiveHours}}</span>
+                  </li>
+                  <li class="py-3 list-group-item d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <span class="iconButton medium radicalTransBg">
+                        <i class="fa-regular fa-arrow-down-to-arc"></i>
+                      </span>
+                      <h6 class="m-0 ms-2">Non - Productive</h6>
+                    </div>
+                    <span>{{productivityHrsDto?.nonProductiveHours}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card dashboard-card zoom-in accesscard mb-3">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center z-3 position-relative">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium radicalTransBg">
+                      <i class="fa-regular fa-shield-exclamation"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Security Alerts</p>
+                    <h4 class="m-0">{{response?.securityAlert}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card dashboard-card zoom-in accesscard mb-3">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center z-3 position-relative">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium mintTransBg">
+                      <i class="fa-regular fa-user"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Visitors</p>
+                    <h4 class="m-0">{{response?.securityAlert}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card dashboard-card zoom-in accesscard mb-3">
+
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center z-3 position-relative">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium cherryTransBg">
+                      <i class="fa-regular fa-home"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Work From Home</p>
+                    <h4 class="m-0">{{response?.totalEmpWFH}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card dashboard-card zoom-in accesscard mb-3">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center z-3 position-relative">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium skyTransBg">
+                      <i class="fa-regular fa-square-arrow-up-right"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Work From Client Side</p>
+                    <h4 class="m-0">{{response?.totalWorkFromClient}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h5 class="mb-3">Attendance Status</h5>
+        <div class="row mb-2">
+          <div class="col">
+            <div class="card dashboard-card zoom-in accesscard mb-3">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center z-3 position-relative">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium mintTransBg">
+                      <i class="fa-regular fa-check"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Present </p>
+                    <h4>
+                        {{response?.totalPresent}} 
+                        <small 
+                          [ngClass]="allPercentagesDto?.presentProgressPrevDay >= 0 ? 'mint fs-12' : 'rose fs-12'">
+                          {{allPercentagesDto?.presentProgressPrevDay}} %
+                          <i 
+                            class="fa-regular" 
+                            [ngClass]="allPercentagesDto?.presentProgressPrevDay >= 0 ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down'">
+                          </i>
+                        </small>
+                    </h4>                      
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card dashboard-card zoom-in accesscard mb-3">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center z-3 position-relative">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium radicalTransBg">
+                      <i class="fa-regular fa-times"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Absent </p>
+                    <!-- <h4>{{response?.totalAbsent}} <small class="mint fs-12">+11.01% <i class="fa-regular fa-arrow-trend-up"></i> </small>
+                    </h4> -->
+                    <h4>
+                        {{response?.totalAbsent}} 
+                        <small 
+                          [ngClass]="allPercentagesDto?.absentProgressPrevDay >= 0 ? 'mint fs-12' : 'rose fs-12'">
+                          {{allPercentagesDto?.absentProgressPrevDay}} %
+                          <i 
+                            class="fa-regular" 
+                            [ngClass]="allPercentagesDto?.absentProgressPrevDay >= 0 ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down'">
+                          </i>
+                        </small>
+                    </h4>                      
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card dashboard-card zoom-in accesscard mb-3">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center z-3 position-relative">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium sunTransBg night">
+                      <i class="fa-regular fa-clock"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Late Arrival </p>
+                    <!-- <h4>{{response?.totalLateArrivals}} <small class="mint fs-12">+11.01% <i class="fa-regular fa-arrow-trend-up"></i> </small>
+                    </h4> -->
+                    <h4>
+                        {{response?.totalLateArrivals}} 
+                        <small 
+                          [ngClass]="allPercentagesDto?.lateArrivalProgressPrevDay >= 0 ? 'mint fs-12' : 'rose fs-12'">
+                          {{allPercentagesDto?.lateArrivalProgressPrevDay}} %
+                          <i 
+                            class="fa-regular" 
+                            [ngClass]="allPercentagesDto?.lateArrivalProgressPrevDay >= 0 ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down'">
+                          </i>
+                        </small>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card dashboard-card zoom-in accesscard mb-3">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center z-3 position-relative">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium radicalTransBg">
+                      <i class="fa-regular fa-person-running"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Early Leaver </p>
+                    <!-- <h4>{{response?.totalEarlyLeaver}} <small class="mint fs-12">+11.01% <i class="fa-regular fa-arrow-trend-up"></i> </small>
+                    </h4> -->
+                    <h4>
+                        {{response?.totalEarlyLeaver}} 
+                        <small 
+                          [ngClass]="allPercentagesDto?.earlyLeaverProgressPrevDay >= 0 ? 'mint fs-12' : 'rose fs-12'">
+                          {{allPercentagesDto?.earlyLeaverProgressPrevDay}} %
+                          <i 
+                            class="fa-regular" 
+                            [ngClass]="allPercentagesDto?.earlyLeaverProgressPrevDay >= 0 ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down'">
+                          </i>
+                        </small>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card dashboard-card zoom-in accesscard mb-3">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center z-3 position-relative">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium cherryTransBg">
+                      <i class="fa-regular fa-clock-rotate-left"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Auto-Logout </p>
+                    <!-- <h4>{{response?.totalAutoLogout}} <small class="mint fs-12">+11.01% <i class="fa-regular fa-arrow-trend-up"></i> </small>
+                    </h4> -->
+                    <h4>
+                        {{response?.totalAutoLogout}} 
+                        <small 
+                          [ngClass]="allPercentagesDto?.autoLogoutProgressPrevDay >= 0 ? 'mint fs-12' : 'rose fs-12'">
+                          {{allPercentagesDto?.autoLogoutProgressPrevDay}} %
+                          <i 
+                            class="fa-regular" 
+                            [ngClass]="allPercentagesDto?.autoLogoutProgressPrevDay >= 0 ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down'">
+                          </i>
+                        </small>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center mb-5">
+          <div class="col-3">
+            <div class="card radicalBg p-3 text-center">
+              <h6 class="text-center ice">Short Hours</h6>
+              <h3 class="ice pt-3 pb-2 m-0">{{response?.toTalShortHours}} <small>Hrs</small> </h3>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card pearlBg p-3 text-center">
+              <h6 class="text-center ice"> Absenteeism</h6>
+              <h3 class="ice pt-3 pb-2 m-0">{{allPercentagesDto?.totalAbsentismPercentage}}<small>%</small> </h3>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card charcoalBg p-3 text-center">
+              <h6 class="text-center ice"> MTD Absenteeism</h6>
+              <h3 class="ice pt-3 pb-2 m-0">{{allPercentagesDto?.totalMTDAbsentismPercentage}} <small>%</small> </h3>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3 align-items-start mb-3">
+          <div class="col-md-8">
+
+            <div class="card cardshadow mb-3 rounded border-0">
+              <div class="border-bottom p-3">
+                <h5 class="m-0">Company / Department trends</h5>
+              </div>
+              <div class="card-body">
+                <div class="graphcontainer py-4 d-flex align-items-center justify-content-center">
+                  <!-- <img src="../images/g3.svg" class="img-fluid" alt=""> -->
+                  <div id="barChart" style="width: 1000px; height: 350px;"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+
+            <div class="card cardshadow mb-3 rounded border-0">
+              <div class="border-bottom p-3">
+                <h5 class="m-0">Employees Availability</h5>
+              </div>
+              <div class="card-body">
+                <div class="graphcontainer py-4 d-flex align-items-center justify-content-center">
+                  <!-- <img src="../images/g4.svg" class="img-fluid" alt=""> -->
+                  <div id="EmployeesAvailabilityGraph" style="width: 450px; height: 350px;"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3 align-items-start mb-3">
+          <div class="col-md-8">
+
+            <div class="card cardshadow mb-3 rounded border-0">
+              <div class="border-bottom p-3">
+                <h5 class="m-0">Peak hours of employee presence</h5>
+              </div>
+              <div class="card-body">
+                <div class="graphcontainer py-4 d-flex align-items-center justify-content-center">
+                  <!-- <img src="../images/g5.svg" class="img-fluid" alt=""> -->
+                  <div id="HeatMapGraph" style="width: 800px; height: 250px;"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+
+            <div class="card cardshadow mb-3 rounded border-0">
+              <div class="border-bottom p-3 d-flex align-items-center justify-content-between">
+                <h5 class="m-0">Visitor Management</h5>
+                <h4 class="m-0">{{visitorsMgmtOutComesDto?.totalVisitors}}</h4>
+              </div>
+              <div class="card-body">
+                <div class="row my-4 pt-4">
+                  <div class="col-4">
+                    <p class="mb-3">Vendor / Contractor</p>
+                    <h4>{{visitorsMgmtOutComesDto?.totalVendorVisits}}</h4>
+                  </div>
+                  <div class="col">
+                    <p class="mb-3">Clients</p>
+                    <h4>{{visitorsMgmtOutComesDto?.totalClientVisits}}</h4>
+                  </div>
+                  <div class="col">
+                    <p class="mb-3">Interviews</p>
+                    <h4>{{visitorsMgmtOutComesDto?.totalInterviewVisits}}</h4>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                  <div class="flex-shrink-0">
+                    <span class="iconButton medium radicalTransBg">
+                      <i class="fa-regular fa-shield-exclamation"></i>
+                    </span>
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <p class="coal m-0">Security Alerts</p>
+                    <h4>{{visitorsMgmtOutComesDto?.totalSecurityAlerts}}</h4>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!-- <div class="tab-pane fade" id="vehicles-tab-pane" role="tabpanel" aria-labelledby="vehicles-tab" tabindex="0">
+      <div class="w-100 p-4">
+
+      </div>
+    </div>
+    <div class="tab-pane fade" id="devices-tab-pane" role="tabpanel" aria-labelledby="devices-tab" tabindex="0">
+      <div class="w-100 p-4">
+          <div class="row">
+              <div class="col">
+              <div class="card dashboard-card zoom-in accesscard mb-3">
+                  <div class="card-body p-4">
+                  <div class="d-flex align-items-center z-3 position-relative">
+                      <div class="flex-shrink-0">
+                      <span class="iconButton medium skyTransBg">
+                          <i class="fa-regular fa-desktop"></i>
+                      </span>
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                      <p class="coal m-0">Total Devices</p>
+                      <h4>40</h4>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              </div>
+              <div class="col">
+              <div class="card dashboard-card zoom-in accesscard mb-3">
+                  <div class="card-body p-4">
+                  <div class="d-flex align-items-center z-3 position-relative">
+                      <div class="flex-shrink-0">
+                      <span class="iconButton medium mintTransBg">
+                          <i class="fa-regular fa-wifi"></i>
+                      </span>
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                      <p class="coal m-0">Online Devices</p>
+                      <h4>40</h4>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              </div>
+              <div class="col">
+              <div class="card dashboard-card zoom-in accesscard mb-3">
+                  <div class="card-body p-4">
+                  <div class="d-flex align-items-center z-3 position-relative">
+                      <div class="flex-shrink-0">
+                      <span class="iconButton medium radicalTransBg">
+                          <i class="fa-regular fa-wifi-slash"></i>
+                      </span>
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                      <p class="coal m-0"> Offline Devices</p>
+                      <h4>40</h4>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              </div>
+          </div>
+
+          <div class="card border-0 cardshadow mb-4">
+          <div class="border-bottom p-3">
+              <h5 class="m-0">Access Devices</h5>
+          </div>
+          <div class="card-body p-4">
+              <div class="row">
+              <div class="col-md-4">
+                  <div class="graphcontainer py-4 d-flex align-items-center justify-content-center">
+                  <img src="../images/g7.svg" alt="">
+                  </div>
+              </div>
+              <div class="col-md-8">
+                  <div class="row">
+                  <div class="col">
+                      <div class="card border-0 cardshadow">
+                      <div class="card-body p-0">
+                          <div class="d-flex align-items-center p-3 z-3 position-relative">
+                          <div class="flex-shrink-0">
+                              <span class="iconButton medium skyTransBg">
+                              <i class="fa-regular fa-desktop"></i>
+                              </span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                              <h4 class="m-0">HIK Vision</h4>
+                          </div>
+                          </div>
+                          <ul class="list-group list-group-flush mb-3 px-3">
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <h5 class="sky m-0">Controller Reader</h5>
+                              <h4 class="m-0">10</h4>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Cards </p>
+                              <p class="m-0"> 10/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Thumb </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+                          </ul>
+                          <ul class="list-group list-group-flush px-3">
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <h5 class="radical m-0">3 in 1 </h5>
+                              <h4 class="m-0">20</h4>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Face </p>
+                              <p class="m-0"> 10/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Cards </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Thumb </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+
+                          </ul>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="card border-0 cardshadow">
+                      <div class="card-body p-0">
+                          <div class="d-flex align-items-center p-3 z-3 position-relative">
+                          <div class="flex-shrink-0">
+                              <span class="iconButton medium cherryTransBg">
+                              <i class="fa-regular fa-desktop"></i>
+                              </span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                              <h4 class="m-0"> ZKTeco</h4>
+                          </div>
+                          </div>
+                          <ul class="list-group list-group-flush mb-3 px-3">
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <h5 class="cherry m-0">Controller Reader</h5>
+                              <h4 class="m-0">10</h4>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Cards </p>
+                              <p class="m-0"> 10/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Thumb </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+                          </ul>
+                          <ul class="list-group list-group-flush px-3">
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <h5 class="radical m-0">3 in 1 </h5>
+                              <h4 class="m-0">20</h4>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Face </p>
+                              <p class="m-0"> 10/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Cards </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Thumb </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+
+                          </ul>
+                      </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              </div>
+
+
+
+          </div>
+          </div>
+
+          <div class="card border-0 cardshadow mb-4">
+          <div class="border-bottom p-3">
+              <h5 class="m-0">Biometric Devices</h5>
+          </div>
+          <div class="card-body p-4">
+              <div class="row">
+              <div class="col-md-4">
+                  <div class="graphcontainer py-4 d-flex align-items-center justify-content-center">
+                  <img src="../images/g7.svg" alt="">
+                  </div>
+              </div>
+              <div class="col-md-8">
+                  <div class="row">
+                  <div class="col">
+                      <div class="card border-0 cardshadow">
+                      <div class="card-body p-0">
+                          <div class="d-flex align-items-center p-3 z-3 position-relative">
+                          <div class="flex-shrink-0">
+                              <span class="iconButton medium skyTransBg">
+                              <i class="fa-regular fa-desktop"></i>
+                              </span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                              <h4 class="m-0">HIK Vision</h4>
+                          </div>
+                          </div>
+
+                          <ul class="list-group list-group-flush px-3">
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <h5 class="radical m-0">3 in 1 </h5>
+                              <h4 class="m-0">20</h4>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Face </p>
+                              <p class="m-0"> 10/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Cards </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Thumb </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+
+                          </ul>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="card border-0 cardshadow">
+                      <div class="card-body p-0">
+                          <div class="d-flex align-items-center p-3 z-3 position-relative">
+                          <div class="flex-shrink-0">
+                              <span class="iconButton medium cherryTransBg">
+                              <i class="fa-regular fa-desktop"></i>
+                              </span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                              <h4 class="m-0"> ZKTeco</h4>
+                          </div>
+                          </div>
+
+                          <ul class="list-group list-group-flush px-3">
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <h5 class="radical m-0">3 in 1 </h5>
+                              <h4 class="m-0">20</h4>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Face </p>
+                              <p class="m-0"> 10/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Cards </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+                          <li class="list-group-item d-flex align-items-center justify-content-between">
+                              <p class="m-0">Thumb </p>
+                              <p class="m-0"> 0/10</p>
+                          </li>
+
+                          </ul>
+                      </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              </div>
+
+
+
+          </div>
+          </div>
+      </div>
+
+    </div> -->
+  </div>
+
+</div>
+</div>
+</div>
+</div>

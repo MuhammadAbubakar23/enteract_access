@@ -1,0 +1,132 @@
+
+
+
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+<div class="page-content-wrapper dashboard">
+    <div class="w-auto w-100 inbox-container chat-message-component">
+        <div class="d-flex main-body-wrapper">
+            <div class="agent-page-main-content">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="Focused" role="tabpanel" aria-labelledby="focused-tab">
+                        <div class="filter-container">
+
+                            <ul class="list-group list-group-horizontal border-0">
+
+                                <li class="list-group-item border-0 refreshicon" aria-label="..."
+                                    data-bs-toggle="tooltip" data-bs-placement="bottom" title="Refresh">
+                                    <i class="fal fa-redo"></i>
+                                </li>
+                                <li class="list-group-item border-0 after-select-fun" aria-label="..."
+                                    data-bs-toggle="tooltip" data-bs-placement="bottom" title="Label">
+                                    <i class="fal fa-key-skeleton"></i>
+                                </li>
+
+                                <li class="list-group-item border-0 after-select-fun" aria-label="..."
+                                    data-bs-toggle="tooltip" data-bs-placement="bottom" title="Label">
+                                    <i class="fal fa-rocket"></i>
+                                </li>
+                            </ul>
+                            <div class="selected-row" style="display: none;">
+                                Last refresh 5 mins ago
+                            </div>
+                            <div class="pagination-bar">
+                                <span>1-100 of 569</span>
+                                <span>
+                                    <i class="fal fa-chevron-left"></i>
+                                </span>
+                                <span>
+                                    <i class="fal fa-chevron-right"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="table-section query-container perfect-scrollbar" data-scrollbar="data-scrollbar">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="filter-container">
+                                                <ul class="list-group list-group-horizontal border-0">
+                                                    <li class="list-group-item border-0 all-check-boxes">
+                                                        <input class="form-check-input me-1" type="checkbox"
+                                                            aria-label="..." data-bs-toggle="tooltip"
+                                                            data-bs-placement="bottom" title="Check All">
+
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+                                        </th>
+                                        <th>Index <i class="fad fa-sort-alt"></i></th>
+                                        <th>Name</th>
+                                        <th>ID</th>
+                                        <th>Card Number </th>
+                                        <th>Status </th>
+                                        <th> Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr *ngFor="let account of UserAccounts,let i=index">
+                                        <td><input class="form-check-input me-1" type="checkbox" aria-label="..."></td>
+                                        <td>{{i}}</td>
+                                        <td>{{account.full_Name}}</td>
+                                        <td>{{account.user_ID}}</td>
+                                        <td>{{account.card_Number}}</td>
+                                        <td>
+                                            <span class="badge rounded-pill offlinefilled tablepill">{{account.status}}</span>
+                                        </td>
+                                        <td>
+                                            <div class="icons-list d-flex dropstart">
+
+                                                <button class="btn iconButton medium iconHover btn-group" type="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="far fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu fade">
+                                                    <li>
+                                                        <a class="dropdown-item" [routerLink]="['/dashboard/accountmanagement/editaccount',account.id]">
+                                                            <i class="fal fa-edit me-2"></i>
+                                                            Edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">
+                                                            <i class="fal fa-cog me-2"></i>
+                                                            Config</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item delete-dd" (click)="deleteuserAccount(account)">
+                                                            <i class="fal fa-trash me-2"></i>
+                                                            Delete</a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                   
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+</div>

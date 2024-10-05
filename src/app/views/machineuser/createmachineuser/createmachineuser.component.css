@@ -1,0 +1,41 @@
+/* .maindiv{
+    margin: 100px;
+    background-color: #f8f8f8;
+}
+.mainform{
+    padding: 25px;
+    border-radius: 10px;
+}
+
+button{
+    width: 200px;
+}
+
+.header{
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin:0px;
+}
+
+  label{
+      font-weight: bold;
+      margin-bottom: 5px;
+  }
+  span{
+      color: red;
+  }
+  input{
+      height: 50px;
+      background-color: #f8f8f8;
+  }
+  input:focus{
+      background-color: white;
+  }
+
+  select{
+      height: 50px;
+  } */
+
+::ng-deep .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate {
+    background-color: #0d6efd!important;}

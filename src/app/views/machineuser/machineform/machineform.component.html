@@ -1,0 +1,753 @@
+<div class="agent-page-main-content">
+  <div
+    class="create-user console-body-wrapper perfect-scrollbar"
+    data-scrollbar="data-scrollbar"
+  >
+    <div class="wider-container pt-5">
+      <div class="pb-5 mb-5">
+        <form class="user-detail-form" [formGroup]="UserForm">
+          <h6>Personal Information</h6>
+          <div class="border mb-4"></div>
+          <div class="row align-items-start">
+            <div class="col-6">
+              <!-- <div class="form-floating mb-4">
+                <input
+                  class="form-control"
+                  id="first-name"
+                  placeholder=" Full Name"
+                  formControlName="FullName"
+                />
+                <label for="first-name">Full Name</label>
+              </div> -->
+              <div
+                [ngClass]="{
+                  'was-validated':
+                    UserForm.get('FullName')!.valid &&
+                    UserForm.get('FullName')!.touched
+                }"
+                class="form-floating mb-4"
+              >
+                <input
+                  [ngClass]="{
+                    'is-invalid':
+                      UserForm.get('FullName')!.errors &&
+                      (UserForm.get('FullName')!.touched ||
+                        UserForm.get('FullName')!.dirty)
+                  }"
+                  class="form-control"
+                  id="first-name"
+                  placeholder=" Full Name"
+                  value="Waqas Amjad"
+                  formControlName="FullName"
+                />
+                <label for="first-name">Full Name</label>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="
+                    UserForm.get('FullName')!.errors &&
+                    (UserForm.get('FullName')!.touched ||
+                      UserForm.get('FullName')!.dirty)
+                  "
+                >
+                  <div
+                    *ngIf="UserForm.get('FullName')!.errors?.['maxlength'] || UserForm.get('FullName')!.errors?.['minlength']"
+                  >
+                    Full Name must be grater than 1 character!
+                  </div>
+                  <div *ngIf="UserForm.get('FullName')!.errors?.['required']">
+                    Full Name is required!
+                  </div>
+                </div>
+                <div
+                  class="valid-feedback"
+                  *ngIf="
+                    UserForm.get('FullName')!.valid &&
+                    UserForm.get('FullName')!.touched
+                  "
+                >
+                  Looks Good!
+                </div>
+              </div>
+              <!-- <div class="form-floating mb-4">
+                <input
+                  class="form-control"
+                  id="CNIC"
+                  placeholder=" CNIC"
+                  formControlName="CNIC"
+                />
+                <label for="CNIC">CNIC</label>
+              </div> -->
+              <div class="mb-4 upload-files">
+                <input
+                  class="form-control custom-choose-file"
+                  type="file"
+                  id="formFile"
+                  formControlName="Profile"
+                  (change)="updateImage($event)"
+                  name="profile"
+                />
+            
+                  
+                <small class="silver"
+                  >Max file size is 2 MB. Best size for image upload is
+                  512*512px.</small
+                >
+              </div>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+              <div class="em-holder">
+                <img
+                  *ngIf="imageStatus; else elseBlock"
+                  [src]="imageUrl  "
+                  style="max-width: 100%; max-height: 300px;"
+                  class="img-fluid"
+                />
+                <ng-template #elseBlock>
+                  <img
+                    src="../../../../assets/Images/default.png"
+                    class="img-fluid"
+                /></ng-template>
+              </div>
+             
+            </div>
+          </div>
+          <h6 class="mt-4">Organization Information</h6>
+          <div class="border mb-4"></div>
+          <ul class="nav nav-tabs roundtabs" id="myTab" role="tablist">
+            <!-- <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="employee-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#employee"
+                type="button"
+                role="tab"
+                aria-controls="employee"
+                aria-selected="true"
+              >
+                Employee
+              </button>
+            </li> -->
+            <!-- <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#vendor"
+                type="button"
+                role="tab"
+                aria-controls="vendor"
+                aria-selected="false"
+              >
+                Vendor
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="guest-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#guest"
+                type="button"
+                role="tab"
+                aria-controls="guest"
+                aria-selected="false"
+              >
+                Guest
+              </button>
+            </li> -->
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="employee"
+              role="tabpanel"
+              aria-labelledby="employee-tab"
+            >
+              <div class="row">
+                <!-- <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      id="entity-name"
+                      placeholder=" "
+                      formControlName="EntityName"
+                    />
+                    <label for="entity-name"> Entity Name</label>
+                  </div>
+                </div> -->
+                <div class="col-6">
+                  <div class="floating-item mb-4">
+                    <div class="floating-wrap form-floating mb-2">
+                      <select
+                        class="form-select"
+                        id="floatingSelect"
+                        aria-label="Floating label select"
+                        formControlName="Department"
+                      >
+                        <option
+                          *ngFor="let depart of Departments"
+                          value="{{ depart.id }}"
+                        >
+                          {{ depart.name }}
+                        </option>
+                      </select>
+                      <label for="floatingSelect">Department</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="floating-item mb-4">
+                    <div class="floating-wrap form-floating mb-2">
+                      <select
+                        class="form-select"
+                        id="floatingSelect"
+                        aria-label="Floating label select"
+                        formControlName="Team"
+                      >
+                        <option
+                          *ngFor="let team of Teams"
+                          value="{{ team.id }}"
+                        >
+                          {{ team.name }}
+                        </option>
+                      </select>
+                      <label for="floatingSelect"> Team</label>
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-6">
+                  <div class="floating-item mb-4">
+                    <div class="floating-wrap form-floating mb-2">
+                          <input type="text "
+                          name="RFID"
+                          placeholder="Enter RFID ..."
+                          class="form-control"
+                          id="RFID"
+                          formControlName="RFID">
+                      <label for="RFID"> RFID</label>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                
+                    <div class="floating-wrap form-floating mb-2">
+                      <select
+                        class="form-select"
+                        id="desselect"
+                        aria-label="Floating label select"
+                        formControlName="Designation"
+                      >
+                        <option
+                          *ngFor="let des of  desingnation"
+                          value="{{ des.id }}"
+                        >
+                          {{ des.name }}
+                        </option>
+                      </select>
+                      <label for="desselect"> Designation</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      id="Employee ID"
+                      placeholder=" "
+                      formControlName="EmployeeId"
+                    />
+                    <label for="Employee ID"> Employee ID</label>
+                  </div>
+                </div>
+<!-- 
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <select
+                      class="form-select"
+                      id="status"
+                      formControlName="Status"
+                    >
+                      <option selected>1</option>
+                      <option value="1">2</option>
+                    </select>
+                    <label for="status"> Status</label>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="vendor"
+              role="tabpanel"
+              aria-labelledby="vendor-tab"
+            >
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="VisitPurpose"
+                    />
+                    <label for=""> Purpose of Visit</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="VCompanyName"
+                    />
+                    <label for=""> Vendor Company Name</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="VContactNumber"
+                    />
+                    <label for=""> Vendor Contact number</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="VCompanyDepartment"
+                    />
+                    <label for=""> Vendor Company Department</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="IbexPointofContact"
+                    />
+                    <label for=""> ibex Point of Contact</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="IbexDepartName"
+                    />
+                    <label for=""> ibex department name</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="IbexVisitingFloor"
+                    />
+                    <label for=""> ibex Visiting floor</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="Note"
+                    />
+                    <label for=""> Note</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="guest"
+              role="tabpanel"
+              aria-labelledby="guest-tab"
+            >
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="VisitPurpose"
+                    />
+                    <label for=""> Purpose of Visit</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="VContactNumber"
+                    />
+                    <label for=""> Contact number</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="IbexPointofContact"
+                    />
+                    <label for=""> ibex point of contact</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="IbexDepartName"
+                    />
+                    <label for="">ibex department name</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="IbexVisitingFloor"
+                    />
+                    <label for=""> ibex Visiting floor</label>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="form-floating mb-4">
+                    <input
+                      class="form-control"
+                      placeholder=" "
+                      formControlName="Note"
+                    />
+                    <label for=""> Note</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h6 class="mt-4">Employee Contact Information</h6>
+          <div class="border mb-4"></div>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-floating mb-4">
+                <input
+                  class="form-control"
+                  id="ContactNumber"
+                  placeholder="+92-334-1234567"
+                  formControlName="ContactNumber"
+                />
+                <label for="ContactNumber"> Contact Number</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div
+                [ngClass]="{
+                  'was-validated':
+                    UserForm.get('EmailAddress')!.valid &&
+                    UserForm.get('EmailAddress')!.touched
+                }"
+                class="form-floating mb-4"
+              >
+                <input
+                  [ngClass]="{
+                    'is-invalid':
+                      UserForm.get('EmailAddress')!.errors &&
+                      (UserForm.get('EmailAddress')!.touched ||
+                        UserForm.get('EmailAddress')!.dirty)
+                  }"
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="email"
+                  formControlName="EmailAddress"
+                />
+                <label for="email">Email</label>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="
+                    UserForm.get('EmailAddress')!.errors &&
+                    (UserForm.get('EmailAddress')!.touched ||
+                      UserForm.get('EmailAddress')!.dirty)
+                  "
+                >
+                  <div *ngIf="UserForm.get('EmailAddress')!.errors?.['email']">
+                    Please enter a valid email address
+                  </div>
+                  <div
+                    *ngIf="UserForm.get('EmailAddress')!.errors?.['required']"
+                  >
+                    Email is required!
+                  </div>
+                </div>
+                <div
+                  class="valid-feedback"
+                  *ngIf="
+                    UserForm.get('EmailAddress')!.valid &&
+                    UserForm.get('EmailAddress')!.touched
+                  "
+                >
+                  Looks Good!
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-6">
+              <div class="form-floating mb-4">
+                <select
+                  class="form-select"
+                  id="city"
+                  aria-label="Floating label select example"
+                  formControlName="City"
+                >
+                  <option *ngFor="let city of cities" value="{{ city.id }}">
+                    {{ city.name }}
+                  </option>
+                </select>
+                <label for="city"> City</label>
+              </div>
+            </div> -->
+            <div class="col-6">
+              <div class="form-floating mb-4">
+                <select
+                  class="form-select"
+                  id="floatingSelect"
+                  aria-label="Floating label select example"
+                  formControlName="Location"
+                >
+                  <option
+                    *ngFor="let location of locations"
+                    value="{{ location.id }}"
+                  >
+                    {{ location.name }}
+                  </option>
+                </select>
+                <label for="floatingSelect"> Locations</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating mb-4"  >
+                <input 
+                [type]="show ? 'text' : 'password'" 
+                name="Password"
+                formControlName="Password"
+                class="form-control"
+                id="password" 
+                placeholder="Enter you password...">
+                <i 
+                 [ngClass]="show ? 'fas fa-eye' : 'fas fa-eye-slash'" class="show-pass metal" (click)="password()"></i>
+                <label>Password</label>
+              </div>
+          
+            </div>
+          </div>
+          <!-- <h6 class="mt-4">Permissions</h6> -->
+          <!-- <div class="border mb-4"></div>
+          <div class="floating-item select-pills mb-4 bg-white">
+            <div class="form-floating">
+              <p>Permission</p>
+              <select
+                class="js-example-theme-multiple"
+                class="form-select"
+                formControlName="Permission"
+              >
+                <option
+                  *ngFor="let perm of Permissions"
+                  value="{{ perm.name }}"
+                >
+                  {{ perm.name }}
+                </option>
+              </select>
+            </div>
+          </div> -->
+<!-- 
+          <h6 class="mb-3">Send User Notification</h6>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="flexCheckDefault"
+              checked
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Send the new user an email about their account details.
+            </label>
+          </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="ps-3 pe-3">
+      <div
+        class="icon-buttons-wrapper d-flex justify-content-between pt-3 pb-4"
+      >
+        <div class="row w-100">
+          <div class="col-md-4"></div>
+          <div class="col-md-8 justify-content-end d-flex">
+            <div class="buttons-wrap d-flex">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-medium me-2 px-4"
+                data-bs-toggle="modal"
+                data-bs-target="#cancel-changes"
+               >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-success ms-e f-saveBtn btn-large d-none"
+              ></button>
+              <button
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#editsaveusermodal"
+                class="btn skyBg ms-2 px-4 btn-medium saveBtn"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div
+  class="modal fade"
+  id="cancel-changes"
+  tabindex="-1"
+  aria-labelledby="cancel-changes-Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title line-head" id="cancel-changes-Label">Confirm</h5>
+        <button
+          type="button"
+          class="btn iconHover pt-0 pb-0"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <i class="fal fa-times ice"></i>
+        </button>
+      </div>
+      <div class="modal-body py-4">
+        <div class="d-flex align-items-center">
+          <div class="icon-circle iconButton me-4 errorbg">
+            <i class="fal fa-times"></i>
+          </div>
+          <p class="line-txt darkblue">
+            Are you sure, you want to cancel the changes?
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+        <button
+          [routerLink]="['/dashboard/listofusers']"
+          type="button"
+          class="btn btn-danger modal_cancel-data"
+          data-bs-dismiss="modal"
+           roterLink="/dashboard/listofusers"     >
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="editsaveusermodal"
+  tabindex="-1"
+  aria-labelledby="saveModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title line-head" id="saveModalLabel">Confirm</h5>
+        <button
+          type="button"
+          class="btn iconHover pt-0 pb-0"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <i class="fal fa-times ice"></i>
+        </button>
+      </div>
+      <div class="modal-body py-4">
+        <div class="d-flex align-items-center">
+          <div class="icon-circle iconButton me-4">
+            <i class="fal fa-clipboard-check"></i>
+          </div>
+          <p class="line-txt darkblue">
+            Are you sure, you want to save changes?
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+        <button
+          [routerLink]="['/dashboard/listofusers']"
+          type="button"
+          class="btn skyBg modal_edit-user"
+          data-bs-dismiss="modal"
+          (click)="submitform()"
+        >
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="position-fixed toast-bar border-0 shadow-sm rounded navyBg"
+  style="z-index: 60"
+>
+  <div
+    class="toast hide border-0 p-2 h-100 navyBg"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div
+      class="d-flex border-0 justify-content-between align-items-center w-100 h-100"
+    >
+      <p class="toast-line-para ice m-0"></p>
+      <div class="toast-btn d-flex align-items-center">
+        <button type="button" class="btn m-0 ms-2" data-bs-dismiss="toast">
+          <i class="fal fa-times ice"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

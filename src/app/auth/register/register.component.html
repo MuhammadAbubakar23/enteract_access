@@ -1,0 +1,235 @@
+<div id="loginWrapper">
+    <div class="main-body">
+        <div class="left-panel box-shade h-100">
+            <div class="header">
+                <nav>
+                    <div class="logo">
+                        <img src="../assets/Images/access-logo.svg" alt="-">
+                    </div>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a routerLink="/auth/">
+                                Register Now
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="left-content-wrap" id="registration-form-wrap">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                    <div id="registration-form" *ngIf="showregAccount">
+                        <div class="center-content">
+                            <h4 class="darkerblue">Register your account!</h4>
+                            <h6 class="metal mb-4">
+                                Register your account!
+                            </h6>
+                            <div class="form w-100">
+                                <div class="form-floating mb-2">
+                                    <input class="form-control" id="register-username" placeholder="enter username"
+                                        value="Vishal Rathore" formControlName="UserName">
+                                    <label for="register-username">Username </label>
+                                    <div class="invalid-feedback">
+                                        Please enter a username
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-2">
+                                    <input type="email" class="form-control" id="register-email"
+                                        placeholder="enter a email" value="vishalr21@outlook.com"
+                                        formControlName="Email">
+                                    <label for="register-">Email</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a email
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-2 password set-password">
+                                    <input type="password" class="form-control" id="register-reset-password"
+                                        placeholder="reset password" formControlName="Password">
+                                    <i class="fas fa-eye-slash show-pass metal"></i>
+                                    <label for="register-reset-password">Password</label>
+                                </div>
+                                <div class="form-floating mb-2 password set-password">
+                                    <input type="password" class="form-control" id="register-confirm-password"
+                                        placeholder="confirm password" formControlName="ConfirmPassword">
+                                    <i class="fas fa-eye-slash show-pass metal"></i>
+                                    <label for="register-confirm-password">Confirm Password</label>
+                                </div>
+                                <div class="form-btn d-flex justify-content-center">
+                                    <a type="button" class="btn btn-success w-100" id="registerNextBtn" tabindex="-1"
+                                        role="button" (click)="toogle()">Next</a>
+                                </div>
+                                <div>
+                                    <p class="silver">back to <a routerLink="/auth/login" class="text-info"
+                                            id="back-login">Sign in</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="password-indication">
+                            <ul>
+                                <li class="mb-3">
+                                    <div class="weak-password d-none">
+                                        <h6>Weak Password</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 25%"
+                                                aria-valuenow="25%" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="good-password d-none">
+                                        <h6>Good Password</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 50%"
+                                                aria-valuenow="50%" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="strong-password">
+                                        <h6>Strong Password</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 85%"
+                                                aria-valuenow="85%" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list">
+                                    <i class="fal fa-check emerald"></i>
+                                    Minimum strength 16 characters.
+                                </li>
+                                <li class="list">
+                                    <i class="fal fa-check emerald"></i>
+                                    Password is case sensitive
+                                </li>
+                                <li class="list">
+                                    <i class="fal fa-check emerald"></i>
+                                    Including
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="" id="registration-more-detail" *ngIf="showMoreInfo">
+                        <div class="center-content">
+                            <h4 class="darkerblue">Tell us more, about you.</h4>
+                            <h6 class="metal mb-4">
+                                Join us and find the best marketplace.
+                            </h6>
+                            <div class="form w-100">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" class="form-control" id="register-number"
+                                                placeholder="0302 2101154"
+                                                formControlName="PhoneNumber">
+                                            <label for="register-number">Contact number</label>
+                                            <div class="invalid-feedback">
+                                                Please enter a Contact number
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <select formControlName="Country" class="form-select" id="floatingSelect"
+                                                aria-label="Floating label select example">
+                                                <option selected>Pakistan</option>
+                                            </select>
+                                            <label for="floatingSelect">Country</label>
+                                            <div class="invalid-feedback">
+                                                Please enter a Country
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-2">
+                                            <input class="form-control" id="register-state" placeholder="Sindh"
+                                                value="Sindh" formControlName="State">
+                                            <label for="register-state">State/Province</label>
+                                            <div class="invalid-feedback">
+                                                Please enter a State/Province
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-2">
+                                            <select formControlName="City" class="form-select" id="floatingSelect"
+                                                aria-label="Floating label select example">
+                                                <option *ngFor="let c of Cities" [value]="c.name" selected>{{c.name}}</option>
+                                            </select>
+                                            <label for="floatingSelect">City</label>
+                                            <div class="invalid-feedback">
+                                                Please enter a City
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-2">
+                                            <input type="text" class="form-control" id="register-postal-code"
+                                                placeholder="745600" value="745600" formControlName="PostalCode">
+                                            <label for="register-postal-code">Postal Code</label>
+                                            <div class="invalid-feedback">
+                                                Please enter a Postal Code
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-floating mb-2">
+                                            <input class="form-control" id="register-postal-address"
+                                                placeholder="H#B12, Plot#334, St 4, Clifton, Karachi"
+                                                value="H#B12, Plot#334, St 4, Clifton, Karachi"
+                                                formControlName="PostalAddress">
+                                            <label for="register-postal-address">Postal Address</label>
+                                            <div class="invalid-feedback">
+                                                Please enter a Postal Address
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-btn d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-success w-100" role="button">Register</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="silver">Proceeding the registration will accept to the all Enteract.Xpress <a
+                                        href="#" class="text-info">terms & conditions</a> and <a href="#"
+                                        class="text-info">privacy policies</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+
+
+            <footer class="login-footer">
+                <div class="copyright">
+                    Copyrights © - 2022 | All Copyrights are reserved by
+                    <a href="#"><img class="logo" src="../assets/Images/ibex-logo.svg"></a>
+                </div>
+            </footer>
+        </div>
+
+
+        <div class="right-panel saltBg">
+            <div class="graphicBg">
+                <img src="../assets/Images/front-page-graphic.png">
+            </div>
+            <div class="tagline">
+                <h4 class="ambassador_blue">Let's <span class="radical fw-bold">connect</span> the world on a single
+                    <span class="radical fw-bold">expression.</span></h4>
+            </div>
+            <footer class="login-footer">
+                <ul class="footer-links">
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+                    <li>
+                        <a href="#">Learn more</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+
+    </div>
+</div>

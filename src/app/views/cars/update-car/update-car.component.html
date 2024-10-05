@@ -1,0 +1,1108 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+<!-- <ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+> -->
+
+<div class="content-box-wrapper d-flex w-100">
+  <div class="middle-content d-flex">
+    <div class="agent-page-main-content">
+      <div
+        class="create-user console-body-wrapper perfect-scrollbar"
+        data-scrollbar="true"
+        tabindex="-1"
+        style="overflow: hidden; outline: none"
+      >
+        <div class="scroll-content">
+          <div class="row pt-5 justify-content-center align-items-start">
+            <div class="col-md-11">
+              <form [formGroup]="updateCarForm" class="user-detail-form">
+                <div class="row align-items-start">
+                  <div class="col-md-7">
+                    <div class="row align-items-start">
+                      <div class="col-md-6">
+                        <div class="floating-item mb-4">
+                          <div class="floating-wrap form-floating mb-2">
+                            <input
+                              formControlName="number"
+                              class="form-control form-control-lg"
+                              [class.is-invalid]="
+                                vf['number'].invalid && vf['number'].touched
+                              "
+                              [class.is-valid]="
+                                vf['number'].valid && vf['number'].touched
+                              "
+                              placeholder="e.g. LEA4682A"
+                            />
+                            <label for=""> Vehicle Number</label>
+                          </div>
+                          <ng-container
+                            *ngIf="vf['number'].invalid && vf['number'].touched"
+                          >
+                            <small
+                              *ngIf="
+                                vf['number'].errors &&
+                                vf['number'].errors['required']
+                              "
+                              class="text-danger"
+                            >
+                              Vehicle Number is required!
+                            </small>
+                          </ng-container>
+                          <ng-container
+                            *ngIf="vf['number'].valid && vf['number'].touched"
+                          >
+                            <small class="text-success"> Looks good!</small>
+                          </ng-container>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="floating-item mb-4">
+                          <div class="floating-wrap form-floating mb-2">
+                            <input
+                              class="form-control"
+                              formControlName="type"
+                              [class.is-invalid]="
+                                vf['type'].invalid && vf['type'].touched
+                              "
+                              [class.is-valid]="
+                                vf['type'].valid && vf['type'].touched
+                              "
+                              placeholder="e.g. Toyota Vitz"
+                            />
+                            <label for=""> Vehicle Type</label>
+                          </div>
+                          <ng-container
+                            *ngIf="vf['type'].invalid && vf['type'].touched"
+                          >
+                            <small
+                              *ngIf="
+                                vf['type'].errors &&
+                                vf['type'].errors['required']
+                              "
+                              class="text-danger"
+                            >
+                              Vehicle Type is required!
+                            </small>
+                          </ng-container>
+                          <ng-container
+                            *ngIf="vf['type'].valid && vf['type'].touched"
+                          >
+                            <small class="text-success"> Looks good!</small>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row align-items-start">
+                      <div class="col-md-6">
+                        <div class="floating-item mb-4">
+                          <div class="floating-wrap form-floating mb-2">
+                            <input
+                              class="form-control"
+                              formControlName="make"
+                              [class.is-invalid]="
+                                vf['make'].invalid && vf['make'].touched
+                              "
+                              [class.is-valid]="
+                                vf['make'].valid && vf['make'].touched
+                              "
+                              placeholder="e.g. Toyota Vitz"
+                            />
+                            <label for=""> Make</label>
+                          </div>
+                          <ng-container
+                            *ngIf="vf['make'].invalid && vf['make'].touched"
+                          >
+                            <small
+                              *ngIf="
+                                vf['make'].errors &&
+                                vf['make'].errors['required']
+                              "
+                              class="text-danger"
+                            >
+                              Vehicle Make is required!
+                            </small>
+                          </ng-container>
+                          <ng-container
+                            *ngIf="vf['make'].valid && vf['make'].touched"
+                          >
+                            <small class="text-success"> Looks good!</small>
+                          </ng-container>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="floating-item mb-4">
+                          <div class="floating-wrap form-floating mb-2">
+                            <input
+                              class="form-control"
+                              formControlName="model"
+                              [class.is-invalid]="
+                                vf['model'].invalid && vf['model'].touched
+                              "
+                              [class.is-valid]="
+                                vf['model'].valid && vf['model'].touched
+                              "
+                              placeholder="e.g. SUV/MPV"
+                            />
+                            <label for=""> Model </label>
+                          </div>
+                          <ng-container
+                            *ngIf="vf['model'].invalid && vf['model'].touched"
+                          >
+                            <small
+                              *ngIf="
+                                vf['model'].errors &&
+                                vf['model'].errors['required']
+                              "
+                              class="text-danger"
+                            >
+                              Vehicle Model is required!
+                            </small>
+                          </ng-container>
+                          <ng-container
+                            *ngIf="vf['model'].valid && vf['model'].touched"
+                          >
+                            <small class="text-success"> Looks good!</small>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row align-items-start">
+                      <div class="col-md-6">
+                        <div class="floating-item mb-4">
+                          <div class="floating-wrap form-floating mb-2">
+                            <input
+                              class="form-control"
+                              formControlName="color"
+                              [class.is-invalid]="
+                                vf['color'].invalid && vf['color'].touched
+                              "
+                              [class.is-valid]="
+                                vf['color'].valid && vf['color'].touched
+                              "
+                              placeholder="e.g. Red"
+                            />
+                            <label for=""> Vehicle Color </label>
+                          </div>
+                          <ng-container
+                            *ngIf="vf['color'].invalid && vf['color'].touched"
+                          >
+                            <small
+                              *ngIf="
+                                vf['color'].errors &&
+                                vf['color'].errors['required']
+                              "
+                              class="text-danger"
+                            >
+                              Vehicle Color is required!
+                            </small>
+                          </ng-container>
+                          <ng-container
+                            *ngIf="vf['color'].valid && vf['color'].touched"
+                          >
+                            <small class="text-success"> Looks good!</small>
+                          </ng-container>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="floating-item mb-4">
+                          <div class="floating-wrap form-floating mb-2">
+                            <input
+                              class="form-control"
+                              formControlName="brand"
+                              [class.is-invalid]="
+                                vf['brand'].invalid && vf['brand'].touched
+                              "
+                              [class.is-valid]="
+                                vf['brand'].valid && vf['brand'].touched
+                              "
+                              placeholder="e.g. Nissan"
+                            />
+                            <label for=""> Vehicle Brand</label>
+                          </div>
+                          <ng-container
+                            *ngIf="vf['brand'].invalid && vf['brand'].touched"
+                          >
+                            <small
+                              *ngIf="
+                                vf['brand'].errors &&
+                                vf['brand'].errors['required']
+                              "
+                              class="text-danger"
+                            >
+                              Vehicle Brand is required!
+                            </small>
+                            <div class="valid-feedback">Looks good!</div>
+                          </ng-container>
+                          <ng-container
+                            *ngIf="vf['brand'].valid && vf['brand'].touched"
+                          >
+                            <small class="text-success"> Looks good!</small>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul
+                      class="nav nav-tabs selectbtns"
+                      id="myTab"
+                      role="tablist"
+                    >
+                      <!-- ([ngClass])=  nav-link  active ? carrierSelector = "Employee" : none  -->
+                      <li class="nav-item" role="presentation">
+                        <!-- (click)="setRecord()" -->
+                        <button
+                          (click)="activeTab('Employee')"
+                          class="nav-link"
+                          [ngClass]="{ active: carrierSelector == 'Employee' }"
+                          id="home-tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#home-tab-pane"
+                          type="button"
+                          role="tab"
+                          aria-controls="home-tab-pane"
+                          aria-selected="true"
+                        >
+                          Employee
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <!-- (click)="setRecord()" -->
+                        <button
+                          (click)="activeTab('Vendor')"
+                          class="nav-link"
+                          [ngClass]="{ active: carrierSelector == 'Vendor' }"
+                          id="profile-tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#profile-tab-pane"
+                          type="button"
+                          role="tab"
+                          aria-controls="profile-tab-pane"
+                          aria-selected="false"
+                        >
+                          Vendor
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <!-- (click)="setRecord()" -->
+                        <button
+                          (click)="activeTab('Visitor')"
+                          class="nav-link"
+                          [ngClass]="{ active: carrierSelector == 'Visitor' }"
+                          id="contact-tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#contact-tab-pane"
+                          type="button"
+                          role="tab"
+                          aria-controls="contact-tab-pane"
+                          aria-selected="false"
+                        >
+                          Visitor
+                        </button>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                      <div
+                        [ngClass]="{ 'show active': carrierSelector == 'Employee' }"
+                        class="tab-pane fade"
+                        id="home-tab-pane"
+                        role="tabpanel"
+                        aria-labelledby="home-tab"
+                        tabindex="0"
+                      >
+                        <div
+                          class="floating-item mb-4 d-flex align-items-center gap-3"
+                        >
+                          <div class="floating-wrap form-floating mb-2 w-100">
+                            <input
+                              class="form-control"
+                              placeholder="e.g. 131544"
+                              (change)="keyFunc($event)"
+                              onfocus="this.value=''"
+                            />
+                            <label for=""> Employee ID</label>
+                          </div>
+                          <span
+                            (click)="activeTab('Employee')"
+                            class="iconButton medium skyBg authenticatebtn"
+                            ><i class="fa-light fa-arrow-right"></i
+                          ></span>
+                        </div>
+                      </div>
+                      <div
+                        [ngClass]="{ 'show active': carrierSelector == 'Vendor' }"
+                        class="tab-pane fade"
+                        id="profile-tab-pane"
+                        role="tabpanel"
+                        aria-labelledby="profile-tab"
+                        tabindex="0"
+                      >
+                        <div
+                          class="floating-item mb-4 d-flex align-items-center gap-3"
+                        >
+                          <div class="floating-wrap form-floating mb-2 w-100">
+                            <input
+                              class="form-control"
+                              placeholder="e.g. 38403-48585854"
+                              (change)="keyFunc($event)"
+                              onfocus="this.value=''"
+                            />
+                            <label for=""> Vendor CNIC</label>
+                          </div>
+                          <span
+                            (click)="activeTab('Vendor')"
+                            class="iconButton medium skyBg authenticatevendor"
+                            ><i class="fa-light fa-arrow-right"></i
+                          ></span>
+                        </div>
+                      </div>
+                      <div
+                        [ngClass]="{ 'show active': carrierSelector == 'Visitor' }"
+                        class="tab-pane fade"
+                        id="contact-tab-pane"
+                        role="tabpanel"
+                        aria-labelledby="contact-tab"
+                        tabindex="0"
+                      >
+                        <div
+                          class="floating-item mb-4 d-flex align-items-center gap-3"
+                        >
+                          <div class="floating-wrap form-floating mb-2 w-100">
+                            <input
+                              class="form-control"
+                              placeholder="e.g. 38403-48585854"
+                              (change)="keyFunc($event)"
+                              onfocus="this.value=''"
+                            />
+                            <label for=""> Visitor CNIC</label>
+                          </div>
+                          <span
+                            (click)="activeTab('Visitor')"
+                            class="iconButton medium skyBg authenticatevisitor"
+                            ><i class="fa-light fa-arrow-right"></i
+                          ></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-track scrollbar-track-x" style="display: block">
+          <div
+            class="scrollbar-thumb scrollbar-thumb-x"
+            style="width: 1351.1px; transform: translate3d(0px, 0px, 0px)"
+          ></div>
+        </div>
+        <div class="scrollbar-track scrollbar-track-y" style="display: block">
+          <div
+            class="scrollbar-thumb scrollbar-thumb-y"
+            style="height: 160.22px; transform: translate3d(0px, 0px, 0px)"
+          ></div>
+        </div>
+      </div>
+
+      <div class="card empcard position-fixed">
+        <div class="card-body p-4">
+          <div
+            class="emptydetail text-center p-5"
+            *ngIf="error && activeTabName === 'start'"
+          >
+            <img
+              src="assets/Images/emptydetail.svg"
+              class="d-inline-block"
+              alt=""
+            />
+            <p class="coal">No Record Found</p>
+          </div>
+
+          <!-- <p class="loader py-5 my-5 w-100 text-center">
+            <i class="fa-light fa-loader fa-spin fs-2"></i>
+          </p> -->
+
+          <!-- <div
+            class="showinfo"
+            *ngIf="
+              carrierSelector === 'Employee' ||
+              carrierSelector === 'Vendor' ||
+              carrierSelector === 'Visitor'
+            "
+          >
+            <h4 class="mb-4">{{ title }}</h4>
+            <div>
+            
+              <a class="dropdown-item"   (click)="editDetails()">
+                <i class="fal fa-edit me-2"></i> Edit</a
+              >
+              </div>
+
+            Employee
+            <div
+              class="d-flex align-items-center my-4"
+              *ngIf="activeTabName === 'Employee'"
+            >
+              <div class="flex-shrink-0">
+                <div class="iconButton large fw-bold skyBg">FS</div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="m-0">{{ employeeDetails?.name }}</h6>
+                <p class="m-0">{{ employeeDetails?.id }}</p>
+              </div>
+            </div>
+
+            <div class="row mb-3" *ngIf="activeTabName === 'Employee'">
+              <div class="col">
+                <p class="m-0 coal">Email ID</p>
+                <h6>{{ employeeDetails?.email }}</h6>
+              </div>
+              <div class="col">
+                <p class="m-0 coal">Mobile No.</p>
+                <h6>{{ employeeDetails?.mobile }}</h6>
+              </div>
+            </div>
+
+            <div class="row mb-3" *ngIf="activeTabName === 'Employee'">
+              <div class="col">
+                <p class="m-0 coal">Entity</p>
+                <h6>{{ employeeDetails?.entity }}</h6>
+              </div>
+              <div class="col">
+                <p class="m-0 coal">Department</p>
+                <h6>{{ employeeDetails?.department }}</h6>
+              </div>
+            </div>
+
+            <div class="row mb-3" *ngIf="activeTabName === 'Employee'">
+              <div class="col">
+                <p class="m-0 coal">Designation</p>
+                <h6>{{ employeeDetails?.designation }}</h6>
+              </div>
+              <div class="col">
+                <p class="m-0 coal">Reporting Manager</p>
+                <h6>{{ employeeDetails?.reportingManager }}</h6>
+              </div>
+            </div>
+
+            Vendor
+            <div
+              class="d-flex align-items-center my-4"
+              *ngIf="activeTabName === 'Vendor'"
+            >
+              <div class="flex-shrink-0">
+                <div class="iconButton large fw-bold skyBg">FS</div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="m-0">{{ vendorDetails?.name }}</h6>
+                <p class="m-0">{{ vendorDetails?.id }}</p>
+              </div>
+            </div>
+
+            <div class="row mb-3" *ngIf="activeTabName === 'Vendor'">
+              <div class="col">
+                <p class="m-0 coal">Email ID</p>
+                <h6>{{ vendorDetails?.email }}</h6>
+              </div>
+              <div class="col">
+                <p class="m-0 coal">Mobile No.</p>
+                <h6>{{ vendorDetails?.mobile }}</h6>
+              </div>
+            </div>
+
+            <div class="row mb-3" *ngIf="activeTabName === 'Vendor'">
+              <div class="col">
+                <p class="m-0 coal">Entity</p>
+                <h6>{{ vendorDetails?.entity }}</h6>
+              </div>
+              <div class="col">
+                <p class="m-0 coal">Department</p>
+                <h6>{{ vendorDetails?.department }}</h6>
+              </div>
+            </div>
+
+            <div class="row mb-3" *ngIf="activeTabName === 'Vendor'">
+              <div class="col">
+                <p class="m-0 coal">Designation</p>
+                <h6>{{ vendorDetails?.designation }}</h6>
+              </div>
+              <div class="col">
+                <p class="m-0 coal">Reporting Manager</p>
+                <h6>{{ vendorDetails?.reportingManager }}</h6>
+              </div>
+            </div>
+
+            Visitor
+            <div
+              class="d-flex align-items-center my-4"
+              *ngIf="activeTabName === 'Visitor'"
+            >
+              <div class="flex-shrink-0">
+                <div class="iconButton large fw-bold skyBg">FS</div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="m-0">{{ visitorDetails?.name }}</h6>
+                <p class="m-0">{{ visitorDetails?.id }}</p>
+              </div>
+            </div>
+
+            <div class="row mb-3" *ngIf="activeTabName === 'Visitor'">
+              <div class="col">
+                <p class="m-0 coal">Email ID</p>
+                <h6>{{ visitorDetails?.email }}</h6>
+              </div>
+              <div class="col">
+                <p class="m-0 coal">Mobile No.</p>
+                <h6>{{ visitorDetails?.mobile }}</h6>
+              </div>
+            </div>
+
+            <div class="row mb-3" *ngIf="activeTabName === 'Visitor'">
+              <div class="col">
+                <p class="m-0 coal">Entity</p>
+                <h6>{{ visitorDetails?.entity }}</h6>
+              </div>
+              <div class="col">
+                <p class="m-0 coal">Department</p>
+                <h6>{{ visitorDetails?.department }}</h6>
+              </div>
+            </div>
+
+            <div class="row mb-3" *ngIf="activeTabName === 'Visitor'">
+              <div class="col">
+                <p class="m-0 coal">Designation</p>
+                <h6>{{ visitorDetails?.designation }}</h6>
+              </div>
+              <div class="col">
+                <p class="m-0 coal">Reporting Manager</p>
+                <h6>{{ visitorDetails?.reportingManager }}</h6>
+              </div>
+            </div>
+          </div>  -->
+
+          <div
+            class="showinfo"
+            *ngIf="
+              (activeTabName !== 'start' && activeTabName === 'Employee') ||
+              (activeTabName !== 'start' && activeTabName === 'Vendor') ||
+              (activeTabName !== 'start' && activeTabName === 'Visitor')
+            "
+            style="height: 500px; overflow-y: auto"
+          >
+            <h4 class="mb-4">{{ title }}</h4>
+            <form [formGroup]="updateCarForm">
+              <div class="floating-item mb-4">
+                <div class="floating-wrap form-floating mb-2">
+                  <input
+                    readonly="readonly"
+                    class="form-control"
+                    [class.is-invalid]="
+                      vf['name'].invalid && vf['name'].touched
+                    "
+                    [class.is-valid]="vf['name'].valid && vf['name'].touched"
+                    formControlName="name"
+                    placeholder="e.g. Farooq"
+                  />
+                  <label for=""> Name </label>
+                </div>
+                <ng-container *ngIf="vf['name'].invalid && vf['name'].touched">
+                  <small
+                    *ngIf="vf['name'].errors && vf['name'].errors['required']"
+                    class="text-danger"
+                  >
+                    Name is required!
+                  </small>
+                  <small
+                    *ngIf="vf['name'].errors && vf['name'].errors['minlength']"
+                    class="text-danger"
+                  >
+                    3 characters must !
+                  </small>
+                  <small
+                    *ngIf="vf['name'].errors && vf['name'].errors['maxlength']"
+                    class="text-danger"
+                  >
+                    20 characters max allowed !
+                  </small>
+                </ng-container>
+                <ng-container *ngIf="vf['name'].valid && vf['name'].touched">
+                  <small class="text-success"> Looks good!</small>
+                </ng-container>
+              </div>
+              <div class="floating-item mb-4">
+                <div class="floating-wrap form-floating mb-2">
+                  <input
+                    readonly="readonly"
+                    class="form-control"
+                    [class.is-invalid]="vf['id'].invalid && vf['id'].touched"
+                    [class.is-valid]="vf['id'].valid && vf['id'].touched"
+                    formControlName="id"
+                    placeholder="e.g. Farooq"
+                  />
+                  <label for=""> Employee ID </label>
+                </div>
+                <ng-container *ngIf="vf['id'].invalid && vf['id'].touched">
+                  <small
+                    *ngIf="vf['id'].errors && vf['id'].errors['required']"
+                    class="text-danger"
+                  >
+                    Employee ID is required!
+                  </small>
+                </ng-container>
+                <ng-container *ngIf="vf['id'].valid && vf['id'].touched">
+                  <small class="text-success"> Looks good!</small>
+                </ng-container>
+              </div>
+              <div class="floating-item mb-4">
+                <div class="floating-wrap form-floating mb-2">
+                  <input
+                    readonly="readonly"
+                    class="form-control"
+                    [class.is-invalid]="
+                      vf['mobile'].invalid && vf['mobile'].touched
+                    "
+                    [class.is-valid]="
+                      vf['mobile'].valid && vf['mobile'].touched
+                    "
+                    formControlName="mobile"
+                    placeholder="e.g. 923347551833"
+                  />
+                  <label for=""> Mobile </label>
+                </div>
+                <ng-container
+                  *ngIf="vf['mobile'].invalid && vf['mobile'].touched"
+                >
+                  <small
+                    *ngIf="
+                      vf['mobile'].errors && vf['mobile'].errors['required']
+                    "
+                    class="text-danger"
+                  >
+                    Mobile number is required!
+                  </small>
+                  <small
+                    *ngIf="
+                      vf['mobile'].errors && vf['mobile'].errors['minlength']
+                    "
+                    class="text-danger"
+                  >
+                    11 characters must !
+                  </small>
+                  <small
+                    *ngIf="
+                      vf['mobile'].errors && vf['mobile'].errors['maxlength']
+                    "
+                    class="text-danger"
+                  >
+                    13 characters max allowed !
+                  </small>
+                </ng-container>
+                <ng-container
+                  *ngIf="vf['mobile'].valid && vf['mobile'].touched"
+                >
+                  <small class="text-success"> Looks good!</small>
+                </ng-container>
+              </div>
+              <div class="floating-item mb-4">
+                <div class="floating-wrap form-floating mb-2">
+                  <input
+                    readonly="readonly"
+                    class="form-control"
+                    [class.is-invalid]="
+                      vf['email'].invalid && vf['email'].touched
+                    "
+                    [class.is-valid]="vf['email'].valid && vf['email'].touched"
+                    formControlName="email"
+                    placeholder=""
+                  />
+                  <label for=""> Email </label>
+                </div>
+                <ng-container
+                  *ngIf="vf['email'].invalid && vf['email'].touched"
+                >
+                  <small
+                    *ngIf="vf['email'].errors && vf['email'].errors['required']"
+                    class="text-danger"
+                  >
+                    Email is required!
+                  </small>
+                  <small
+                    *ngIf="vf['email'].errors && vf['email'].errors['pattern']"
+                    class="text-danger"
+                  >
+                    Please Enter Valid Email!
+                  </small>
+                </ng-container>
+                <ng-container *ngIf="vf['email'].valid && vf['email'].touched">
+                  <small class="text-success"> Looks good!</small>
+                </ng-container>
+              </div>
+              <div class="floating-item mb-4">
+                <div class="floating-wrap form-floating mb-2">
+                  <input
+                    readonly="readonly"
+                    class="form-control"
+                    formControlName="cnic"
+                    [class.is-invalid]="
+                      vf['cnic'].invalid && vf['cnic'].touched
+                    "
+                    [class.is-valid]="vf['cnic'].valid && vf['cnic'].touched"
+                    placeholder="e.g. 38403-7596914-1"
+                  />
+                  <label for=""> CNIC Number </label>
+                </div>
+                <ng-container *ngIf="vf['cnic'].invalid && vf['cnic'].touched">
+                  <small
+                    *ngIf="vf['cnic'].errors && vf['cnic'].errors['required']"
+                    class="text-danger"
+                  >
+                    CNIC is required!
+                  </small>
+                  <small
+                    *ngIf="vf['cnic'].errors && vf['cnic'].errors['minlength']"
+                    class="text-danger"
+                  >
+                    13 characters must!
+                  </small>
+                  <small
+                    *ngIf="vf['cnic'].errors && vf['cnic'].errors['maxlength']"
+                    class="text-danger"
+                  >
+                    13 characters max allowed !
+                  </small>
+                </ng-container>
+                <ng-container *ngIf="vf['cnic'].valid && vf['cnic'].touched">
+                  <small class="text-success"> Looks good!</small>
+                </ng-container>
+              </div>
+              <div class="floating-item mb-4">
+                <div class="floating-wrap form-floating mb-2">
+                  <input
+                    readonly="readonly"
+                    class="form-control"
+                    [class.is-invalid]="
+                      vf['entity'].invalid && vf['entity'].touched
+                    "
+                    [class.is-valid]="
+                      vf['entity'].valid && vf['entity'].touched
+                    "
+                    formControlName="entity"
+                    placeholder="e.g. VW "
+                  />
+                  <label for=""> Entity </label>
+                </div>
+                <ng-container
+                  *ngIf="vf['entity'].invalid && vf['entity'].touched"
+                >
+                  <small
+                    *ngIf="
+                      vf['entity'].errors && vf['entity'].errors['required']
+                    "
+                    class="text-danger"
+                  >
+                    Entity is required!
+                  </small>
+                </ng-container>
+                <ng-container
+                  *ngIf="vf['entity'].valid && vf['entity'].touched"
+                >
+                  <small class="text-success"> Looks good!</small>
+                </ng-container>
+              </div>
+              <div class="floating-item mb-4">
+                <div class="floating-wrap form-floating mb-2">
+                  <input
+                    readonly="readonly"
+                    class="form-control"
+                    [class.is-invalid]="
+                      vf['department'].invalid && vf['department'].touched
+                    "
+                    [class.is-valid]="
+                      vf['department'].valid && vf['department'].touched
+                    "
+                    formControlName="department"
+                    placeholder="e.g. Product Design"
+                  />
+                  <label for=""> Department </label>
+                </div>
+                <ng-container
+                  *ngIf="vf['department'].invalid && vf['department'].touched"
+                >
+                  <small
+                    *ngIf="
+                      vf['department'].errors &&
+                      vf['department'].errors['required']
+                    "
+                    class="text-danger"
+                  >
+                    Department is required!
+                  </small>
+                </ng-container>
+                <ng-container
+                  *ngIf="vf['department'].valid && vf['department'].touched"
+                >
+                  <small class="text-success"> Looks good!</small>
+                </ng-container>
+              </div>
+              <div class="floating-item mb-4">
+                <div class="floating-wrap form-floating mb-2">
+                  <input
+                    readonly="readonly"
+                    class="form-control"
+                    [class.is-invalid]="
+                      vf['designation'].invalid && vf['designation'].touched
+                    "
+                    [class.is-valid]="
+                      vf['designation'].valid && vf['designation'].touched
+                    "
+                    formControlName="designation"
+                    placeholder="e.g. Farooq"
+                  />
+                  <label for=""> Designation </label>
+                </div>
+                <ng-container
+                  *ngIf="vf['designation'].invalid && vf['designation'].touched"
+                >
+                  <small
+                    *ngIf="
+                      vf['designation'].errors &&
+                      vf['designation'].errors['required']
+                    "
+                    class="text-danger"
+                  >
+                    Designation is required!
+                  </small>
+                </ng-container>
+                <ng-container
+                  *ngIf="vf['designation'].valid && vf['designation'].touched"
+                >
+                  <small class="text-success"> Looks good!</small>
+                </ng-container>
+              </div>
+              <div class="floating-item mb-4">
+                <div class="floating-wrap form-floating mb-2">
+                  <input
+                    readonly="readonly"
+                    class="form-control"
+                    [class.is-invalid]="
+                      vf['reportingManager'].invalid &&
+                      vf['reportingManager'].touched
+                    "
+                    [class.is-valid]="
+                      vf['reportingManager'].valid &&
+                      vf['reportingManager'].touched
+                    "
+                    formControlName="reportingManager"
+                    placeholder="e.g. Software Eningeer"
+                  />
+                  <label for=""> Reporting Manager </label>
+                </div>
+                <ng-container
+                  *ngIf="
+                    vf['reportingManager'].invalid &&
+                    vf['reportingManager'].touched
+                  "
+                >
+                  <small
+                    *ngIf="
+                      vf['reportingManager'].errors &&
+                      vf['reportingManager'].errors['required']
+                    "
+                    class="text-danger"
+                  >
+                    Reporting Manager is required!
+                  </small>
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    vf['reportingManager'].valid &&
+                    vf['reportingManager'].touched
+                  "
+                >
+                  <small class="text-success"> Looks good!</small>
+                </ng-container>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="ps-3 pe-3">
+          <div
+            class="icon-buttons-wrapper d-flex justify-content-between pt-3 pb-4"
+          >
+            <div class="row w-100">
+              <div class="col-md-4"></div>
+              <div class="col-md-8 justify-content-end d-flex">
+                <div class="buttons-wrap d-flex">
+                  <button
+                    [routerLink]="['/dashboard/cars']"
+                    type="button"
+                    class="btn btn-outline-secondary btn-medium me-2 px-4"
+                    data-bs-toggle="modal"
+                    data-bs-target=""
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-success ms-e f-saveBtn btn-large d-none"
+                  ></button>
+                  <button
+                    [disabled]="updateCarForm.invalid"
+                    (click)="submit()"
+                    type="button"
+                    class="btn skyBg ms-2 px-4 btn-medium saveBtn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#save-group-modal"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div
+      class="modal fade"
+      id="delete-device"
+      tabindex="-1"
+      aria-labelledby="delete-device-Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title line-head" id="delete-device-Label">
+              Confirm
+            </h5>
+            <button
+              type="button"
+              class="btn iconHover pt-0 pb-0"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <i class="fal fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body p-5">
+            <div class="d-flex align-items-center">
+              <div class="icon-circle iconButton me-4 errorbg">
+                <i class="fal fa-trash"></i>
+              </div>
+              <p class="line-txt darkblue">
+                Are you sure, you want to delete the device?
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn skyBg delete_device_toast"
+              data-bs-dismiss="modal"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="disable-device"
+      tabindex="-1"
+      aria-labelledby="delete-device-Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title line-head" id="delete-device-Label">
+              Confirm
+            </h5>
+            <button
+              type="button"
+              class="btn iconHover pt-0 pb-0"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <i class="fal fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body p-5">
+            <div class="d-flex align-items-center">
+              <div class="icon-circle iconButton me-4 errorbg">
+                <i class="fal fa-ban"></i>
+              </div>
+              <p class="line-txt darkblue">
+                Are you sure, you want to disable the device?
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn skyBg disable_device_toast"
+              data-bs-dismiss="modal"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="position-fixed toast-bar border-0 shadow-sm rounded navyBg"
+      style="z-index: 60"
+    >
+      <div
+        class="toast hide border-0 p-2 h-100 navyBg"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div
+          class="d-flex border-0 justify-content-between align-items-center w-100 h-100"
+        >
+          <p class="toast-line-para ice m-0"></p>
+          <div class="toast-btn d-flex align-items-center">
+            <button type="button" class="btn m-0 ms-2" data-bs-dismiss="toast">
+              <i class="fal fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

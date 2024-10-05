@@ -1,0 +1,215 @@
+
+
+
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+
+<div class="content-box-wrapper d-flex w-100">
+  <div class="middle-content d-flex">
+    <div class="p-4 w-100 inbox-container">
+      <div class="filter-toolbar">
+        <div class="d-flex align-items-center">
+          <ul class="list-inline m-0 d-flex align-items-center">
+            <li class="list-inline-item">
+              <div class="searchbar-click">
+                <form class="searchbox">
+                  <input
+                    placeholder="Search"
+                    name="search"
+                    class="searchbox-input"
+                    required
+                  />
+                  <span class="searchbox-icon medium iconButton">
+                    <i class="fa fa-search"></i>
+                  </span>
+                </form>
+              </div>
+            </li>
+            <li class="list-inline-item">
+              <select class="form-select" placeholder="city">
+                <option disabled selected>City</option>
+                <option *ngFor="let city of cities" [value]="city.id">
+                  {{ city.name }}
+                </option>
+              </select>
+            </li>
+            <li class="list-inline-item">
+              <select class="form-select" placeholder="Type">
+                <option selected disabled>Building Type</option>
+                <option>Building</option>
+                <option>Warehouse</option>
+              </select>
+            </li>
+          </ul>
+
+          <div class="ms-auto">
+            <a
+              routerLink="/dashboard/listoflocations/createlocation"
+              class="ms-2"
+            >
+              <button type="button" class="btn btn-success">
+                <i class="fal fa-plus me-2"></i>
+                Create Locations
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-container">
+        <ul class="list-group list-group-horizontal border-0">
+          <li
+            class="list-group-item border-0 refreshicon"
+            aria-label="..."
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            title="Refresh"
+          >
+            <i class="fal fa-redo"></i>
+          </li>
+          <li
+            class="list-group-item border-0 after-select-fun"
+            aria-label="..."
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            title="Delete"
+          >
+            <i class="fal fa-trash"></i>
+          </li>
+          <li
+            class="list-group-item border-0 after-select-fun"
+            aria-label="..."
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            title="Disable"
+          >
+            <i class="fal fa-ban"></i>
+          </li>
+        </ul>
+
+        <div class="pagination-bar">
+          <div class="dropdown">
+            <button
+              class="btn iconHover"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              1-8 of 8
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" >Newest</a></li>
+              <li><a class="dropdown-item" > Oldest</a></li>
+            </ul>
+          </div>
+
+          <span class="iconButton medium iconHover disabled">
+            <i class="fal fa-chevron-left"></i>
+          </span>
+          <span class="iconButton medium iconHover disabled">
+            <i class="fal fa-chevron-right"></i>
+          </span>
+        </div>
+      </div>
+      <div class="table-section table-scrool-y mb-3 query-container">
+        <div
+          class="alert alert-secondary text-center email-info-alert p-2"
+          role="alert"
+          style="display: none"
+        >
+          All <strong>100</strong> conversations on this page are selected.
+          <a href="javascript:void(0);" class="all-conversation fw-bold sky btn"
+            >Select all 8 conversations in locations</a
+          >
+          <a
+            href="javascript:void(0);"
+            class="clear-selection"
+            style="display: none"
+            >Clear selection</a
+          >
+        </div>
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th>
+                <div class="filter-container checkbox-reset">
+                  <ul class="list-group list-group-horizontal border-0">
+                    <li class="list-group-item border-0 all-check-boxes">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        aria-label="..."
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        data-bs-original-title="Check All"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </th>
+              <th>Name</th>
+
+              <th>Floors</th>
+              <th>
+                City
+                <i class="fas fa-long-arrow-alt-down"></i>
+              </th>
+              <th>Building Type</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let location of Locations">
+              <td>
+                <input
+                  class="form-check-input me-1"
+                  type="checkbox"
+                  aria-label="..."
+                />
+              </td>
+              <td>{{location?.name}}</td>
+              <td>{{location?.location_Floors}}</td>
+              <td>{{location?.city}}</td>
+              <td>{{location?.building_Type}}</td>
+              <td>
+                <div
+                  class="icons-list d-flex justify-content-end dropstart p-0"
+                >
+                  <button
+                    class="btn iconButton small iconHover btn-group"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="far fa-ellipsis-v"></i>
+                  </button>
+                  <ul class="dropdown-menu fade">
+                    <li>
+                      <a class="dropdown-item"  [routerLink]="['/dashboard/listoflocations/editlocation/:id',]"
+                        ><i class="fal fa-edit me-2"></i> Edit</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item delete-dd" href="#"
+                        ><i class="fal fa-trash me-2"></i> Delete</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

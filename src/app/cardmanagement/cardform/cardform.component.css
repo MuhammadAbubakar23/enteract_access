@@ -1,0 +1,25 @@
+.example-chip-list {
+    width: 100%;
+  }
+
+ 
+
+
+  ::ng-deep.mat-form-field-infix {
+    border: 5px;
+    height: 50px;
+  }
+  ::ng-deep.mat-form-field-appearance-outline .mat-form-field-label{
+    top: 2.35em
+  }
+  mat-label{
+    font-size: 13px;
+  }
+  .full-width {
+    width: 100%;
+  }
+  .mat-datepicker-toggle{
+    float: right;
+    margin-top: -39px;
+
+  }

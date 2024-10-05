@@ -1,0 +1,1305 @@
+<div class="main-wrapper d-flex">
+    <div class="middle-wrapper d-flex w-100 flex-column">
+        <div class="content-box-wrapper d-flex w-100">
+            <div class="middle-content d-flex">
+                <div class="agent-page-main-content p-0">
+                    <div class="console-contact-detail page-details perfect-scrollbar" data-scrollbar="data-scrollbar">
+                        <div class="conact-header">
+                            <div class="about-profile bg-dark">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0">
+                                        <label class="form-check-label coal d-flex align-items-center w-100">
+                                            <div class="avatar avatar-detail pearlBg">
+                                                HK
+                                                <span class="online-n-offline big"></span>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <div class="flex-grow-1 ms-4">
+                                        <div class="icons-list float-end">
+
+                                            <button class="btn iconButton small iconHover btn-group text-white"
+                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="far fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu fade" style="">
+                                                <li>
+                                                    <a class="dropdown-item" href="../engage/edit-device-form.html">
+                                                        <i class="fal fa-edit me-2"></i> Edit</a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item delete-dd" href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#delete-device">
+                                                        <i class="fal fa-trash me-2"></i> Delete</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#disable-device">
+                                                        <i class="fal fa-ban me-2"></i> disabled</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <h4 class="text-white">{{devicedetails.name}} </h4>
+                                        <ul class="list-inline mb-4 d-flex align-items-center">
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="link-secondary me-2">Type :</small> Face</span>
+                                            </li>
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="link-secondary me-2"> Device :</small> <small
+                                                        class="fw-normal badge navyBg float-end">IN/OUT</small></span>
+                                            </li>
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="link-secondary me-2">Status :</small>
+                                                    <span
+                                                        class="badge rounded-pill bg-light darkblue">{{devicedetails.status}}
+                                                    </span>
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                        <ul class="list-inline m-0 d-flex align-items-center list-boxes">
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="d-block link-secondary">City </small> Karachi
+                                                </span>
+                                            </li>
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="d-block link-secondary">Location </small> Sky Tower
+                                                </span>
+                                            </li>
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="d-block link-secondary">Floor </small> Ground Floor
+                                                </span>
+                                            </li>
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="d-block link-secondary">Access Point</small> IBEX
+                                                    Tower First Floor</span>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-3">
+                            <header class="tab-header timelinetabs">
+                                <nav>
+                                    <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="general-tab" data-bs-toggle="tab"
+                                            data-bs-target="#general" type="button" role="tab" aria-controls="general"
+                                            aria-selected="false">
+                                            <h6>General
+                                            </h6>
+                                        </button>
+                                        <button class="nav-link " id="preferences-tab" data-bs-toggle="tab"
+                                            data-bs-target="#preferences" type="button" role="tab"
+                                            aria-controls="preferences" aria-selected="true">
+                                            <h6>Preferences</h6>
+                                        </button>
+                                        <button class="nav-link" id="logs-tab" data-bs-toggle="tab"
+                                            data-bs-target="#logs" type="button" role="tab" aria-controls="logs"
+                                            aria-selected="false">
+                                            <h6>Logs</h6>
+                                        </button>
+                                        <button class="nav-link" id="timeline-tab" data-bs-toggle="tab"
+                                            data-bs-target="#timeline" type="button" role="tab" aria-controls="timeline"
+                                            aria-selected="false">
+                                            <h6>Timeline</h6>
+                                        </button>
+
+
+
+                                    </div>
+                                </nav>
+                            </header>
+                            <div class="tab-body p-4">
+                                <div class="tab-content" id="nav-tabContent">
+
+                                    <div id="general" class="tab-pane fade list-group-section active show"
+                                        role="tabpanel" aria-labelledby="general-tab">
+
+                                        <ul class="list-group contact-social-list list-group-flush">
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Name</label>
+                                                    <div class="col-md-10">
+                                                        <input name="" class="form-control"
+                                                            [value]="devicedetails.name">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Make</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option selected="">HKVision</option>
+                                                            <option>ZK</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Modal</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option selected="">PTZ Thermal Camera</option>
+                                                            <option>Cooled Thermal Camera</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> City</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option *ngFor="let item of accesspoint" [value]="item.id">
+                                                                {{item.name}}
+                                                            </option>
+
+
+                                                            <!-- <option selected>Karachi</option>
+                                                            <option>Lahore</option>
+                                                            <option>Islamabad</option> -->
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Location</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option selected>SkyTower</option>
+                                                            <option>IBEX 1</option>
+                                                            <option>IBEX 2</option>
+                                                            <option>IBEX 3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Floor</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option selected>Ground Floor</option>
+                                                            <option>First Floor</option>
+                                                            <option>Second Floor</option>
+                                                            <option>Third Floor</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Access Point</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option *ngFor="let acc of accesspoint" [value]="acc.id">
+                                                                {{acc.name}}</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Device Type</label>
+                                                    <div class="col-md-10">
+                                                        <div class="floating-item select-pills mb-4 bg-white">
+                                                            <div class="form-floating">
+                                                                <p style="margin-bottom: 0px;">Device Type </p>
+
+
+                                                                <mat-select [formControl]="DeviceTypeControl" multiple
+                                                                    style="margin: 5px;">
+
+                                                                    <mat-select-trigger>
+                                                                        <mat-chip-list>
+                                                                            <mat-chip
+                                                                                *ngFor="let type of DeviceTypeControl.value"
+                                                                                [removable]="true"
+                                                                                (removed)="onCatRemovedDeviceTypes(type)"
+                                                                                style="background-color:#2F9DF2; color:#ffffff; border-radius: 5px!important;"
+                                                                                selected>
+                                                                                {{ type }}
+                                                                                <mat-icon matChipRemove>cancel
+                                                                                </mat-icon>
+                                                                            </mat-chip>
+                                                                        </mat-chip-list>
+                                                                    </mat-select-trigger>
+
+                                                                    <mat-option *ngFor="let type of DeviceTypes"
+                                                                        [value]="type">
+
+                                                                        {{type}}
+                                                                    </mat-option>
+                                                                </mat-select>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                        <footer class="footer">
+
+                                            <div class="ps-3 pe-3">
+                                                <div
+                                                    class="icon-buttons-wrapper d-flex justify-content-between pt-3 pb-4">
+                                                    <div class="row w-100">
+                                                        <div class="col-md-4">
+
+
+                                                        </div>
+                                                        <div class="col-md-8 justify-content-end d-flex">
+                                                            <div class="buttons-wrap d-flex">
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary btn-medium me-2 px-4"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#cancel-changes">Cancel </button>
+                                                                <button type="button"
+                                                                    class="btn btn-success ms-e f-saveBtn btn-large d-none"></button>
+                                                                <button type="button"
+                                                                    class="btn skyBg ms-2 px-4 btn-medium saveBtn"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#edit-device">Save Changes</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </div>
+                                    <div id="preferences" class="tab-pane fade list-group-section" role="tabpanel"
+                                        aria-labelledby="preferences-tab">
+
+                                        <ul class="list-group contact-social-list list-group-flush">
+
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Serial Number</label>
+                                                    <div class="col-md-10">
+                                                        <input name="" class="form-control" value="656464564849">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Machine No.</label>
+                                                    <div class="col-md-10">
+                                                        <input name="" class="form-control" value="254">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Machine Passcode</label>
+                                                    <div class="col-md-10">
+                                                        <input name="" class="form-control" value="0">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Host IP </label>
+                                                    <div class="col-md-10">
+                                                        <input name="" class="form-control" value="192.168.5.12">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Port </label>
+                                                    <div class="col-md-10">
+                                                        <input name="" class="form-control" value="8080">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Remote URL </label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option selected="">192.168.5.47:8080</option>
+                                                            <option>192.168.5.48:8080</option>
+                                                            <option>192.168.5.49:8080</option>
+                                                            <option>192.168.5.50:8080</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Device Token </label>
+                                                    <div class="col-md-10">
+                                                        <input name="" class="form-control"
+                                                            value="0x0b8823aec3460e1724e795cba45d22e8">
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+
+                                        </ul>
+                                        <footer class="footer">
+                                            <!-- <div class="modal fade" id="cancel-changes" tabindex="-1"
+                                                aria-labelledby="cancel-changes-Label" aria-hidden="true">
+
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title line-head" id="cancel-changes-Label">
+                                                                Confirm</h5>
+                                                            <button type="button" class="btn iconHover pt-0 pb-0"
+                                                                data-bs-dismiss="modal" aria-label="Close"><i
+                                                                    class="fal fa-times ice"></i></button>
+                                                        </div>
+                                                        <div class="modal-body py-4">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon-circle iconButton me-4 errorbg">
+                                                                    <i class="fal fa-times"></i>
+                                                                </div>
+                                                                <p class="line-txt darkblue">Are you sure, you want to
+                                                                    cancel the changes?
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary"
+                                                                data-bs-dismiss="modal">Cancel</button>
+                                                            <button (click)="toasterCancelMsg()" type="button"
+                                                                class="btn btn-danger modal_cancel-data"
+                                                                data-bs-dismiss="modal">Yes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal fade" id="edit-device" tabindex="-1"
+                                                aria-labelledby="saveModalLabel" aria-hidden="true">
+
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title line-head" id="saveModalLabel">
+                                                                Confirm</h5>
+                                                            <button type="button" class="btn iconHover pt-0 pb-0"
+                                                                data-bs-dismiss="modal" aria-label="Close"><i
+                                                                    class="fal fa-times ice"></i></button>
+                                                        </div>
+                                                        <div class="modal-body py-4">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon-circle iconButton me-4">
+                                                                    <i class="fal fa-clipboard-check"></i>
+                                                                </div>
+                                                                <p class="line-txt darkblue">Are you sure, you want to
+                                                                    save new Device?</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary"
+                                                                data-bs-dismiss="modal">Cancel</button>
+                                                            <button (click)="toasterSaveMsg()" type="submit"
+                                                                class="btn skyBg modal_edit-user"
+                                                                data-bs-dismiss="modal">Yes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div> -->
+                                            <div class="ps-3 pe-3">
+                                                <div
+                                                    class="icon-buttons-wrapper d-flex justify-content-between pt-3 pb-4">
+                                                    <div class="row w-100">
+                                                        <div class="col-md-4">
+
+
+                                                        </div>
+                                                        <div class="col-md-8 justify-content-end d-flex">
+                                                            <div class="buttons-wrap d-flex">
+                                                                <button type="button" class="btn btn-outline-secondary btn-medium me-2 px-4" data-bs-toggle="modal" data-bs-target="#cancel-changes">Cancel  </button>
+                                                                <button type="button" class="btn btn-success ms-e f-saveBtn btn-large d-none"></button>
+                                                                <button type="button"  class="btn skyBg ms-2 px-4 btn-medium saveBtn" data-bs-toggle="modal" data-bs-target="#edit-device">Save Changes</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </div>
+                                    <div id="logs" class="tab-pane fade" role="tabpanel" aria-labelledby="logs-tab">
+                                        <div class="w-100 inbox-container">
+                                            <div class="px-3 w-100">
+                                                <div class="filter-toolbar">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <ul class="list-inline m-0 d-flex align-items-center">
+                                                                <li class="list-inline-item">
+                                                                    <div class="searchbar-click">
+                                                                        <form class="searchbox">
+                                                                            <input placeholder="Search Emp ID / Name"
+                                                                                name="search" class="searchbox-input"
+                                                                                required [(ngModel)]="employeeId"
+                                                                                (ngModelChange)="getDeviceDetails()">
+                                                                            <span
+                                                                                class="searchbox-icon medium iconButton">
+                                                                                <i class="fa fa-search"></i>
+                                                                            </span>
+                                                                        </form>
+                                                                        <div class="search-filters">
+                                                                            <header
+                                                                                class="d-flex justify-content-between my-3">
+                                                                                <span>Filter Search </span>
+                                                                                <a href="#0" class="coal">
+                                                                                    <u>Clear all</u>
+                                                                                </a>
+                                                                            </header>
+                                                                            <div class="search-body">
+
+                                                                                <div class="row mb-3">
+                                                                                    <div class="col-3">
+                                                                                        <label class="ps-2">Name</label>
+                                                                                    </div>
+                                                                                    <div class="col-9">
+                                                                                        <input class="form-control"
+                                                                                            placeholder="e.g. Device Name / Sr No.">
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                            </div>
+                                                                            <footer class="py-3">
+                                                                                <div
+                                                                                    class="buttons-wrap d-flex justify-content-end">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-outline-secondary closefilter">Cancel</button>
+                                                                                    <button type="button"
+                                                                                        class="btn btn-success ms-2 px-4">Apply</button>
+                                                                                </div>
+                                                                            </footer>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="list-inline-item">
+                                                                    <div class="daterangepicker">
+                                                                        <input class="form-control"
+                                                                            placeholder=" Start Date Time"
+                                                                            type="datetime-local"
+                                                                            [(ngModel)]="startDateTime"
+                                                                            (ngModelChange)="getDeviceDetails()">
+                                                                        <!-- <i class="fa-light fa-calendar-range"></i> -->
+                                                                    </div>
+                                                                </li>
+                                                                <li class="list-inline-item">
+                                                                    <div class="daterangepicker">
+                                                                        <input class="form-control"
+                                                                            placeholder=" End Date Time"
+                                                                            type="datetime-local"
+                                                                            [(ngModel)]="endDateTime"
+                                                                            (ngModelChange)="getDeviceDetails()">
+                                                                        <!-- <i class="fa-light fa-calendar-range"></i> -->
+                                                                    </div>
+                                                                </li>
+
+
+                                                                <!-- <li class="list-inline-item">
+                                                                    <div class="daterangepicker">
+                                                                        <input class="form-control" id="datepicker"
+                                                                            name="daterange"
+                                                                            placeholder=" Start Date Time">
+                                                                        <i class="fa-light fa-calendar-range"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="list-inline-item">
+                                                                    <div class="daterangepicker">
+                                                                        <input class="form-control" id="datepicker1"
+                                                                            name="daterange"
+                                                                            placeholder=" End Date Time">
+                                                                        <i class="fa-light fa-calendar-range"></i>
+                                                                    </div>
+                                                                </li> -->
+
+
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="filter-container">
+
+                                                    <ul class="list-group list-group-horizontal border-0">
+
+
+                                                        <li (click)="reloadComponent()"
+                                                            class="list-group-item border-0 refreshicon"
+                                                            aria-label="..." data-bs-toggle="tooltip"
+                                                            data-bs-placement="bottom" title="Refresh">
+                                                            <i class="fal fa-redo"></i>
+                                                        </li>
+                                                        <!-- <li [ngStyle]="{'display': isChecked==true  ? 'block' : 'none'}" class="list-group-item border-0 after-select-fun"
+                                                            aria-label="..." data-bs-toggle="tooltip"
+                                                            data-bs-placement="bottom" title="Delete">
+                                                            <i class="fal fa-trash"></i>
+                                                        </li>
+                                                        <li [ngStyle]="{'display': isChecked==true  ? 'block' : 'none'}" class="list-group-item border-0 after-select-fun"
+                                                            aria-label="..." data-bs-toggle="tooltip"
+                                                            data-bs-placement="bottom" title="Disable">
+                                                            <i class="fal fa-ban"></i>
+                                                        </li> -->
+
+
+                                                        <li (click)="exportToExcel($event)"
+                                                            [ngStyle]="{'display': isChecked==true  ? 'block' : 'none'}"
+                                                            class="list-group-item border-0 after-select-fun"
+                                                            aria-label="..." data-bs-toggle="tooltip"
+                                                            data-bs-placement="bottom" title="Export To Excel">
+                                                            <i class="fal fa-file-excel"></i>
+                                                        </li>
+                                                    </ul>
+
+                                                    <div class="pagination-bar">
+                                                        <div class="dropdown">
+                                                            <button class="btn iconHover" type="button"
+                                                                id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                                aria-expanded="false">
+                                                                {{startingpoint}}-{{endingpoint}} of {{logsCount}}
+                                                            </button>
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton1">
+                                                                <li><a class="dropdown-item" href="#">Newest</a></li>
+                                                                <li><a class="dropdown-item" href="#"> Oldest</a></li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <span class="iconButton medium iconHover">
+                                                            <i class="fal fa-chevron-left"
+                                                                (click)="PreviousPage(pageNo)"></i>
+                                                        </span>
+                                                        <span class="iconButton medium iconHover">
+                                                            <i class="fal fa-chevron-right"
+                                                                (click)="NextPage(pageNo)"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="table-section table-scrool-y mb-3 query-container">
+                                                    <div [ngStyle]="{display : isCheckedAll==true ? 'block' : 'none'}"
+                                                        class="alert alert-secondary text-center email-info-alert p-2"
+                                                        role="alert" style="display: none;">
+                                                        All <strong>100</strong> conversations on this page are
+                                                        selected.
+                                                        <a href="javascript:void(0);"
+                                                            class="all-conversation fw-bold sky btn">Select all
+                                                            569 records in logs</a>
+                                                        <a href="javascript:void(0);" class="clear-selection"
+                                                            style="display: none;">Clear selection</a>
+                                                    </div>
+
+                                                    <table class="table table-nowrap" id="machinelogs">
+                                                        <thead>
+                                                            <tr [class.selected]="isChecked==true">
+                                                                <th>
+                                                                    <div class="filter-container">
+                                                                        <ul
+                                                                            class="list-group list-group-horizontal border-0">
+                                                                            <li
+                                                                                class="list-group-item border-0 all-check-boxes">
+                                                                                <input class="form-check-input me-1"
+                                                                                    type="checkbox" aria-label="..."
+                                                                                    data-bs-toggle="tooltip"
+                                                                                    data-bs-placement="bottom"
+                                                                                    title="Check All"
+                                                                                    [checked]="masterSelected"
+                                                                                    value="m1"
+                                                                                    (change)="checkUncheckAll($event)">
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </th>
+                                                                <th>ID <i class="fa-light fa-arrow-down-a-z"></i>
+                                                                </th>
+                                                                <th>Name</th>
+                                                                <th>Department</th>
+                                                                <th>Shift Date</th>
+
+                                                                <th>Plateform</th>
+                                                                <th>Check-In</th>
+                                                                <th>Check-Out</th>
+
+                                                                <th>Worked</th>
+
+
+                                                                <th>IP</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr [class.selected]="l.isChecked==true" *ngFor="let l of logs;
+                                                            index as index">
+                                                                <td><input [checked]="l.isChecked" value="{{l.id}}"
+                                                                        (change)="isAllSelected($event, index)"
+                                                                        class="form-check-input me-1" type="checkbox"
+                                                                        aria-label="..."></td>
+                                                                <td>{{l.employee_Id}}</td>
+                                                                <td>{{l.strName}}</td>
+                                                                <td>{{l.name}}</td>
+                                                                <td>{{((l.door_No==1?l.log_Time :"") | date:'M/d/yyyy')
+                                                                    || (l.door_No==2?l.log_Time:"") | date:'M/d/yyyy'}}
+                                                                </td>
+
+                                                                <td></td>
+                                                                <!-- <td>{{l.door_No==1?l.log_Time  :"Not Checked in"}} </td>
+                                                                <td>{{l.door_No==2?l.log_Time:"Not Checked out"}}</td> -->
+                                                                <td>{{(l.door_No==1?l.log_Time :"") | date:'HH:mm:ss'}}
+                                                                </td>
+                                                                <td>{{(l.door_No==2?l.log_Time:"") | date:'HH:mm:ss'}}
+                                                                </td>
+
+                                                                <td></td>
+
+                                                                <td>{{l.iP_Address}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div id="timeline" class="tab-pane fade" role="tabpanel"
+                                        aria-labelledby="timeline-tab">
+                                        <div class="w-100 inbox-container">
+                                            <div class="px-3 w-100">
+                                                <div class="filter-toolbar mb-3">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <ul class="list-inline m-0 d-flex align-items-center">
+                                                                <li class="list-inline-item">
+                                                                    <div class="searchbar-click">
+                                                                        <form class="searchbox">
+                                                                            <input placeholder="Search" name="search"
+                                                                                class="searchbox-input" required="">
+                                                                            <span
+                                                                                class="searchbox-icon medium iconButton">
+                                                                                <i class="fa fa-search"></i>
+                                                                            </span>
+                                                                        </form>
+                                                                        <div class="search-filters">
+                                                                            <header
+                                                                                class="d-flex justify-content-between my-3">
+                                                                                <span>Filter Search </span>
+                                                                                <a href="#0" class="coal">
+                                                                                    <u>Clear all</u>
+                                                                                </a>
+                                                                            </header>
+                                                                            <div class="search-body">
+
+                                                                                <div class="row mb-3">
+                                                                                    <div class="col-3">
+                                                                                        <label class="ps-2">Name</label>
+                                                                                    </div>
+                                                                                    <div class="col-9">
+                                                                                        <input class="form-control"
+                                                                                            placeholder="e.g. Device Name / Sr No.">
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                            </div>
+                                                                            <footer class="py-3">
+                                                                                <div
+                                                                                    class="buttons-wrap d-flex justify-content-end">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-outline-secondary closefilter">Cancel</button>
+                                                                                    <button type="button"
+                                                                                        class="btn btn-success ms-2 px-4">Apply</button>
+                                                                                </div>
+                                                                            </footer>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="list-inline-item">
+                                                                    <select class="form-select" placeholder="Log Type">
+                                                                        <option selected="" disabled=""> All</option>
+                                                                        <option> Check-In</option>
+                                                                        <option> Check-Out</option>
+                                                                        <option> Device On/Off</option>
+                                                                    </select>
+                                                                </li>
+
+                                                                <li class="list-inline-item">
+                                                                    <div class="daterangepicker">
+                                                                        <input class="form-control flatpickr-input"
+                                                                            id="datepicker" name="daterange"
+                                                                            placeholder=" Start Date Time" type="text"
+                                                                            readonly="readonly">
+                                                                        <i class="fa-light fa-calendar-range"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="list-inline-item">
+                                                                    <div class="daterangepicker">
+                                                                        <input class="form-control flatpickr-input"
+                                                                            id="datepicker1" name="daterange"
+                                                                            placeholder=" End Date Time" type="text"
+                                                                            readonly="readonly">
+                                                                        <i class="fa-light fa-calendar-range"></i>
+                                                                    </div>
+                                                                </li>
+
+
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <h6 class="darkblue mb-4 border-bottom pb-3">Today</h6>
+                                                <div class="timeline-label">
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:42</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-success"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">Device is active
+                                                            now
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:41</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-danger"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">Device turned off.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:40</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">
+                                                            <a href="#0" class="sky">Farooq Shad </a> Updated the Access
+                                                            Point on this device to Second Floor
+                                                            Main.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:40</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">
+                                                            <a href="#0" class="sky">Tahir Ahmed</a> Updated the serial
+                                                            Number
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:39</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3"><a href="#0"
+                                                                class="sky">Fayyaz Rasul</a> checked in
+                                                            through this device.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:38</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3"><a href="#0"
+                                                                class="sky">Umair Khan</a> uses RFID
+                                                            through this device.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:42</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-success"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">Device is active
+                                                            now
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:41</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-danger"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">Device turned off.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:40</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">
+                                                            <a href="#0" class="sky">Farooq Shad </a> Updated the Access
+                                                            Point on this device to Second Floor
+                                                            Main.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:40</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">
+                                                            <a href="#0" class="sky">Tahir Ahmed</a> Updated the serial
+                                                            Number
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:39</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3"><a href="#0"
+                                                                class="sky">Fayyaz Rasul</a> checked in
+                                                            through this device.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:38</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3"><a href="#0"
+                                                                class="sky">Umair Khan</a> uses RFID
+                                                            through this device.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:42</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-success"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">Device is active
+                                                            now
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:41</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-danger"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">Device turned off.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:40</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">
+                                                            <a href="#0" class="sky">Farooq Shad </a> Updated the Access
+                                                            Point on this device to Second Floor
+                                                            Main.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:40</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">
+                                                            <a href="#0" class="sky">Tahir Ahmed</a> Updated the serial
+                                                            Number
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:39</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3"><a href="#0"
+                                                                class="sky">Fayyaz Rasul</a> checked in
+                                                            through this device.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:38</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3"><a href="#0"
+                                                                class="sky">Umair Khan</a> uses RFID
+                                                            through this device.
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <h6 class="darkblue mb-4 border-bottom pb-3 mt-4">24-07-2022</h6>
+                                                <div class="timeline-label">
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:42</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-success"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">Device is active
+                                                            now
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:41</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-danger"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">Device turned off.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:40</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">
+                                                            <a href="#0" class="sky">Farooq Shad </a> Updated the Access
+                                                            Point on this device to Second Floor
+                                                            Main.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:40</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3">
+                                                            <a href="#0" class="sky">Tahir Ahmed</a> Updated the serial
+                                                            Number
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:39</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3"><a href="#0"
+                                                                class="sky">Fayyaz Rasul</a> checked in
+                                                            through this device.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:38</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3"><a href="#0"
+                                                                class="sky">Umair Khan</a> uses RFID
+                                                            through this device.
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-left text-gray-800 fs-6">08:30</div>
+                                                        <div class="timeline-badge">
+                                                            <i class="fa-regular fa-circle fs-6 text-primary"></i>
+                                                        </div>
+                                                        <div class="fw-mormal timeline-content ps-3"><a href="#0"
+                                                                class="sky">Muhammad Rashid</a> uses RFID
+                                                            through this device.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="position-fixed toast-bar border-0 shadow-sm rounded navyBg" style="z-index: 60">
+    <div [ngClass]="toasterCancelMessage == true ? 'show' : 'hide'" class="toast border-0 p-2 h-100 navyBg fade"
+        role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex border-0 justify-content-between align-items-center w-100 h-100">
+            <p class="toast-line-para ice m-0">Your changes have been canceled!</p>
+            <div class="toast-btn d-flex align-items-center">
+
+                <button type="button" class="btn m-0 ms-2" aria-label="Close" data-bs-dismiss="toast"
+                    (click)="closeToaster()"><i class="fal fa-times"></i></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cancel-changes" tabindex="-1"
+                                                aria-labelledby="cancel-changes-Label" aria-hidden="true">
+
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title line-head" id="cancel-changes-Label">
+                                                                Confirm</h5>
+                                                            <button type="button" class="btn iconHover pt-0 pb-0"
+                                                                data-bs-dismiss="modal" aria-label="Close"><i
+                                                                    class="fal fa-times ice"></i></button>
+                                                        </div>
+                                                        <div class="modal-body py-4">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon-circle iconButton me-4 errorbg">
+                                                                    <i class="fal fa-times"></i>
+                                                                </div>
+                                                                <p class="line-txt darkblue">Are you sure, you want to
+                                                                    cancel the changes?
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary"
+                                                                data-bs-dismiss="modal">Cancel</button>
+                                                            <button (click)="toasterCancelMsg()" type="button"
+                                                                class="btn btn-danger modal_cancel-data"
+                                                                data-bs-dismiss="modal">Yes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal fade" id="edit-device" tabindex="-1"
+                                                aria-labelledby="saveModalLabel" aria-hidden="true">
+
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title line-head" id="saveModalLabel">
+                                                                Confirm</h5>
+                                                            <button type="button" class="btn iconHover pt-0 pb-0"
+                                                                data-bs-dismiss="modal" aria-label="Close"><i
+                                                                    class="fal fa-times ice"></i></button>
+                                                        </div>
+                                                        <div class="modal-body py-4">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon-circle iconButton me-4">
+                                                                    <i class="fal fa-clipboard-check"></i>
+                                                                </div>
+                                                                <p class="line-txt darkblue">Are you sure, you want to
+                                                                    save new Device?</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary"
+                                                                data-bs-dismiss="modal">Cancel</button>
+                                                            <button (click)="toasterSaveMsg()" type="submit"
+                                                                class="btn skyBg modal_edit-user"
+                                                                data-bs-dismiss="modal">Yes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+<div class="position-fixed toast-bar border-0 shadow-sm rounded navyBg" style="z-index: 60">
+    <div [ngClass]="toasterSaveMessage == true ? 'show' : 'hide'" class="toast border-0 p-2 h-100 navyBg fade"
+        role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex border-0 justify-content-between align-items-center w-100 h-100">
+            <p class="toast-line-para ice m-0">Device has been updated!</p>
+            <div class="toast-btn d-flex align-items-center">
+
+                <button type="button" class="btn m-0 ms-2" aria-label="Close" data-bs-dismiss="toast"
+                    (click)="closeToaster()"><i class="fal fa-times"></i></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="manageSkill" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header align-items-center saltBg">
+        <button class="iconButton medium">
+            <i class="fal fa-clone"></i>
+        </button>
+        <h5 id="offcanvasRightLabel" class="darkblue fw-bold m-0">Manage Skills</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="off-canvas-wrap d-flex flex-column h-100">
+        <div class="offcanvas-body pb-0">
+            <p class="silver ps-3 mb-4">An User can have up-to 35 skills, drag and drop skills to reorder them by order
+                of preference</p>
+            <div class="row">
+                <div class="col-lg-6 select-skill-list border-end">
+                    <div class="skill-select-wrapper">
+                        <div
+                            class="skill-head d-flex justify-content-between align-items-center border-bottom border-primary pb-2 ps-3">
+                            <h6 class="m-0 charcoal fw-bold">28 Skills</h6>
+                            <div class="skill-head-search d-flex">
+                                <div class="search-btn small-search-btn">
+                                    <button class="iconButton medium searchButton">
+                                        <i class="fal fa-search silver"></i>
+                                    </button>
+                                    <input placeholder="Search">
+                                </div>
+                                <div class="iconButton medium">
+                                    <label class="list-group-item checkbox-tick border-0" id="skillAll">
+                                        <input class="form-check-input me-1 m-0 check-all" type="checkbox">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-list" data-scrollbar="data-scrollbar">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="form-check-label checkbox-txt" for="flexCheckDefault">
+                                        Technical Support
+                                    </label>
+
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-2"> Sales</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-3">MNP</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-4"> Product Support</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-5">Online Order</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-6">Complaint Deals</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-7">Technical Support</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-8">Sales</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-9"> MNP</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-10"> Product Support</label>
+                                </li>
+
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-11"> Online Order</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox">Complaint Deals</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="skill-select-wrapper selected_box">
+                        <div
+                            class="skill-head d-flex justify-content-between align-items-center border-bottom border-success pb-3 ps-3">
+                            <h6 class="m-0 fw-bold mint mt-1 pt-2">4 Selected</h6>
+                            <div class="skill-head-search d-flex" id="skillAllRemove">
+                                <label class="list-group-item checkbox-minus checkbox-tick border-0">
+                                    <input class="form-check-input me-1 m-0 check-all" type="checkbox">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="selected-skill-list" data-scrollbar="data-scrollbar">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item checkbox-minus checkbox-tick">
+                                    <input class="form-check-input me-2 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox"></label>
+                                    <p class="flex-grow-1 m-0 checkbox-txt night">English</p>
+                                    <span class="coal">4</span>
+                                </li>
+                                <li class="list-group-item checkbox-minus checkbox-tick">
+                                    <input class="form-check-input me-2 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox"></label>
+                                    <p class="flex-grow-1 m-0 checkbox-txt night">Urdu</p>
+                                    <span class="coal">8</span>
+                                </li>
+                                <li class="list-group-item checkbox-minus checkbox-tick">
+                                    <input class="form-check-input me-2 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox"></label>
+                                    <p class="flex-grow-1 m-0 checkbox-txt night">Support</p>
+                                    <span class="coal">7</span>
+                                </li>
+                                <li class="list-group-item checkbox-minus checkbox-tick">
+                                    <input class="form-check-input me-2 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox"></label>
+                                    <p class="flex-grow-1 m-0 checkbox-txt night">Roman English</p>
+                                    <span class="coal">4</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="off-canvaas-footer border-top p-3">
+            <div class="icon-buttons-wrapper d-flex justify-content-between">
+                <div class="f-icon-txt-wrapper d-flex align-items-center">
+                    <button class="iconButton medium iconHover" id="btnShowModal">
+                        <i class="fal fa-trash radical"></i>
+                    </button>
+                    <p class="f-icon-txt ms-1 m-0 radical">Delete Manage Skills </p>
+                </div>
+                <div class="buttons-wrap d-flex">
+                    <button routerLink="/dashboard/devicemanagement/listofdevices" type="button"
+                        class="btn btn-outline-secondary" data-bs-dismiss="offcanvas" aria-label="Close">Cancel</button>
+                    <button type="button" class="btn btn-success ms-2 f-nextBtn" data-bs-dismiss="offcanvas"
+                        aria-label="Close" id="saveSkills ">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

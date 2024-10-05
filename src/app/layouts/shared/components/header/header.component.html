@@ -1,0 +1,425 @@
+<header class="main-header shadow-sm agent-header">
+  <div class="row">
+    <div class="col-lg-6">
+      <!-- <div class="dashboard-header-left d-flex align-items-center">
+        <button class="iconButton medium">
+          <i class="{{ customval[8] }}"></i>
+        </button>
+
+        <nav>
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item">
+              <a [routerLink]="[customval[9]]">{{ customval[0] }}</a>
+            </li>
+            <li class="{{ customval[11] }}">
+              <a [routerLink]="[customval[10]]">{{ customval[1] }}</a>
+            </li>
+          </ol>
+        </nav>
+      </div> -->
+      <div class="dashboard-header-left d-flex align-items-center">
+        <button class="iconButton medium">
+          <i [ngClass]="customval.Icon"></i>
+        </button>
+
+        <nav>
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item">
+              <a [routerLink]="customval.Url">{{ customval.title }}</a>
+            </li>
+
+            <li class="breadcrumb-item active" *ngIf="customval.subTitle"></li>
+            <li >{{ customval.subTitle }}</li>
+          </ol>
+        </nav>
+        <nav class="navbar navbar-light bg-lightmain-navbar ps-5" *ngIf="customval.subTabs">
+          <div class="container-fluid p-0">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation" *ngFor="let subTab of customval.subTabs">
+                <button class="nav-link" [routerLink]="subTab.url" [ngClass]="{active: subTab.isActive == true}" >{{subTab?.name}}</button>
+              </li>          
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6">
+      <div class="right-header-components">
+        <div class="dropdown create-button me-3" *ngIf="!isAdminLoggedIn()">
+          <button
+            class="iconButton medium notification iconHover custom-fa-col"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fal fa-plus"></i>
+          </button>
+          <ul
+            class="dropdown-menu custom-dropdown"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            <li>
+              <a
+                class="dropdown-item p-1 active"
+                routerLink="/dashboard/devicemanagement/createdevice"
+              >
+                <button
+                  class="iconButton dropdown-iconBtn small active"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fal fa-desktop"></i></button
+                >Create Device Management
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item p-1"
+                routerLink="/dashboard/groupmanagement/creategroup"
+              >
+                <button class="iconButton dropdown-iconBtn small">
+                  <i class="fal fa-users"></i>
+                </button>
+                Create Group Management
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item p-1"
+                routerLink="/dashboard/accessmanagement/createaccess"
+              >
+                <button
+                  class="iconButton dropdown-iconBtn small"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fal fa-fingerprint"></i></button
+                >Create Access Control
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item p-1"
+                routerLink="/dashboard/accountmanagement/createaccount"
+              >
+                <button class="iconButton dropdown-iconBtn small">
+                  <i class="fal fa-user-lock"></i></button
+                >Create Account Management
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item p-1">
+                <button
+                  class="iconButton dropdown-iconBtn small"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fal fa-clipboard"></i></button
+                >Logs
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="dropdown custom-dropdown-list w-auto notify me-3">
+          <a
+            href="#"
+            class="d-block"
+            id="dropdownUser1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <button class="iconButton medium notification iconHover">
+              <i class="fal fa-bell notify-count"></i>
+              <span class="badge bg-danger rounded-pill">5</span>
+            </button>
+          </a>
+          <ul
+            class="dropdown-menu full_dropdown p-0 text-small user-profile-dropdown shadow"
+            aria-labelledby="dropdownUser1"
+          >
+            <li class="notification-header dropdown-header p-0">
+              <ul class="notification-header w-100 p-2">
+                <li>
+                  <div class="name-n-info">
+                    <h6 class="night m-0">Notifications</h6>
+                  </div>
+                  <a class="pb-1 pe-2 ps-2 pt-1 rounded-pill sky" href="#"
+                    >Mark all as Read</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="notification-body dropdown-body">
+              <ul>
+                <li>Today</li>
+                <li>
+                  <a class="dropdown-item active" href="#">
+                    <span class="btn iconButton iconHover medium oceanBg me-1">
+                      <i class="fal fa-bell"></i>
+                    </span>
+                    <div class="ms-2 me-auto coal lh-1">
+                      <div class="night">
+                        Your average response time is low.
+                      </div>
+                      <small>11:30 AM</small>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span class="btn iconButton iconHover medium oceanBg me-1">
+                      <i class="fal fa-bell"></i>
+                    </span>
+                    <div class="ms-2 me-auto coal lh-1">
+                      <div class="night">
+                        Your average response time is low.
+                      </div>
+                      <small>11:30 AM</small>
+                    </div>
+                  </a>
+                </li>
+                <li>Yesterday</li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span class="btn iconButton iconHover medium oceanBg me-1">
+                      <i class="fal fa-bell"></i>
+                    </span>
+                    <div class="ms-2 me-auto coal lh-1">
+                      <div class="night">
+                        Your average response time is low.
+                      </div>
+                      <small>11:30 AM</small>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span class="btn iconButton iconHover medium oceanBg me-1">
+                      <i class="fal fa-bell"></i>
+                    </span>
+                    <div class="ms-2 me-auto coal lh-1">
+                      <div class="night">
+                        Your average response time is low.
+                      </div>
+                      <small>11:30 AM</small>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span class="btn iconButton iconHover medium oceanBg me-1">
+                      <i class="fal fa-bell"></i>
+                    </span>
+                    <div class="ms-2 me-auto coal lh-1">
+                      <div class="night">
+                        Your average response time is low.
+                      </div>
+                      <small>11:30 AM</small>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="notification-footer dropdown-footer p-0">
+              <ul class="card-footer w-100 border-0 p-0">
+                <li>
+                  <div class="w-100">
+                    <a
+                      href="#"
+                      class="btn text-center d-block sky notification-view-all-btn"
+                      >View all</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown custom-dropdown-list w-auto">
+          <a
+            href="#"
+            class="d-block link-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="assets/Images/unknownuser.png"
+              alt="mdo"
+              width="40"
+              height="40"
+              class="rounded-circle"
+            />
+            <span class="online-n-offline"></span>
+            <div class="name-n-info">
+              <span class="name"
+                ><mark>{{ username }}</mark></span
+              >
+              <small *ngIf="!isAdminLoggedIn()">ID:288664</small>
+            </div>
+          </a>
+          <ul
+            class="dropdown-menu full_dropdown p-0 text-small user-profile-dropdown shadow"
+            aria-labelledby="dropdownUser1"
+          >
+            <li class="user-dropdown-header dropdown-header">
+              <ul>
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark text-decoration-none"
+                    id="dropdownUser1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src="assets/Images/unknownuser.png"
+                      class="profile-pic rounded-circle"
+                      alt="mdo"
+                      width="50"
+                      height="50"
+                      class="rounded-circle"
+                    />
+                    <span class="online-n-offline on-off-btn"></span>
+                    <div class="name-n-info lh-sm">
+                      <h6 class="night m-0">
+                        <mark>
+                          {{ username }}
+                        </mark>
+                      </h6>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+
+              <button class="iconButton medium iconHover">
+                <i class="fal fa-cog"></i>
+              </button>
+            </li>
+            <!-- <li class="user-dropdown-body dropdown-body">
+                            <ul>
+                                <li>
+                                    <a class="dropdown-item active" href="#">
+                                        <div class="form-check theme-check w-100 p-0">
+                                            <input class="form-check-input float-end" type="radio"
+                                                name="flexRadioDefault" id="flexCheckDefault" checked>
+                                            <label class="form-check-label d-flex align-items-center"
+                                                for="flexCheckDefault">
+                                                <span
+                                                    class="btn iconButton iconHover medium oceanBg me-1 mt-2">
+                                                    <i class="fal fa-hand-pointer"></i>
+                                                </span>
+                                                <div class="ms-2 me-auto coal lh-1">
+                                                    <h6 class="night mb-0">Self Assignment</h6>
+                                                    <small>Manage your own conversation</small>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="form-check theme-check w-100 p-0">
+                                            <input class="form-check-input float-end" type="radio"
+                                                name="flexRadioDefault" id="flexCheckDefault1">
+                                            <label class="form-check-label d-flex align-items-center"
+                                                for="flexCheckDefault1">
+                                                <span
+                                                    class="btn iconButton iconHover medium mintBg me-1 mt-2">
+                                                    <i class="fal fa-wand-magic"></i>
+                                                </span>
+                                                <div class="ms-2 me-auto coal lh-1">
+                                                    <h6 class="night mb-0">Auto Assignment</h6>
+                                                    <small>System generated assignment</small>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="form-check theme-check w-100 p-0">
+                                            <input class="form-check-input float-end" type="radio"
+                                                name="flexRadioDefault" id="flexCheckDefault2">
+                                            <label class="form-check-label d-flex align-items-center"
+                                                for="flexCheckDefault2">
+                                                <span
+                                                    class="btn iconButton iconHover medium radicalBg me-1 mt-2">
+                                                    <i class="fal fa-pizza"></i>
+                                                </span>
+                                                <div class="ms-2 me-auto coal lh-1">
+                                                    <h6 class="night mb-0">Start Break</h6>
+                                                    <small>Mute notifications and unassign new
+                                                        messages</small>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="form-check theme-check w-100 p-0">
+                                            <input class="form-check-input float-end" type="radio"
+                                                name="flexRadioDefault" id="flexCheckDefault3">
+                                            <label class="form-check-label d-flex align-items-center"
+                                                for="flexCheckDefault3">
+                                                <span
+                                                    class="btn iconButton iconHover medium mangoTransBg me-1 mt-1">
+                                                    <i class="fal fa-moon"></i>
+                                                </span>
+                                                <div class="ms-2 me-auto coal lh-1">
+                                                    <h6 class="night mb-0">Do not disturb</h6>
+                                                    <small>Mute notifications</small>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <span
+                                            class="btn iconButton iconHover medium mangoTransBg me-1 mt-2">
+                                            <i class="fal fa-clock"></i>
+                                        </span>
+                                        <div class="ms-2 me-auto coal lh-1">
+                                            <h6 class="night mb-1">Schedule</h6>
+                                            <div class="d-flex w-75">
+                                                <input class="form-control form-control-sm"
+                                                    placeholder="6:00 PM"
+                                                    aria-label=".form-control-sm example">
+                                                <span class="p-1">to</span>
+                                                <input class="form-control form-control-sm"
+                                                    placeholder="6:00 AM"
+                                                    aria-label=".form-control-sm example">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li> -->
+            <li class="card-footer dropdown-footer p-2">
+              <ul class="w-100">
+                <li>
+                  <div class="w-100">
+                    <a
+                      (click)="logout()"
+                      class="btn radicalBg text-center d-block"
+                      >Sign Out</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

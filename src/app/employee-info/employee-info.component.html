@@ -1,0 +1,104 @@
+<div id="loginWrapper">
+  <div class="main-body">
+    <div class="left-panel box-shade h-100">
+      <div class="header">
+        <nav>
+          <div class="logo">
+            <img src="../assets/Images/enteract-access.svg" alt="-" />
+          </div>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+              <a routerLink="/employee-info"> Employee Info </a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="left-content-wrap pt-0" id="main-login-form">
+        <div class="form w-100">
+          <h4 class="darkerblue">Employee Info</h4>
+          <p class="silver mb-5">Enter your employee id and photo.</p>
+
+          <div class="row align-items-start">
+            <div class="col-md-5">
+              <div class="em-holder">
+                <img [src]="url" *ngIf="url" class="img-fluid" />
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="emplId"
+                  [(ngModel)]="emplId"
+                  value="131520"
+                  placeholder="Employee ID"
+                />
+                <label for="emp-id">Employee ID</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  [(ngModel)]="password"
+                  value="131520"
+                  placeholder="Employee ID"
+                />
+                <label for="emp-id">Password</label>
+              </div>
+              <div class="mb-4 upload-files">
+                <div [innerHtml]="msg" *ngIf="msg" style="color: red"></div>
+                <input
+                  class="form-control custom-choose-file"
+                  type="file"
+                  id="formFile"
+                  (change)="onFileChanged($event)"
+                />
+
+                <small class="silver"
+                  >Max file size is 2 MB. Best size for image upload is
+                  512*512px.</small
+                >
+              </div>
+              <div class="form-btn">
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  (click)="newFile()"
+                  id="loginBtn"
+                  tabindex="-1"
+                  role="button"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="login-footer">
+        <div class="copyright">
+          Copyrights © 2022 enteract.access | All rights reserved
+          <a href="https://www.ibex.co/"
+            ><img class="logo" src="../assets/Images/ibex-logo.svg"
+          /></a>
+        </div>
+      </footer>
+    </div>
+
+    <div class="right-panel saltBg">
+      <div class="graphicBg">
+        <img src="../assets/Images/front-page-graphic.png" />
+      </div>
+      <div class="tagline">
+        <h4 class="ambassador_blue text-center">
+          Let's <span class="radical fw-bold">connect</span> the world on a
+          single
+          <span class="radical fw-bold">expression.</span>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>

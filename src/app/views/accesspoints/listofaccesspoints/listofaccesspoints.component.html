@@ -1,0 +1,277 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+
+<div class="main-wrapper d-flex">
+
+  <div class="middle-wrapper d-flex w-100 flex-column  ">
+    <div class="content-box-wrapper d-flex w-100">
+      <div class="middle-content d-flex">
+
+        <div class="p-4 w-100 inbox-container">
+          <div class="filter-toolbar">
+
+            <div class="d-flex align-items-center">
+              <ul class="list-inline m-0 d-flex align-items-center">
+                <li class="list-inline-item">
+                  <div class="searchbar-click">
+                    <form class="searchbox">
+                      <input placeholder="Search" name="search" class="searchbox-input" required [(ngModel)]="search"
+                        (ngModelChange)="getAllAccessPoints()">
+                      <span class="searchbox-icon medium iconButton">
+                        <i class="fa fa-search"></i>
+                      </span>
+                    </form>
+
+                  </div>
+                </li>
+
+                <li class="list-inline-item hideclass">
+                  <select class="form-select" [(ngModel)]="cityid" (ngModelChange)="getAllAccessPoints()">
+                    <option selected disabled>City </option>
+                    <option>All </option>
+                    <option *ngFor="let c of Cities" [value]="c.id">{{c.name}}</option>
+                  </select>
+                </li>
+                <li class="list-inline-item hideclass">
+                  <select class="form-select" [(ngModel)]="locationid" (ngModelChange)="getAllAccessPoints()">
+                    <option selected disabled>Locations </option>
+                    <option>All </option>
+                    <option *ngFor="let l of Locations" [value]="l.id">{{l.name}}</option>
+                  </select>
+                </li>
+                <li class="list-inline-item hideclass">
+                  <select class="form-select" [(ngModel)]="floorid" (ngModelChange)="getAllAccessPoints()">
+                    <option selected disabled>Floors </option>
+                    <option>All </option>
+                    <option *ngFor="let f of Floors" [value]="f.id">{{f.name}}</option>
+                  </select>
+                </li>
+              </ul>
+
+
+              <div class="ms-auto">
+                <a routerLink="/dashboard/listofaccesspoints/createaccesspoint">
+                  <button type="button" class="btn btn-success">
+                    <i class="fal fa-plus me-2"></i>
+                    Create Access Points
+                  </button>
+                </a>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <div class="filter-container">
+            <ul class="list-group list-group-horizontal border-0">
+              <li (click)="reloadComponent()" class="list-group-item border-0 refreshicon" aria-label="..." data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="Refresh">
+                <i class="fal fa-redo"></i>
+              </li>
+              <li [ngStyle]="{'display': isChecked==true  ? 'block' : 'none'}"
+                class="list-group-item border-0 after-select-fun" aria-label="..." data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="" data-bs-original-title="Delete">
+                <i class="fal fa-trash" (click)="deleteMultiple()"></i>
+              </li>
+              <li [ngStyle]="{'display': isChecked==true  ? 'block' : 'none'}"
+                class="list-group-item border-0 after-select-fun" aria-label="..." data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="" data-bs-original-title="Disable">
+                <i class="fal fa-ban"></i>
+              </li>
+            </ul>
+
+            <div class="pagination-bar">
+              <div class="dropdown">
+                  <button class="btn iconHover" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
+                      <span>{{Starting_Point}}-{{Ending_Point}} of {{accesspointCount}}</span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 38px);" data-popper-placement="bottom-start">
+                    <li><a class="dropdown-item" (click)="getsortValue($event)">Newest</a></li>
+                    <li><a class="dropdown-item" (click)="getsortValue($event)">Oldest</a></li>
+                  </ul>
+                 
+                </div>
+                <span  class="iconButton medium iconHover" style="margin-right: 6px;">
+                  <i class="fal fa-chevron-left" (click)="openModalPrevious(popupPrevious)"></i>
+              </span>
+              <span class="iconButton medium iconHover" data-bs-toggle="modal" data-bs-target="#cancel-changes" style="margin-left: 6px;">
+                  <i class="fal fa-chevron-right"  (click)="openModalNext(popupNext)"></i>
+              </span>
+          </div>
+          </div>
+          <div class="table-section table-scrool-y mb-3 query-container ">
+            <div [ngStyle]="{display : isCheckedAll==true ? 'block' : 'none'}"
+              class="alert alert-secondary text-center email-info-alert p-2" role="alert" style="display: none;">
+              All <strong>100</strong> conversations on this page are
+              selected.
+              <a href="javascript:void(0);" class="all-conversation fw-bold sky btn">Select all
+                569 records in logs</a>
+              <a href="javascript:void(0);" class="clear-selection" style="display: none;">Clear selection</a>
+            </div>
+            <table class="table align-middle">
+              <thead>
+                <tr [class.selected]="isChecked==true">
+                  <th>
+                    <div class="filter-container checkbox-reset">
+                      <ul class="list-group list-group-horizontal border-0">
+                        <li class="list-group-item border-0 all-check-boxes">
+                          <input class="form-check-input me-1" type="checkbox" aria-label="..." data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" data-bs-original-title="Check All" [checked]="masterSelected"
+                            value="m1" (change)="checkUncheckAll($event)">
+                        </li>
+                      </ul>
+                    </div>
+                  </th>
+                  <th>
+                    City
+                  </th>
+                  <th>
+                    Locations
+                  </th>
+                  <th>
+                    Floors
+                  </th>
+                  <th>
+                    Access Points
+                  </th>
+                  <th>
+                    No. of devices
+                    <i class="fas fa-long-arrow-alt-down"></i>
+                  </th>
+                  <th></th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr [class.selected]="access_p.isChecked==true"
+                  *ngFor="let access_p of AccessPoints; index as index">
+                  <td>
+                    <input [checked]="access_p.isChecked" value="{{access_p.accesspoint.id}}"
+                      (change)="isAllSelected($event, index)" class="form-check-input me-1" type="checkbox"
+                      aria-label="...">
+                  </td>
+                  <td [routerLink]="['/dashboard/listofaccesspoints/accesspointdetail',access_p.id]">
+                    {{access_p.city.name}}
+                  </td>
+                  <td>
+                    {{access_p.location.name}}
+                  </td>
+                  <td>
+                    {{access_p.floor.name}}
+                  </td>
+                  <td>
+                    {{access_p.accesspoint.name}}
+                  </td>
+                  <td>
+                    <ul class="devicelisting">
+                      <li *ngFor="let dev of $any(access_p.device|slice:0:1)">
+                        <em class="device-status online"></em>
+                        <span> {{dev.name}} </span>
+                        <span [ngClass]="dev.type=='INN'?'badge oceanBg':'badge mangoBg'"> {{dev.type}}</span>                      </li>
+                    </ul>
+
+                    <div class="d-inline-block dropdown w-auto device-dd" *ngIf="access_p.device">
+                      <button class="d-inline-block dropdown w-auto btn ps-0" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span *ngIf="access_p.device.length">+{{(access_p.device.length)-1}}</span>
+                      </button>
+                      <ul class="dropdown-menu w-auto" aria-labelledby="dropdownMenu2">
+                        <li *ngFor="let dev of $any(access_p.device|slice:1:100)">
+                          <a class="dropdown-item" href="#">
+                            <span><em class="device-status online"></em> {{dev.name}}</span>
+                            <span [ngClass]="dev.type=='INN'?'badge oceanBg':'badge mangoBg'"> {{dev.type}}</span>                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div class="icons-list d-flex justify-content-end dropstart p-0">
+                      <button class="btn iconButton small iconHover btn-group" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="far fa-ellipsis-v"></i>
+                      </button>
+                      <ul class="dropdown-menu fade">
+                        <li>
+                          <a class="dropdown-item"
+                            [routerLink]="['/dashboard/listofaccesspoints/editaccesspoint',access_p.accesspoint.id]"><i
+                              class="fal fa-edit me-2"></i> Edit</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item delete-dd" (click)="DeleteAccessPoint(access_p.accesspoint.id)"> <i
+                              class="fal fa-trash me-2"></i> Delete</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item delete-dd"
+                            [routerLink]="['/dashboard/listofaccesspoints/accesspointdetail/',access_p.id]"> <i
+                              class="fal fa-info-circle me-2"></i> Details</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #popupNext class="modal-dialog modal-dialog-centered">
+
+  <div class="modal-header">
+      <h5 class="modal-title line-head" id="cancel-changes-Label">Confirm</h5>
+      <button type="button" class="btn iconHover pt-0 pb-0" data-bs-dismiss="modal" aria-label="Close"
+              (click)="modalRef.hide()"><i class="fal fa-times ice"></i>
+      </button>
+  </div>
+   <div class="modal-body py-4">
+      <div class="d-flex align-items-center">
+          <div class="icon-circle iconButton me-4 errorbg">
+              <i class="fal fa-times"></i>
+          </div>
+          <p class="line-txt darkblue">Selected checkboxes will be un-selected, Do you want to continue?</p>
+      </div>
+  </div>
+   <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary"
+      data-bs-dismiss="modal" (click)="modalRef.hide()">Cancel</button>
+  <button type="button" class="btn btn-danger modal_cancel-data"
+      data-bs-dismiss="modal" (click)="maketrueNext()">Yes</button>
+   </div>
+
+</ng-template>
+
+<ng-template #popupPrevious class="modal-dialog modal-dialog-centered">
+
+  <div class="modal-header">
+      <h5 class="modal-title line-head" id="cancel-changes-Label">Confirm</h5>
+      <button type="button" class="btn iconHover pt-0 pb-0" data-bs-dismiss="modal" aria-label="Close"
+              (click)="modalRef.hide()"><i class="fal fa-times ice"></i>
+      </button>
+  </div>
+   <div class="modal-body py-4">
+      <div class="d-flex align-items-center">
+          <div class="icon-circle iconButton me-4 errorbg">
+              <i class="fal fa-times"></i>
+          </div>
+          <p class="line-txt darkblue">Selected checkboxes will be un-selected, Do you want to continue?</p>
+      </div>
+  </div>
+   <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary"
+      data-bs-dismiss="modal" (click)="modalRef.hide()">Cancel</button>
+  <button type="button" class="btn btn-danger modal_cancel-data"
+      data-bs-dismiss="modal" (click)="maketruePrevious()">Yes</button>
+   </div>
+
+</ng-template>

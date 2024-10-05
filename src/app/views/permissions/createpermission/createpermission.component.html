@@ -1,0 +1,223 @@
+
+
+
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+
+
+<div class="main-wrapper d-flex">
+
+  <div class="middle-wrapper d-flex w-100 flex-column">
+
+    <form [formGroup]="permissionForm" (submit)="CreatePermission()">
+      <div class="content-box-wrapper d-flex w-100">
+        <div class="middle-content d-flex">
+          <div class="page-content-wrapper">
+            <div class="w-auto chat-message-component inner-forms w-100">
+              <div class="d-flex main-body-wrapper">
+                <div class="agent-page-main-content">
+                  <div class="query-container console-body-wrapper form-body-wrap perfect-scrollbar"
+                    data-scrollbar="data-scrollbar">
+                    <div class="w-100 p-4">
+                      <div class="tab-header">
+                        <nav>
+                          <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="role-detail-tab" data-bs-toggle="tab"
+                              data-bs-target="#role-detail" type="button" role="tab" aria-controls="role-detail"
+                              aria-selected="false">
+                              <h6>Details</h6>
+                            </button>
+                            <button class="nav-link" id="permission-sec-tab" data-bs-toggle="tab"
+                              data-bs-target="#permission-sec" type="button" role="tab" aria-controls="permission-sec"
+                              aria-selected="false">
+                              <h6>Access Points</h6>
+                            </button>
+
+                          </div>
+                        </nav>
+                      </div>
+
+                      <div class="tab-body">
+                        <div class="tab-content" id="nav-tabContent">
+
+                          <div id="role-detail" class="tab-pane fade active show" role="tabpanel"
+                            aria-labelledby="role-detail-tab">
+                            <div class="row justify-content-center p-5">
+                              <div class="col-md-8">
+                                <div class="role-detail-wrap">
+                                  <p class="line-txt mb-4">
+                                    The permissions of default roles cannot be edited. Create a new role to select
+                                    custom
+                                    permissions.
+                                  </p>
+                                  <div class="floating-list">
+                                    <div class="floating-item mb-3">
+                                      <div class="floating-wrap form-floating">
+                                        <input  type="text" class="form-control"
+                                          id="floatingInput" placeholder="Name" formControlName="Name">
+                                        <label for="floatingInputValue">Name</label>
+                                     
+                                      </div>
+                                      <div class="example-text">
+                                        <small>e.g. Customer Support Team</small>
+                                      </div>
+
+                                    </div>
+
+                                    <div class="form-floating mb-4">
+                                      <select  (change)="getAllFloors()"
+                                        [(ngModel)]="loc_id" class="form-select" id="floatingSelect"
+                                        aria-label="Floating label select example" formControlName="Location_Id">
+                                        <option disabled>Select Location</option>
+                                        <option *ngFor="let loc of Locations" [value]="loc.id">{{loc.name}}</option>
+                                      </select>
+                                      <label for="floatingSelect"> Location</label>
+                                     
+                                    </div>
+                                    <div class="floating-item mb-4">
+                                      <div class="floating-wrap form-floating">
+                                        <textarea class="form-control" placeholder="This roles & permissions belong to agent and
+                    team members" id="floatingTextarea2" style="height: 100px"
+                                          formControlName="Description"></textarea>
+                                        <label for="floatingTextarea2">Description</label>
+                                      </div>
+                                      <div class="example-text">
+                                        <small>e.g. This roles & permissions belong to agent and team members</small>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Permission Section -->
+
+                          <div id="permission-sec" class="tab-pane fade" role="tabpanel"
+                            aria-labelledby="permission-sec-tab">
+                            <ng-container *ngFor="let floor of Floors, let a = index">
+
+                              <h6 class="mt-5">{{floor.floors.name}}</h6>
+                              <div class="border mb-4"></div>
+
+
+                              <ng-container *ngFor="let access of floor.accesspoint,let i=index">
+                                <div class="collapse-toggle-card toggle-wrap shadow-sm rounded border mb-3">
+                                  <div class="toggle-head">
+                                    <ul class="list-group list-group-flush">
+                                      <li
+                                        class="list-group-item d-flex justify-content-between align-items-sm-center saltBg"
+                                        data-bs-toggle="collapse"
+                                        [attr.data-bs-target]="'#'+access.name|removewhitespaces" aria-expanded="true"
+                                        [attr.aria-controls]="access.name|removewhitespaces">
+                                        <span class="iconButton chevron-icon ms-4 me-2"></span>
+                                        <div class="ms-2 me-auto darkblue">
+
+                                          <div class="fw-bold darkblue">
+                                            {{access.name}}</div>
+                                        </div>
+
+                                        <div class="form-check form-switch">
+                                          <input class="form-check-input" type="checkbox" name="toggle">
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="collapse" [id]="access.name|removewhitespaces">
+                                    <div class="card card-body darkblue">
+                                      <ul class="list-group list-group-flush sm-list">
+                                        <li class="list-group-item active">
+                                          <label class="text-decoration-underline night fw-bold">
+                                            <input class="form-check-input me-2 parent-checkbox" type="checkbox"
+                                              id="all{{a}}{{i}}" [checked]="access.isMasterSelectAll" value="m1"
+                                              (change)="checkUncheckAll($event , i ,a)">
+                                            Select All
+                                          </label>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center"
+                                          *ngFor="let device of access.devices; index as index">
+                                          <label class="night fw-bold main-checkbox">
+                                            <input id="check{{a}}{{i}}{{index}}" class="form-check-input me-2"
+                                              type="checkbox"
+                                              (click)="addPermission(floor.floors.id,device.id,access.id,'','','')"
+                                              [checked]="device.isChecked" value="{{device.id}}"
+                                              (change)="isAllSelected($event, index, i ,a)">
+
+                                            {{device.name}}
+                                          </label>
+                                          <!-- <ul class="list-inline m-0 d-flex align-items-center">
+                                            <li clas="list-inline-item">
+                                              <label>
+                                                <input class="form-check-input me-1" type="checkbox" (click)="addPermission(floor.floors.id,device.id,access.id,$event,'','')"
+                                                  formControlName="is_Bio">
+                                                BIO
+                                              </label>
+                                            </li>
+                                            <li clas="list-inline-item">
+                                              <label>
+                                                <input class="form-check-input me-1" type="checkbox" (click)="addPermission(floor.floors.id,device.id,access.id,'',$event,'')"
+                                                  formControlName="is_RFID">
+                                                RFID
+                                              </label>
+                                            </li>
+                                            <li clas="list-inline-item">
+                                              <label>
+                                                <input class="form-check-input me-1" type="checkbox" (click)="addPermission(floor.floors.id,device.id,access.id,'','',$event)"
+                                                  formControlName="is_Face">
+                                                Face
+                                              </label>
+                                            </li>
+                                          </ul> -->
+
+                                          <small class="fw-normal badge oceanBg">IN</small>
+                                        </li>
+
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </ng-container>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <footer class="footer">
+                    <div class="ps-3 pe-3">
+                      <div class="icon-buttons-wrapper d-flex justify-content-between pt-3 pb-4">
+                        <div class="row w-100">
+                          <div class="col-md-4">
+
+                          </div>
+                          <div class="col-md-8 justify-content-end d-flex">
+                            <div class="buttons-wrap d-flex">
+                              <button routerLink="/dashboard/listofpermissions" type="button"
+                                class="btn btn-outline-secondary btn-medium me-2 px-4" data-bs-toggle="modal"
+                                data-bs-target="">Cancel </button>
+                              <button type="button" class="btn btn-success ms-e f-saveBtn btn-large d-none"></button>
+                              <button type="submit" class="btn skyBg ms-2 px-4 btn-medium saveBtn"
+                                data-bs-toggle="modal" data-bs-target="#save-account-modal"
+                                [disabled]="!permissionForm.valid">Save</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

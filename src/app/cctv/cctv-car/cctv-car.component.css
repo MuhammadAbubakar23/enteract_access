@@ -1,0 +1,27 @@
+.cardsmimg{
+    width: 80px;
+    height: 80px;
+}
+.userheader .iconcard {
+    margin-bottom: 0;
+}
+.invalid-user .username.h1 .badge, .invalid-user h1.username .badge {
+    font-size: 18px;
+    padding: 6px 16px !important;
+}
+.userheader p {
+    color: #222222;
+}
+.visitor-user .username.h1 .badge, .visitor-user h1.username .badge {
+    color: #0866ff !important;
+    background: #fafafa;
+    border: 1px solid #377ff3;
+    font-size: 22px;
+    margin-left: 12px;
+    padding: 5px 12px !important;
+}
+
+/* .visitor-user-small {
+    color: #0866ff !important; 
+  } */
+  

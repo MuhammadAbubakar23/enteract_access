@@ -1,0 +1,2678 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+
+<div class="middle-content">
+  <div
+    class="console-contact-detail page-details perfect-scrollbar"
+    data-scrollbar="data-scrollbar"
+  >
+    <div class="conact-header">
+      <div class="about-profile userdetails">
+        <div class="row inner g-2 align-items-start">
+          <div class="col-5">
+            <div class="card">
+              <div class="card-body d-flex align-items-center">
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="list-down-icon avatar xxl position-relative">
+                      <img
+                        [src]="
+                          User?.userDetails?.empPicUrl ||
+                          'assets/Images/dummy_profile_picture2.jpg'
+                        "
+                        class="rounded"
+                        alt="..."
+                      />
+                      <!-- <button
+                        class="iconButton medium imageupload add-file"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        aria-label="Upload Photo"
+                        data-bs-original-title="Upload Photo"
+                      >
+                        <i class="fal fa-upload"></i>
+                        <input
+                          type="file"
+                          name="file"
+                          class="add-file-input"
+                          (change)="onFileSelected($event)"
+                        />
+                      </button> -->
+                    </div>
+                  </div>
+                  <div class="flex-grow-1 ms-4">
+                    <div class="icons-list float-end">
+                      <!-- <button class="btn iconButton medium iconHover btn-group" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="far fa-ellipsis-v"></i>
+                      </button> -->
+                    </div>
+                    <img
+                      src="../assets/Images/ibex-logo.svg"
+                      width="56px"
+                      alt=""
+                    />
+                    <div class="d-flex align-items-center mb-2">
+                      <h4>{{ User?.userDetails?.employeeName }}</h4>
+                      <small
+                        class="badge rounded-pill skyTransBg ms-2 night"
+                        style="padding-bottom: 20px"
+                        >{{ User?.userDetails?.employeeDesignation }}</small
+                      >
+                    </div>
+                    <ul class="list-inline mb-2">
+                      <li
+                        class="list-inline-item text-truncate"
+                        title=" {{ User?.userDetails?.employeeEmail }}"
+                        style="max-width: 240px"
+                        title="Email"
+                      >
+                        <i class="fa-light fa-envelope"></i>
+                        {{ User?.userDetails?.employeeEmail }}
+                      </li>
+                      <li class="list-inline-item" title="Employee Id">
+                        <i class="fa-light fa-id-card"></i>
+                        {{ User?.userDetails?.employeeID }}
+                      </li>
+                    </ul>
+                    <ul class="list-inline mb-2">
+                      <li class="list-inline-item" title="Mobile Number">
+                        <i class="fa-light fa-mobile me-1"></i>
+                        {{ User?.userDetails?.employeeMobileNumber }}
+                      </li>
+                      <li class="list-inline-item" title="Location">
+                        <i class="fa-light fa-location-dot me-1"></i>
+                        {{ User?.userDetails?.employeeCity }}
+                      </li>
+                      <li class="list-inline-item" title="Vehicle Number">
+                        <i class="fa-light fa-car me-1"></i>
+                        {{ User?.userDetails?.employeeVehicleNumber }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="text-uppercase mb-3">Today’s Activities</h6>
+                <div
+                  class="row align-items-center justify-content-between mb-4 h-auto g-2"
+                >
+                  <div class="col-8 d-flex">
+                    <div class="flex-shrink-0">
+                      <span class="iconButton medium mintBg"
+                        ><i class="fa-light fa-arrow-down"></i
+                      ></span>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <p class="m-0">CheckIn</p>
+                      <h6 class="m-0">
+                        <small>
+                          {{
+                            User?.todaysActivity?.checkIn | date : "shortTime"
+                          }}</small
+                        >
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="col-4 d-flex">
+                    <div class="flex-grow-1 text-end">
+                      <p class="m-0">Spent Hours</p>
+                      <h6 class="m-0">
+                        {{ User?.todaysActivity?.spentHours }}
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="row align-items-center justify-content-between g-2 h-auto"
+                >
+                  <div class="col-8 d-flex">
+                    <div class="flex-shrink-0">
+                      <span class="iconButton medium radicalBg"
+                        ><i class="fa-light fa-arrow-down"></i
+                      ></span>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <p class="m-0">CheckOut</p>
+                      <h6 class="m-0">
+                        <small>
+                          {{ User?.todaysActivity?.checkOut ? (User.todaysActivity.checkOut | date: 'shortTime') : '--:-- --' }}
+                        </small>                        
+                        <!-- <small>{{
+                          User?.todaysActivity?.checkOut | date : "shortTime" || '--:-- --'
+                        }}</small> -->
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="col-4 d-flex">
+                    <div class="flex-grow-1 text-end">
+                      <p class="m-0 radical">Short Hours</p>
+                      <h6>{{ User?.todaysActivity?.shortHours }}</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div
+                  class="d-flex align-items-center justify-content-between mb-3"
+                >
+                  <h6 class="text-uppercase m-0">Attendance Details</h6>
+                  <small class="coal">THIS MONTH</small>
+                </div>
+
+                <div
+                  class="d-flex align-items-center justify-content-between mb-3"
+                >
+                  <div class="col-md-7">
+                    <ul class="list-group list-group-flush mb-2">
+                      <li
+                        class="list-group-item"
+                        *ngFor="let attendance of attendanceGraphData"
+                      >
+                        <span
+                          class="dot"
+                          style="animation: none"
+                          [ngClass]="{
+                            dotgreen: attendance?.name == 'Present',
+                            dotpurple: attendance?.name == 'Absent',
+                            dotblue: attendance?.name == 'Leave'
+                          }"
+                        ></span>
+                        {{ attendance?.name }}
+                        <strong class="ms-2">{{ attendance?.value }}%</strong>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6 text-end">
+                    <div
+                      class="col-md-5"
+                      id="ImpressionsGraph"
+                      style="height: 100%; width: 100%; padding-right: 10px"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="conact-header">
+      <div class="about-profile bg-dark">
+        <div class="d-flex align-items-center">
+          <div class="flex-shrink-0">
+            <div class="list-down-icon avatar xxl me-3 mb-2">
+              <img src="{{User.image_Url}}" (error)="onImgError($event)" alt="" />
+              <button
+                class="iconButton medium imageupload add-file"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Upload Photo"
+              >
+                <i class="fal fa-upload"></i>
+                <input type="file" name="file" class="add-file-input" />
+              </button>
+            </div>
+          </div>
+          <div class="flex-grow-1 ms-4">
+            <h6 class="text-white mb-2">
+              <span class="me-2 text-white">
+                <i class="fal fa-envelope"></i>
+              </span>
+              {{ User.email }}
+            </h6>
+            <span class="badge rounded-pill bg-light darkblue"
+              >Software Engineer</span
+            >
+          </div>
+        </div>
+        <h4 class="text-white">{{ User.strName }}</h4>
+      </div>
+    </div> -->
+
+    <div class="pt-3">
+      <header class="tab-header timelinetabs">
+        <nav>
+          <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+            <!-- <button
+              class="nav-link "
+              id="team-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#general-info"
+              type="button"
+              role="tab"
+              aria-controls="general-info"
+              aria-selected="false"
+            >
+              <h6>General</h6>
+            </button>
+            <button
+              class="nav-link"
+              id="team-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#conact-timeline"
+              type="button"
+              role="tab"
+              aria-controls="conact-timeline"
+              aria-selected="false"
+            >
+              <h6>Timeline</h6>
+            </button>
+
+            <button
+              class="nav-link"
+              id="team-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact-social"
+              type="button"
+              role="tab"
+              aria-controls="contact-social"
+              aria-selected="false"
+            >
+              <h6>User Info</h6>
+            </button> -->
+
+            <button
+              class="nav-link"
+              id="team-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#summary"
+              type="button"
+              role="tab"
+              aria-controls="summary"
+              aria-selected="true"
+            >
+              <h6>Summary</h6>
+            </button>
+
+            <button
+              class="nav-link active"
+              id="logs-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#logs"
+              type="button"
+              role="tab"
+              aria-controls="logs"
+              aria-selected="false"
+            >
+              <h6>Activity Logs</h6>
+            </button>
+
+            <button
+              class="nav-link"
+              id="team-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#settings"
+              type="button"
+              role="tab"
+              aria-controls="settings"
+              aria-selected="false"
+            >
+              <h6>Settings</h6>
+            </button>
+
+            <button
+              class="nav-link"
+              id="alerts-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#alerts"
+              type="button"
+              role="tab"
+              aria-controls="alerts"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              <h6>Alerts</h6>
+            </button>
+
+            <!-- <button
+              class="nav-link"
+              id="team-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact-files"
+              type="button"
+              role="tab"
+              aria-controls="contact-files"
+              aria-selected="false"
+            >
+              <h6>Files</h6>
+            </button>
+            <button
+              class="nav-link"
+              id="team-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact-files"
+              type="button"
+              role="tab"
+              aria-controls="contact-files"
+              aria-selected="false"
+            >
+              <h6>Projects</h6>
+            </button>
+            <button
+              class="nav-link"
+              id="team-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact-files"
+              type="button"
+              role="tab"
+              aria-controls="contact-files"
+              aria-selected="false"
+            >
+              <h6>TimeCards</h6>
+            </button> -->
+          </div>
+        </nav>
+      </header>
+      <div class="tab-body p-3">
+        <div class="tab-content" id="nav-tabContent">
+
+          <div
+            id="summary"
+            class="tab-pane fade list-group-section"
+            role="tabpanel"
+            aria-labelledby="team-tab"
+          >
+            <form [formGroup]="updateDetailsForm">
+              <ul class="list-group contact-social-list list-group-flush">
+                <li class="list-group-item">
+                  <div class="row">
+                    <label class="col-md-2">Full name</label>
+                    <div class="col-md-10">
+                      <input
+                        class="form-control"
+                        [class.is-invalid]="
+                          vf['name'].invalid && vf['name'].touched
+                        "
+                        [class.is-valid]="
+                          vf['name'].valid && vf['name'].touched
+                        "
+                        formControlName="name"
+                        placeholder="Name"
+                      />
+                      <!-- value="{{ User?.userDetails?.employeeName }} " -->
+                      <!-- <input name="" class="form-control" value= "{{ User?.userDetails?.employeeName }}" /> -->
+                    </div>
+                    <ng-container
+                      *ngIf="vf['name'].invalid && vf['name'].touched"
+                    >
+                      <small
+                        *ngIf="
+                          vf['name'].errors && vf['name'].errors['required']
+                        "
+                        class="text-danger"
+                      >
+                        Name is required!
+                      </small>
+                      <small
+                        *ngIf="
+                          vf['name'].errors && vf['name'].errors['minlength']
+                        "
+                        class="text-danger"
+                      >
+                        3 characters must !
+                      </small>
+                      <small
+                        *ngIf="
+                          vf['name'].errors && vf['name'].errors['maxlength']
+                        "
+                        class="text-danger"
+                      >
+                        20 characters max allowed !
+                      </small>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="vf['name'].valid && vf['name'].touched"
+                    >
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <label for="EmployeeID" class="col-md-2"
+                      >Employee ID
+                    </label>
+                    <div class="col-md-10">
+                      <!-- [class.is-invalid]="
+                      vf['id'].invalid && vf['id'].touched
+                    "
+                    [class.is-valid]="vf['id'].valid && vf['id'].touched" -->
+                      <input
+                      readonly="readonly"
+                        class="form-control"
+
+                        formControlName="id"
+                        placeholder="Id"
+                      />
+                      <!-- value="{{ User?.userDetails?.employeeID }} " -->
+                      <!-- <input name="" class="form-control" placeholder="{{ User?.userDetails?.employeeID }}" /> -->
+                    </div>
+                    <!-- <ng-container *ngIf="vf['id'].invalid && vf['id'].touched">
+                      <small
+                        *ngIf="vf['id'].errors && vf['id'].errors['required']"
+                        class="text-danger"
+                      >
+                        Employee ID is required!
+                      </small>
+                    </ng-container>
+                    <ng-container *ngIf="vf['id'].valid && vf['id'].touched">
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container> -->
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <label for="contactnumber" class="col-md-2"
+                      >Contact No.
+                    </label>
+                    <div class="col-md-10">
+                      <input
+                        class="form-control"
+                        [class.is-invalid]="
+                          vf['mobile'].invalid && vf['mobile'].touched
+                        "
+                        [class.is-valid]="
+                          vf['mobile'].valid && vf['mobile'].touched
+                        "
+                        formControlName="mobile"
+                        placeholder="eg, 1234567890"
+                      />
+                      <!-- value="{{ User?.userDetails?.employeeMobileNumber }} " -->
+                      <!-- <input name="" class="form-control" placeholder="{{ User?.userDetails?.employeeMobileNumber }}"/> -->
+                    </div>
+                    <ng-container
+                      *ngIf="vf['mobile'].invalid && vf['mobile'].touched"
+                    >
+                      <small
+                        *ngIf="
+                          vf['mobile'].errors && vf['mobile'].errors['required']
+                        "
+                        class="text-danger"
+                      >
+                        Mobile number is required!
+                      </small>
+                      <small
+                        *ngIf="
+                          vf['mobile'].errors &&
+                          vf['mobile'].errors['minlength']
+                        "
+                        class="text-danger"
+                      >
+                        11 characters must !
+                      </small>
+                      <small
+                        *ngIf="
+                          vf['mobile'].errors &&
+                          vf['mobile'].errors['maxlength']
+                        "
+                        class="text-danger"
+                      >
+                        13 characters max allowed !
+                      </small>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="vf['mobile'].valid && vf['mobile'].touched"
+                    >
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <label for="contactnumber" class="col-md-2">City </label>
+                    <div class="col-md-10">
+                      <select
+                        class="form-control"
+                        formControlName="city"
+                        id="city"
+                        [class.is-invalid]="vf['city'].invalid && vf['city'].touched"
+                      >
+                        <option value="" disabled selected>Select a city</option>
+                        <option value="Lahore">Lahore</option>
+                        <option value="Islamabad">Islamabad</option>
+                        <option value="Karachi">Karachi</option>
+                      </select>
+                    </div>
+                    <ng-container *ngIf="vf['city'].invalid && vf['city'].touched">
+                      <small *ngIf="vf['city'].errors && vf['city'].errors['required']" class="text-danger">
+                        Select at least one City!
+                      </small>
+                    </ng-container>
+                    <ng-container *ngIf="vf['city'].valid && vf['city'].touched">
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+                
+                <li class="list-group-item">
+                  <div class="row">
+                    <label for="contactnumber" class="col-md-2">Location</label>
+                    <div class="col-md-10">
+                      <select
+                        class="form-control"
+                        formControlName="location"
+                        id="floatingSelect"
+                        [class.is-invalid]="vf['location'].invalid && vf['location'].touched"
+                      >
+                        <option value="" disabled selected>Select a location</option>
+                        <option value="IBEX TOWER">IBEX TOWER</option>
+                        <option value="Ibex 1">Ibex 1</option>
+                        <option value="Ibex 2">Ibex 2</option>
+                        <option value="Ibex 3">Ibex 3</option>
+                      </select>
+                    </div>
+                    <ng-container *ngIf="vf['location'].invalid && vf['location'].touched">
+                      <small *ngIf="vf['location'].errors && vf['location'].errors['required']" class="text-danger">
+                        Select at least one Location!
+                      </small>
+                    </ng-container>
+                    <ng-container *ngIf="vf['location'].valid && vf['location'].touched">
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+                
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <label class="col-md-2">CNIC</label>
+                    <div class="col-md-10">
+                      <input
+                        class="form-control"
+                        [class.is-invalid]="
+                          vf['cnic'].invalid && vf['cnic'].touched
+                        "
+                        [class.is-valid]="
+                          vf['cnic'].valid && vf['cnic'].touched
+                        "
+                        formControlName="cnic"
+                        placeholder="eg, 3840312345671"
+
+                      />
+                      <!-- value="{{ User?.userDetails?.employeeCNIC }} " -->
+                      <!-- <input
+                      name=""
+                      class="form-control"
+                      value="{{ User?.userDetails?.employeeCNIC  }}"
+                    /> -->
+                    </div>
+                    <ng-container
+                      *ngIf="vf['cnic'].invalid && vf['cnic'].touched"
+                    >
+                      <small
+                        *ngIf="
+                          vf['cnic'].errors && vf['cnic'].errors['required']
+                        "
+                        class="text-danger"
+                      >
+                        Employee CNIC is required!
+                      </small>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="vf['cnic'].valid && vf['cnic'].touched"
+                    >
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <label for="Mailing address" class="col-md-2"
+                      >Entity Name</label
+                    >
+                    <div class="col-md-10">
+                      <input
+                        class="form-control"
+                        [class.is-invalid]="
+                          vf['entity'].invalid && vf['entity'].touched
+                        "
+                        [class.is-valid]="
+                          vf['entity'].valid && vf['entity'].touched
+                        "
+                        formControlName="entity"
+                        placeholder="Entity"
+
+                      />
+                      <!-- value="{{ User?.userDetails?.employeeEntityName }} " -->
+                      <!-- <input name="" class="form-control" value="{{ User?.userDetails?.employeeEntityName }} " /> -->
+                    </div>
+                    <ng-container
+                      *ngIf="vf['entity'].invalid && vf['entity'].touched"
+                    >
+                      <small
+                        *ngIf="
+                          vf['entity'].errors && vf['entity'].errors['required']
+                        "
+                        class="text-danger"
+                      >
+                        Entity Name is required!
+                      </small>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="vf['entity'].valid && vf['entity'].touched"
+                    >
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <label for="Mailing address" class="col-md-2"
+                      >Department</label
+                    >
+                    <div class="col-md-10">
+                      <input
+                        class="form-control"
+                        [class.is-invalid]="
+                          vf['department'].invalid && vf['department'].touched
+                        "
+                        [class.is-valid]="
+                          vf['department'].valid && vf['department'].touched
+                        "
+                        formControlName="department"
+                        placeholder="Department"
+
+                      />
+                      <!-- value="{{ User?.userDetails?.employeeDepartment }} " -->
+                      <!-- <input
+                      name=""
+                      class="form-control"
+                      value="{{ User?.userDetails?.employeeDepartment }}"
+                    /> -->
+                    </div>
+                    <ng-container
+                      *ngIf="
+                        vf['department'].invalid && vf['department'].touched
+                      "
+                    >
+                      <small
+                        *ngIf="
+                          vf['department'].errors &&
+                          vf['department'].errors['required']
+                        "
+                        class="text-danger"
+                      >
+                        Department Name is required!
+                      </small>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="vf['department'].valid && vf['department'].touched"
+                    >
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <label for="Team" class="col-md-2">Team </label>
+                    <div class="col-md-10">
+                      <input
+                        class="form-control"
+                        [class.is-invalid]="
+                          vf['team'].invalid && vf['team'].touched
+                        "
+                        [class.is-valid]="
+                          vf['team'].valid && vf['team'].touched
+                        "
+                        formControlName="team"
+                        placeholder="Team"
+
+                      />
+                      <!-- value="{{ User?.userDetails?.employeeTeam }} " -->
+                      <!-- <input
+                      name=""
+                      class="form-control"
+                      placeholder="Team"
+                      value = "{{ User?.userDetails?.employeeTeam }} "
+                    /> -->
+                    </div>
+                    <ng-container
+                      *ngIf="vf['team'].invalid && vf['team'].touched"
+                    >
+                      <small
+                        *ngIf="
+                          vf['team'].errors && vf['team'].errors['required']
+                        "
+                        class="text-danger"
+                      >
+                        Team Name is required!
+                      </small>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="vf['team'].valid && vf['team'].touched"
+                    >
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <label for="Group" class="col-md-2">Group </label>
+                    <div class="col-md-10">
+                      <input
+                        class="form-control"
+                        [class.is-invalid]="
+                          vf['group'].invalid && vf['group'].touched
+                        "
+                        [class.is-valid]="
+                          vf['group'].valid && vf['group'].touched
+                        "
+                        formControlName="group"
+                        [placeholder]="
+                          User?.userDetails?.employeeGroup
+                            ? ''
+                            : 'eg, UX Designers '
+                        "
+                        [value]="User?.userDetails?.employeeGroup || ''"
+                      />
+                      <!-- <input name="" class="form-control" value="{{ User?.userDetails?.employeeGroup }}" /> -->
+                    </div>
+                    <ng-container
+                      *ngIf="vf['group'].invalid && vf['group'].touched"
+                    >
+                      <small
+                        *ngIf="
+                          vf['group'].errors && vf['group'].errors['required']
+                        "
+                        class="text-danger"
+                      >
+                        Group Name is required!
+                      </small>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="vf['group'].valid && vf['group'].touched"
+                    >
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <label for="Designation" class="col-md-2"
+                      >Designation
+                    </label>
+                    <div class="col-md-10">
+                      <input
+                        class="form-control"
+                        [class.is-invalid]="
+                          vf['designation'].invalid && vf['designation'].touched
+                        "
+                        [class.is-valid]="
+                          vf['designation'].valid && vf['designation'].touched
+                        "
+                        formControlName="designation"
+                        placeholder="Designation"
+                      />
+                      <!-- value="{{ User?.userDetails?.employeeDesignation }} " -->
+                      <!-- <input
+                      name=""
+                      class="form-control"
+                      placeholder="{{ User?.userDetails?.employeeDesignation }}"
+                    /> -->
+                    </div>
+                    <ng-container
+                      *ngIf="
+                        vf['designation'].invalid && vf['designation'].touched
+                      "
+                    >
+                      <small
+                        *ngIf="
+                          vf['designation'].errors &&
+                          vf['designation'].errors['required']
+                        "
+                        class="text-danger"
+                      >
+                        Designation Name is required!
+                      </small>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="
+                        vf['designation'].valid && vf['designation'].touched
+                      "
+                    >
+                      <small class="text-success"> Looks good!</small>
+                    </ng-container>
+                  </div>
+                </li>
+              </ul>
+            </form>
+
+            <footer class="footer">
+              <div class="ps-3 pe-3">
+                <div
+                  class="icon-buttons-wrapper d-flex justify-content-between pt-3 pb-4"
+                >
+                  <div class="row w-100">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8 justify-content-end d-flex">
+                      <div class="buttons-wrap d-flex">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary btn-medium me-2 px-4"
+                          data-bs-toggle="modal"
+                          data-bs-target="#cancel-changes"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-success ms-e f-saveBtn btn-large d-none"
+                        ></button>
+                        <!-- [routerLink]="[
+                        '/dashboard/listofusers/userdetail',
+                        User?.userDetails?.employeeID
+                      ]" -->
+                        <button
+                          [disabled]="updateDetailsForm.invalid"
+                          (click)="submit()"
+                          routerLink="/dashboard/listofusers"
+                          type="button"
+                          class="btn skyBg ms-2 px-4 btn-medium saveBtn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#usercreateconfirmation"
+                        >
+                          Save Changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
+            <div
+              class="offcanvas offcanvas-end"
+              tabindex="-1"
+              id="manageSkill"
+              aria-labelledby="offcanvasRightLabel"
+            >
+              <div class="offcanvas-header align-items-center saltBg">
+                <button class="iconButton medium">
+                  <i class="fal fa-clone"></i>
+                </button>
+                <h5 id="offcanvasRightLabel" class="darkblue fw-bold m-0">
+                  Manage Skills
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close text-reset"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="off-canvas-wrap d-flex flex-column h-100">
+                <div class="offcanvas-body pb-0">
+                  <p class="silver ps-3 mb-4">
+                    An User can have up-to 35 skills, drag and drop skills to
+                    reorder them by order of preference
+                  </p>
+                  <div class="row">
+                    <div class="col-lg-6 select-skill-list border-end">
+                      <div class="skill-select-wrapper">
+                        <div
+                          class="skill-head d-flex justify-content-between align-items-center border-bottom border-primary pb-2 ps-3"
+                        >
+                          <h6 class="m-0 charcoal fw-bold">28 Skills</h6>
+                          <div class="skill-head-search d-flex">
+                            <div class="search-btn small-search-btn">
+                              <button class="iconButton medium searchButton">
+                                <i class="fal fa-search silver"></i>
+                              </button>
+                              <input placeholder="Search" />
+                            </div>
+                            <div class="iconButton medium">
+                              <label
+                                class="list-group-item checkbox-tick border-0"
+                                id="skillAll"
+                              >
+                                <input
+                                  class="form-check-input me-1 m-0 check-all"
+                                  type="checkbox"
+                                />
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="skill-list"
+                          data-scrollbar="true"
+                          tabindex="-1"
+                          style="overflow: hidden; outline: none"
+                        >
+                          <div class="scroll-content">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="form-check-label checkbox-txt"
+                                  for="flexCheckDefault"
+                                >
+                                  Technical Support
+                                </label>
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="checkbox-txt"
+                                  for="select-skill-2"
+                                >
+                                  Sales</label
+                                >
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label class="checkbox-txt" for="select-skill-3"
+                                  >MNP</label
+                                >
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="checkbox-txt"
+                                  for="select-skill-4"
+                                >
+                                  Product Support</label
+                                >
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label class="checkbox-txt" for="select-skill-5"
+                                  >Online Order</label
+                                >
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label class="checkbox-txt" for="select-skill-6"
+                                  >Complaint Deals</label
+                                >
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label class="checkbox-txt" for="select-skill-7"
+                                  >Technical Support</label
+                                >
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label class="checkbox-txt" for="select-skill-8"
+                                  >Sales</label
+                                >
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="checkbox-txt"
+                                  for="select-skill-9"
+                                >
+                                  MNP</label
+                                >
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="checkbox-txt"
+                                  for="select-skill-10"
+                                >
+                                  Product Support</label
+                                >
+                              </li>
+
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="checkbox-txt"
+                                  for="select-skill-11"
+                                >
+                                  Online Order</label
+                                >
+                              </li>
+                              <li class="list-group-item checkbox-tick">
+                                <input
+                                  class="form-check-input me-1 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label class="checkbox-txt" for="checkbox"
+                                  >Complaint Deals</label
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                          <div
+                            class="scrollbar-track scrollbar-track-x"
+                            style="display: none"
+                          >
+                            <div
+                              class="scrollbar-thumb scrollbar-thumb-x"
+                              style="
+                                width: 442px;
+                                transform: translate3d(0px, 0px, 0px);
+                              "
+                            ></div>
+                          </div>
+                          <div
+                            class="scrollbar-track scrollbar-track-y"
+                            style="display: none"
+                          >
+                            <div
+                              class="scrollbar-thumb scrollbar-thumb-y"
+                              style="
+                                height: 672px;
+                                transform: translate3d(0px, 0px, 0px);
+                              "
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="skill-select-wrapper selected_box">
+                        <div
+                          class="skill-head d-flex justify-content-between align-items-center border-bottom border-success pb-3 ps-3"
+                        >
+                          <h6 class="m-0 fw-bold mint mt-1 pt-2">4 Selected</h6>
+                          <div
+                            class="skill-head-search d-flex"
+                            id="skillAllRemove"
+                          >
+                            <label
+                              class="list-group-item checkbox-minus checkbox-tick border-0"
+                            >
+                              <input
+                                class="form-check-input me-1 m-0 check-all"
+                                type="checkbox"
+                              />
+                            </label>
+                          </div>
+                        </div>
+                        <div
+                          class="selected-skill-list"
+                          data-scrollbar="true"
+                          tabindex="-1"
+                          style="overflow: hidden; outline: none"
+                        >
+                          <div class="scroll-content">
+                            <ul class="list-group list-group-flush">
+                              <li
+                                class="list-group-item checkbox-minus checkbox-tick"
+                              >
+                                <input
+                                  class="form-check-input me-2 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="checkbox-txt"
+                                  for="checkbox"
+                                ></label>
+                                <p class="flex-grow-1 m-0 checkbox-txt night">
+                                  English
+                                </p>
+                                <span class="coal">4</span>
+                              </li>
+                              <li
+                                class="list-group-item checkbox-minus checkbox-tick"
+                              >
+                                <input
+                                  class="form-check-input me-2 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="checkbox-txt"
+                                  for="checkbox"
+                                ></label>
+                                <p class="flex-grow-1 m-0 checkbox-txt night">
+                                  Urdu
+                                </p>
+                                <span class="coal">8</span>
+                              </li>
+                              <li
+                                class="list-group-item checkbox-minus checkbox-tick"
+                              >
+                                <input
+                                  class="form-check-input me-2 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="checkbox-txt"
+                                  for="checkbox"
+                                ></label>
+                                <p class="flex-grow-1 m-0 checkbox-txt night">
+                                  Support
+                                </p>
+                                <span class="coal">7</span>
+                              </li>
+                              <li
+                                class="list-group-item checkbox-minus checkbox-tick"
+                              >
+                                <input
+                                  class="form-check-input me-2 rounded-circle"
+                                  type="checkbox"
+                                  aria-label="..."
+                                />
+                                <label
+                                  class="checkbox-txt"
+                                  for="checkbox"
+                                ></label>
+                                <p class="flex-grow-1 m-0 checkbox-txt night">
+                                  Roman English
+                                </p>
+                                <span class="coal">4</span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div
+                            class="scrollbar-track scrollbar-track-x"
+                            style="display: none"
+                          >
+                            <div
+                              class="scrollbar-thumb scrollbar-thumb-x"
+                              style="
+                                width: 442px;
+                                transform: translate3d(0px, 0px, 0px);
+                              "
+                            ></div>
+                          </div>
+                          <div
+                            class="scrollbar-track scrollbar-track-y"
+                            style="display: none"
+                          >
+                            <div
+                              class="scrollbar-thumb scrollbar-thumb-y"
+                              style="
+                                height: 224px;
+                                transform: translate3d(0px, 0px, 0px);
+                              "
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="off-canvaas-footer border-top p-3">
+                  <div
+                    class="icon-buttons-wrapper d-flex justify-content-between"
+                  >
+                    <div class="f-icon-txt-wrapper d-flex align-items-center">
+                      <button
+                        class="iconButton medium iconHover"
+                        id="btnShowModal"
+                      >
+                        <i class="fal fa-trash radical"></i>
+                      </button>
+                      <p class="f-icon-txt ms-1 m-0 radical">
+                        Delete Manage Skills
+                      </p>
+                    </div>
+                    <div class="buttons-wrap d-flex">
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-success ms-2 f-nextBtn"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                        id="saveSkills "
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="general-info"
+            class="tab-pane fade list-group-section"
+            role="tabpanel"
+            aria-labelledby="team-tab"
+          >
+            <ul class="list-group contact-social-list list-group-flush">
+              <li class="list-group-item">
+                <div class="row">
+                  <label class="col-md-2">First name</label>
+                  <div class="col-md-10">
+                    <input
+                      name=""
+                      class="form-control"
+                      [value]="User?.strName"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label class="col-md-2">Last name</label>
+                  <div class="col-md-10">
+                    <input name="" class="form-control" value="Amjad" />
+                  </div>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="Mailing address" class="col-md-2"
+                    >Mailing address</label
+                  >
+                  <div class="col-md-10">
+                    <textarea
+                      name="address"
+                      cols="20"
+                      rows="4"
+                      id="address"
+                      value=""
+                      class="form-control"
+                      placeholder="Mailing address"
+                      spellcheck="false"
+                    ></textarea>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="Alternative address" class="col-md-2"
+                    >Alternative address</label
+                  >
+                  <div class="col-md-10">
+                    <textarea
+                      name="address"
+                      cols="20"
+                      rows="4"
+                      id="address"
+                      value=""
+                      class="form-control"
+                      placeholder="Alternative address"
+                      spellcheck="false"
+                    ></textarea>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="Phone" class="col-md-2">Phone </label>
+                  <div class="col-md-10">
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="Phone"
+                      [value]="User?.mobile"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="Alternative phone" class="col-md-2"
+                    >Alternative phone
+                  </label>
+                  <div class="col-md-10">
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="Alternative phone"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="Skype" class="col-md-2">Skype </label>
+                  <div class="col-md-10">
+                    <input name="" class="form-control" placeholder="Skype" />
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="Date of birth" class="col-md-2"
+                    >Date of birth
+                  </label>
+                  <div class="col-md-10">
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="Date of birth"
+                    />
+                  </div>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="row">
+                  <label class="col-md-2"> Gender</label>
+                  <div class="col-md-10">
+                    <div class="form-check theme-check form-check-inline ms-2">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="id1"
+                        id="gender-male"
+                      />
+                      <label class="form-check-label" for="gender-male">
+                        Male
+                      </label>
+                    </div>
+                    <div class="form-check theme-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="id1"
+                        id="gender-female"
+                      />
+                      <label class="form-check-label" for="gender-female">
+                        Female
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div
+              class="offcanvas offcanvas-end"
+              tabindex="-1"
+              id="manageSkill"
+              aria-labelledby="offcanvasRightLabel"
+            >
+              <div class="offcanvas-header align-items-center saltBg">
+                <button class="iconButton medium">
+                  <i class="fal fa-clone"></i>
+                </button>
+                <h5 id="offcanvasRightLabel" class="darkblue fw-bold m-0">
+                  Manage Skills
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close text-reset"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="off-canvas-wrap d-flex flex-column h-100">
+                <div class="offcanvas-body pb-0">
+                  <p class="silver ps-3 mb-4">
+                    An User can have up-to 35 skills, drag and drop skills to
+                    reorder them by order of preference
+                  </p>
+                  <div class="row">
+                    <div class="col-lg-6 select-skill-list border-end">
+                      <div class="skill-select-wrapper">
+                        <div
+                          class="skill-head d-flex justify-content-between align-items-center border-bottom border-primary pb-2 ps-3"
+                        >
+                          <h6 class="m-0 charcoal fw-bold">28 Skills</h6>
+                          <div class="skill-head-search d-flex">
+                            <div class="search-btn small-search-btn">
+                              <button class="iconButton medium searchButton">
+                                <i class="fal fa-search silver"></i>
+                              </button>
+                              <input placeholder="Search" />
+                            </div>
+                            <div class="iconButton medium">
+                              <label
+                                class="list-group-item checkbox-tick border-0"
+                                id="skillAll"
+                              >
+                                <input
+                                  class="form-check-input me-1 m-0 check-all"
+                                  type="checkbox"
+                                />
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="skill-list" data-scrollbar="data-scrollbar">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label
+                                class="form-check-label checkbox-txt"
+                                for="flexCheckDefault"
+                              >
+                                Technical Support
+                              </label>
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-2">
+                                Sales</label
+                              >
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-3"
+                                >MNP</label
+                              >
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-4">
+                                Product Support</label
+                              >
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-5"
+                                >Online Order</label
+                              >
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-6"
+                                >Complaint Deals</label
+                              >
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-7"
+                                >Technical Support</label
+                              >
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-8"
+                                >Sales</label
+                              >
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-9">
+                                MNP</label
+                              >
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-10">
+                                Product Support</label
+                              >
+                            </li>
+
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="select-skill-11">
+                                Online Order</label
+                              >
+                            </li>
+                            <li class="list-group-item checkbox-tick">
+                              <input
+                                class="form-check-input me-1 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label class="checkbox-txt" for="checkbox"
+                                >Complaint Deals</label
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="skill-select-wrapper selected_box">
+                        <div
+                          class="skill-head d-flex justify-content-between align-items-center border-bottom border-success pb-3 ps-3"
+                        >
+                          <h6 class="m-0 fw-bold mint mt-1 pt-2">4 Selected</h6>
+                          <div
+                            class="skill-head-search d-flex"
+                            id="skillAllRemove"
+                          >
+                            <label
+                              class="list-group-item checkbox-minus checkbox-tick border-0"
+                            >
+                              <input
+                                class="form-check-input me-1 m-0 check-all"
+                                type="checkbox"
+                              />
+                            </label>
+                          </div>
+                        </div>
+                        <div
+                          class="selected-skill-list"
+                          data-scrollbar="data-scrollbar"
+                        >
+                          <ul class="list-group list-group-flush">
+                            <li
+                              class="list-group-item checkbox-minus checkbox-tick"
+                            >
+                              <input
+                                class="form-check-input me-2 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label
+                                class="checkbox-txt"
+                                for="checkbox"
+                              ></label>
+                              <p class="flex-grow-1 m-0 checkbox-txt night">
+                                English
+                              </p>
+                              <span class="coal">4</span>
+                            </li>
+                            <li
+                              class="list-group-item checkbox-minus checkbox-tick"
+                            >
+                              <input
+                                class="form-check-input me-2 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label
+                                class="checkbox-txt"
+                                for="checkbox"
+                              ></label>
+                              <p class="flex-grow-1 m-0 checkbox-txt night">
+                                Urdu
+                              </p>
+                              <span class="coal">8</span>
+                            </li>
+                            <li
+                              class="list-group-item checkbox-minus checkbox-tick"
+                            >
+                              <input
+                                class="form-check-input me-2 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label
+                                class="checkbox-txt"
+                                for="checkbox"
+                              ></label>
+                              <p class="flex-grow-1 m-0 checkbox-txt night">
+                                Support
+                              </p>
+                              <span class="coal">7</span>
+                            </li>
+                            <li
+                              class="list-group-item checkbox-minus checkbox-tick"
+                            >
+                              <input
+                                class="form-check-input me-2 rounded-circle"
+                                type="checkbox"
+                                aria-label="..."
+                              />
+                              <label
+                                class="checkbox-txt"
+                                for="checkbox"
+                              ></label>
+                              <p class="flex-grow-1 m-0 checkbox-txt night">
+                                Roman English
+                              </p>
+                              <span class="coal">4</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="off-canvaas-footer border-top p-3">
+                  <div
+                    class="icon-buttons-wrapper d-flex justify-content-between"
+                  >
+                    <div class="f-icon-txt-wrapper d-flex align-items-center">
+                      <button
+                        class="iconButton medium iconHover"
+                        id="btnShowModal"
+                      >
+                        <i class="fal fa-trash radical"></i>
+                      </button>
+                      <p class="f-icon-txt ms-1 m-0 radical">
+                        Delete Manage Skills
+                      </p>
+                    </div>
+                    <div class="buttons-wrap d-flex">
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-success ms-2 f-nextBtn"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                        id="saveSkills "
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="conact-timeline"
+            class="tab-pane fade"
+            role="tabpanel"
+            aria-labelledby="team-tab"
+          ></div>
+
+          <div
+            id="contact-social"
+            class="tab-pane fade list-group-section"
+            role="tabpanel"
+            aria-labelledby="team-tab"
+          >
+            <h5 class="fw-bold pb-3">Social Links</h5>
+            <ul class="list-group contact-social-list list-group-flush">
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="facebook" class="col-md-2">Facebook</label>
+                  <div class="col-md-10">
+                    <input
+                      name="facebook"
+                      id="facebook"
+                      class="form-control"
+                      placeholder="https://www.facebook.com"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="twitter" class="col-md-2">Twitter</label>
+                  <div class="col-md-10">
+                    <input
+                      name="twitter"
+                      id="twitter"
+                      class="form-control"
+                      placeholder="https://twitter.com/"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="linkedin" class="col-md-2">Linkedin</label>
+                  <div class="col-md-10">
+                    <input
+                      name="linkedin"
+                      id="linkedin"
+                      class="form-control"
+                      placeholder="https://www.linkedin.com/"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="youtube" class="col-md-2">Youtube</label>
+                  <div class="col-md-10">
+                    <input
+                      name="youtube"
+                      id="youtube"
+                      class="form-control"
+                      placeholder="https://www.youtube.com/"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="instagram" class="col-md-2">Instagram</label>
+                  <div class="col-md-10">
+                    <input
+                      name="instagram"
+                      id="instagram"
+                      class="form-control"
+                      placeholder="https://instagram.com/"
+                    />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            id="contact-files"
+            class="tab-pane fade list-group-section"
+            role="tabpanel"
+            aria-labelledby="team-tab"
+          ></div>
+
+          <div
+            id="logs"
+            class="tab-pane fade active show"
+            role="tabpanel"
+            aria-labelledby="logs-tab"
+          >
+            <div class="w-100 inbox-container">
+              <div class="px-3 w-100">
+                <div class="filter-toolbar">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <ul class="list-inline m-0 d-flex align-items-center">
+                        <li class="list-inline-item">
+                          <div class="daterangepicker">
+                            <input
+                              class="form-control flatpickr-input"
+                              id="datepicker"
+                              name="daterange"
+                              placeholder=" Start Date Time"
+                              type="datetime-local"
+                              [(ngModel)]="startTime"
+                              (change)="emptyEndDate()"
+                            />
+                            <!-- <i class="fa-light fa-calendar-range"></i> -->
+                          </div>
+                        </li>
+                        <li class="list-inline-item">
+                          <div class="daterangepicker">
+                            <input
+                              class="form-control flatpickr-input"
+                              id="datepicker1"
+                              name="daterange"
+                              placeholder=" End Date Time"
+                              type="datetime-local"
+                              [(ngModel)]="endTime"
+                              (change)="getUserDetails()"
+                            />
+                            <!-- <i class="fa-light fa-calendar-range"></i> -->
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="table-section mb-3">
+                  <table class="table table-nowrap">
+                    <thead>
+                      <tr>
+                        <th>Date Time</th>
+                        <th>Activity</th>
+                        <th></th>
+                        <th>Access Points</th>
+                        <th>Source</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="bg-light">
+                        <td colspan="4">
+                          <i class="fa-light fa-calendar"></i>
+                          Today, {{ currentDate | date : "fullDate" }}
+                        </td>
+                        <td colspan="4" class="text-end coal">
+                          <span class="badge mintTransBg rounded night ms-2"
+                            >Total IN :
+                            <strong>{{ User?.totalIn }}</strong></span
+                          >
+                          <span class="badge radicalTransBg rounded night ms-2"
+                            >Total OUT :<strong>{{
+                              User?.totalOut
+                            }}</strong></span
+                          >
+                        </td>
+                      </tr>
+                      <tr *ngFor="let log of displayLogRecords">
+                        <td>{{ log?.dateTime | date : "medium" }}</td>
+                        <td>{{ log?.activity }}</td>
+                        <td>
+                          <span
+                            class="badge rounded night ms-2"
+                            [ngClass]="{
+                              radicalTransBg: log?.entryType === 'OUT',
+                              mintTransBg: log?.entryType === 'IN'
+                            }"
+                            >{{ log?.entryType }}</span
+                          >
+                        </td>
+                        <td>{{ log?.accessPoint }}</td>
+                        <td>
+                          <a
+                            href="#0"
+                            data-bs-toggle="modal"
+                            data-bs-target="#imagepopup1"
+                            (click)="setSelectedImage(log?.imgSource)"
+                          >
+                            <img *ngIf="log?.activity !== 'BIO'"
+                              [src]="log?.imgSource || 'assets/Images/dummy_profile_picture2.jpg'"
+                              width="48px"
+                              class="rounded"
+                              alt="..."
+                            />
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <nav aria-label="Page navigation example">
+                    <div class="d-flex justify-content-end align-items-center">
+                      <span class="mr-3">
+                        {{ (pageNumber - 1) * recordsPerPage + 1 }}-
+                        {{
+                          pageNumber * recordsPerPage > User?.activityLogs?.length? User?.activityLogs?.length: pageNumber * recordsPerPage
+                        }}
+                        of {{ User?.activityLogs?.length }}
+                      </span>
+                      <ul class="pagination justify-content-end mb-0">
+                        <li
+                          class="page-item"
+                          [ngClass]="{ disabled: pageNumber == 1 }"
+                        >
+                          <a
+                            class="page-link"
+                            (click)="pagination(pageNumber - 1)"
+                            >Previous</a
+                          >
+                        </li>
+                        <li class="page-item" *ngIf="pageNumber > 3">
+                          <a class="page-link" (click)="pagination(1)">1</a>
+                        </li>
+
+                        <li class="page-item" *ngIf="pageNumber > 2">
+                          <a
+                            class="page-link"
+                            (click)="pagination(pageNumber - 1)"
+                            >{{ pageNumber - 1 }}</a
+                          >
+                        </li>
+
+                        <li class="page-item disabled">
+                          <a class="page-link">{{ pageNumber }}</a>
+                        </li>
+
+                        <li
+                          class="page-item"
+                          *ngIf="pageNumber < totalPages - 1"
+                        >
+                          <a
+                            class="page-link"
+                            (click)="pagination(pageNumber + 1)"
+                            >{{ pageNumber + 1 }}</a
+                          >
+                        </li>
+
+                        <li
+                          class="page-item disabled"
+                          *ngIf="pageNumber <= totalPages - 3"
+                        >
+                          <a class="page-link">...</a>
+                        </li>
+
+                        <li
+                          class="page-item"
+                          *ngIf="pageNumber < totalPages - 2"
+                        >
+                          <a
+                            class="page-link"
+                            (click)="pagination(totalPages)"
+                            >{{ totalPages }}</a
+                          >
+                        </li>
+
+                        <li
+                          class="page-item"
+                          [ngClass]="{ disabled: pageNumber == totalPages }"
+                        >
+                          <a
+                            class="page-link"
+                            (click)="pagination(pageNumber + 1)"
+                            >Next</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="settings"
+            class="tab-pane fade list-group-section"
+            role="tabpanel"
+            aria-labelledby="team-tab"
+          >
+            <ul class="list-group contact-social-list list-group-flush">
+
+              <li class="list-group-item">
+                <div class="row">
+                  <label class="col-md-2">RFID Card Number</label>
+                  <div class="col-md-10">
+                    <span class="badge rounded-pill skyBg fs-6 fw-normal me-2" *ngFor="let pill of pills">
+                      <span class="me-2" (click)="editPill(pill)" data-bs-toggle="modal" data-bs-target="#edit-rfids">
+                        {{ pill.rfid }}
+                      </span>
+                      <a href="#0" (click)="removePill(pill)" data-bs-toggle="modal" data-bs-target="#remove-rfid">
+                        <i class="fa-light fa-xmark"></i>
+                      </a>
+                    </span>
+                    <button class="iconButton medium iconHover d-inline-flex" data-bs-toggle="modal" data-bs-target="#add-rfid">
+                      <i class="fa-light fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </li>
+              
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="Permission" class="col-md-2"
+                    >Role &amp; Permission
+                  </label>
+                  <div class="col-md-10">
+                    <div class="floating-item select-pills bg-white">
+                      <div class="form-floating">                        
+                        <mat-form-field class="example-chip-list">
+                          <mat-chip-list #chipList>
+                            <mat-chip
+                              *ngFor="let team of selectedTeams"
+                              [selectable]="selectable"
+                              [removable]="removable"
+                              (removed)="remove(team)">
+                              {{team}}
+                              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                            <input 
+                              placeholder="Please Select"
+                              #teamInput
+                              [formControl]="teamCtrl"
+                              [matAutocomplete]="auto"
+                              [matChipInputFor]="chipList"
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              [matChipInputAddOnBlur]="addOnBlur"
+                              (matChipInputTokenEnd)="add($event)">
+                          </mat-chip-list>
+                          <mat-autocomplete #auto class="matAutocomplete" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let team of filteredTeams | async" [value]="team">
+                              {{team}}
+                            </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <footer class="footer">
+              <div class="ps-3 pe-3">
+                <div
+                  class="icon-buttons-wrapper d-flex justify-content-between pt-3 pb-4"
+                >
+                  <div class="row w-100">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8 justify-content-end d-flex">
+                      <div class="buttons-wrap d-flex">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary btn-medium me-2 px-4"
+                          data-bs-toggle="modal"
+                          data-bs-target="#cancel-changes"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-success ms-e f-saveBtn btn-large d-none"
+                        ></button>
+                        <button
+                          type="button"
+                          class="btn skyBg ms-2 px-4 btn-medium saveBtn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#usercreateconfirmation"
+                        >
+                          Save Changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+
+          <div
+            id="alerts"
+            class="tab-pane fade list-group-section"
+            role="tabpanel"
+            aria-labelledby="alerts-tab"
+          >
+            <h5 class="mt-4">Alerts Assigned</h5>
+            <div class="border mb-4"></div>
+            <div class="row align-items-start">
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <h6>Tahir Ahmed</h6>
+                    <p class="coal">Tahir.ahmed@ibex.co</p>
+                    <p></p>
+                    <ul class="list-group mt-3 list-group-flush list-cards">
+                      <li
+                        class="list-group-item ps-0 py-2 d-flex align-items-center justify-content-between"
+                      >
+                        <span
+                          class="rounded-pill skyBg fs-13 fw-normal me-2 px-3 py-1"
+                        >
+                          Check-In / Check Out
+                        </span>
+                        <span>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#remove-alerttype"
+                            ><i class="fa-light fa-trash"></i
+                          ></a>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#edit-alerttype"
+                            ><i class="fa-light fa-edit"></i
+                          ></a>
+                        </span>
+                      </li>
+                      <li
+                        class="list-group-item ps-0 py-2 d-flex align-items-center justify-content-between"
+                      >
+                        <span
+                          class="rounded-pill skyBg fs-13 fw-normal me-2 px-3 py-1"
+                        >
+                          Daily report
+                        </span>
+                        <span>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#remove-alerttype"
+                            ><i class="fa-light fa-trash"></i
+                          ></a>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#edit-alerttype"
+                            ><i class="fa-light fa-edit"></i
+                          ></a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <h6>Fayyaz Rasul</h6>
+                    <p class="coal">fayaz.rasul@ibex.co</p>
+                    <p></p>
+                    <ul class="list-group mt-3 list-group-flush list-cards">
+                      <li
+                        class="list-group-item ps-0 py-2 d-flex align-items-center justify-content-between"
+                      >
+                        <span
+                          class="rounded-pill skyBg fs-13 fw-normal me-2 px-3 py-1"
+                        >
+                          Check-In / Check Out
+                        </span>
+                        <span>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#remove-alerttype"
+                            ><i class="fa-light fa-trash"></i
+                          ></a>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#edit-alerttype"
+                            ><i class="fa-light fa-edit"></i
+                          ></a>
+                        </span>
+                      </li>
+                      <li
+                        class="list-group-item ps-0 py-2 d-flex align-items-center justify-content-between"
+                      >
+                        <span
+                          class="rounded-pill skyBg fs-13 fw-normal me-2 px-3 py-1"
+                        >
+                          Daily report
+                        </span>
+                        <span>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#remove-alerttype"
+                            ><i class="fa-light fa-trash"></i
+                          ></a>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#edit-alerttype"
+                            ><i class="fa-light fa-edit"></i
+                          ></a>
+                        </span>
+                      </li>
+                      <li
+                        class="list-group-item ps-0 py-2 d-flex align-items-center justify-content-between"
+                      >
+                        <span
+                          class="rounded-pill skyBg fs-13 fw-normal me-2 px-3 py-1"
+                        >
+                          Monthly report
+                        </span>
+                        <span>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#remove-alerttype"
+                            ><i class="fa-light fa-trash"></i
+                          ></a>
+                          <a
+                            href="#0"
+                            class="iconButton medium d-inline-flex iconHover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#edit-alerttype"
+                            ><i class="fa-light fa-edit"></i
+                          ></a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ul class="list-group contact-social-list list-group-flush">
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="Permission" class="col-md-2">Alert To </label>
+                  <div class="col-md-10">
+                    <div class="floating-item select-pills bg-white">
+                      <div class="form-floating">
+                        <select
+                          class="js-example-theme-multiple-tags select2-hidden-accessible"
+                          data-select2-id="select2-data-12-p9f8"
+                          multiple=""
+                          tabindex="-1"
+                          aria-hidden="true"
+                        >
+                          <option
+                            select="selected"
+                            data-select2-id="select2-data-14-je2x"
+                          >
+                            tahir.ahmed@ibex.co
+                          </option>
+                          <option>fayyazrasul@ibex.co</option>
+                          <option>farooq.shad@ibex.co</option>
+                          <option>ijtaba.sultan@ibex.co</option>
+                          <option>taimoor.kasi.co</option></select
+                        ><span
+                          class="select2 select2-container select2-container--classic"
+                          dir="ltr"
+                          data-select2-id="select2-data-13-jaq0"
+                          style="width: auto"
+                          ><span class="selection"
+                            ><span
+                              class="select2-selection select2-selection--multiple"
+                              role="combobox"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                              tabindex="-1"
+                              aria-disabled="false"
+                              ><ul
+                                class="select2-selection__rendered"
+                                id="select2-qxo3-container"
+                              >
+                                <li
+                                  class="select2-selection__choice"
+                                  title=" tahir.ahmed@ibex.co "
+                                  data-select2-id="select2-data-15-2xmz"
+                                >
+                                  <button
+                                    type="button"
+                                    class="select2-selection__choice__remove"
+                                    tabindex="-1"
+                                    title="Remove item"
+                                    aria-label="Remove item"
+                                    aria-describedby="select2-qxo3-container-choice-w6on-tahir.ahmed@ibex.co"
+                                  >
+                                    <span aria-hidden="true">×</span></button
+                                  ><span
+                                    class="select2-selection__choice__display"
+                                    id="select2-qxo3-container-choice-w6on-tahir.ahmed@ibex.co"
+                                  >
+                                    tahir.ahmed@ibex.co
+                                  </span>
+                                </li>
+                              </ul>
+                              <span
+                                class="select2-search select2-search--inline"
+                              >
+                                <textarea
+                                  class="select2-search__field"
+                                  type="search"
+                                  tabindex="0"
+                                  autocorrect="off"
+                                  autocapitalize="none"
+                                  spellcheck="false"
+                                  role="searchbox"
+                                  aria-autocomplete="list"
+                                  autocomplete="off"
+                                  aria-label="Search"
+                                  aria-describedby="select2-qxo3-container"
+                                  placeholder=""
+                                  style="width: 0.75em"
+                                ></textarea></span></span></span
+                          ><span
+                            class="dropdown-wrapper"
+                            aria-hidden="true"
+                          ></span
+                        ></span>
+                      </div>
+                    </div>
+                    <div class="example-text">
+                      write email address with seperated ',' to create tags.
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <label for="Permission" class="col-md-2">Alert Type </label>
+                  <div class="col-md-10">
+                    <div class="floating-item select-pills bg-white">
+                      <div class="form-floating">
+                        <select
+                          class="js-example-theme-multiple select2-hidden-accessible"
+                          data-select2-id="select2-data-8-67in"
+                          multiple=""
+                          tabindex="-1"
+                          aria-hidden="true"
+                        >
+                          <option
+                            select="selected"
+                            data-select2-id="select2-data-10-2xov"
+                          >
+                            Daily Report
+                          </option>
+                          <option>Monthly Report</option>
+                          <option>Late Arrival</option>
+                          <option>Early Leaver</option></select
+                        ><span
+                          class="select2 select2-container select2-container--classic"
+                          dir="ltr"
+                          data-select2-id="select2-data-9-0t96"
+                          style="width: auto"
+                          ><span class="selection"
+                            ><span
+                              class="select2-selection select2-selection--multiple"
+                              role="combobox"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                              tabindex="-1"
+                              aria-disabled="false"
+                              ><ul
+                                class="select2-selection__rendered"
+                                id="select2-cah1-container"
+                              >
+                                <li
+                                  class="select2-selection__choice"
+                                  title=" Daily Report "
+                                  data-select2-id="select2-data-11-15rh"
+                                >
+                                  <button
+                                    type="button"
+                                    class="select2-selection__choice__remove"
+                                    tabindex="-1"
+                                    title="Remove item"
+                                    aria-label="Remove item"
+                                    aria-describedby="select2-cah1-container-choice-ayuy-Daily Report"
+                                  >
+                                    <span aria-hidden="true">×</span></button
+                                  ><span
+                                    class="select2-selection__choice__display"
+                                    id="select2-cah1-container-choice-ayuy-Daily Report"
+                                  >
+                                    Daily Report
+                                  </span>
+                                </li>
+                              </ul>
+                              <span
+                                class="select2-search select2-search--inline"
+                              >
+                                <textarea
+                                  class="select2-search__field"
+                                  type="search"
+                                  tabindex="0"
+                                  autocorrect="off"
+                                  autocapitalize="none"
+                                  spellcheck="false"
+                                  role="searchbox"
+                                  aria-autocomplete="list"
+                                  autocomplete="off"
+                                  aria-label="Search"
+                                  aria-describedby="select2-cah1-container"
+                                  placeholder=""
+                                  style="width: 0.75em"
+                                ></textarea></span></span></span
+                          ><span
+                            class="dropdown-wrapper"
+                            aria-hidden="true"
+                          ></span
+                        ></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <footer class="footer">
+              <div class="ps-3 pe-3">
+                <div
+                  class="icon-buttons-wrapper d-flex justify-content-between pt-3 pb-4"
+                >
+                  <div class="row w-100">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8 justify-content-end d-flex">
+                      <div class="buttons-wrap d-flex">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary btn-medium me-2 px-4"
+                          data-bs-toggle="modal"
+                          data-bs-target="#cancel-changes"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-success ms-e f-saveBtn btn-large d-none"
+                        ></button>
+                        <button
+                          type="button"
+                          class="btn skyBg ms-2 px-4 btn-medium saveBtn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#usercreateconfirmation"
+                        >
+                          Save Changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="imagepopup1"
+  tabindex="-1"
+  aria-labelledby="imagepopup-Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <img
+        [src]="selectedImage"
+        class="img-fluid" 
+        alt="..."
+      />
+    </div>
+  </div>
+</div>
+
+
+<div
+  class="modal fade show"
+  id="add-rfid"
+  tabindex="-1"
+  aria-labelledby="add-rfid-Label"
+  aria-modal="true"
+  role="dialog"
+  style="display: none"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit-dtypeLabel">Add RFID's</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-4">
+          <label>RFID Card Number</label>
+          <input name="" [(ngModel)]="rfid" class="form-control" placeholder="e.g. RF1233458" />
+        </div>
+        <div class="mb-4">
+          <label>Validity</label>
+          <div class="daterangepicker">
+            <input
+              class="form-control flatpickr-input fullwidth-dp"
+              id="datepickeronly"
+              name="daterange"
+              placeholder=" Select Date "
+              type="datetime-local"
+              [(ngModel)]="validityDate"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+        <button
+          (click)="savePill()"
+          type="button"
+          class="btn skyBg rfid-added"
+          [disabled]="!rfid || !validityDate" 
+          data-bs-dismiss="modal"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div
+  class="modal fade show"
+  id="add-rfid"
+  tabindex="-1"
+  aria-labelledby="add-rfid-Label"
+  aria-modal="true"
+  role="dialog"
+  style="display: none"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit-dtypeLabel">Add RFID's</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-4">
+          <label>RFID Card Number</label>
+          <input name="" [(ngModel)]="rfid" class="form-control" placeholder="e.g. RF1233458" />
+        </div>
+        <div class="mb-4">
+          <label>Validity</label>
+          <div class="daterangepicker">
+            <input
+              class="form-control flatpickr-input fullwidth-dp"
+              id="datepickeronly"
+              name="daterange"
+              placeholder=" Select Date "
+              type="datetime-local"
+              [(ngModel)]="validityDate"
+            />
+             <i class="fa-light fa-calendar-range"></i> 
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+        <button
+        (click)="getUserDetails()"
+          type="button"
+          class="btn skyBg rfid-added"
+          data-bs-dismiss="modal"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->

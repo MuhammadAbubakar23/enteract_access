@@ -1,0 +1,1062 @@
+
+
+
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+
+<div class="main-wrapper d-flex">
+    <div class="middle-wrapper d-flex w-100 flex-column">
+        <div class="content-box-wrapper d-flex w-100">
+            <div class="middle-content d-flex">
+                <div class="agent-page-main-content p-0">
+                    <div class="console-contact-detail page-details perfect-scrollbar" data-scrollbar="data-scrollbar">
+                        <div class="conact-header">
+                            <div class="about-profile bg-dark">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0">
+                                        <label class="form-check-label coal d-flex align-items-center w-100">
+                                            <div class="avatar avatar-detail pearlBg">
+                                                IT
+                                                <span class="online-n-offline big"></span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="flex-grow-1 ms-4">
+                                        <span class="badge rounded-pill bg-light darkblue float-end">Type : {{location_details.location.building_Type}}
+                                        </span>
+                                        <h4 class="text-white">{{location_details.location.name}}</h4>
+                                        <ul class="list-inline m-0 d-flex align-items-center">
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="d-block link-secondary">City </small>
+                                                    {{location_details.city.name}}
+                                                </span>
+                                            </li>
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="d-block link-secondary">Floors </small>
+                                                    {{location_details.floorCount}}</span>
+                                            </li>
+
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="d-block link-secondary">Access
+                                                        Points</small>08</span>
+                                            </li>
+                                            <li class="list-inline-item text-white">
+                                                <span> <small class="d-block link-secondary">Devices </small>36</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-3">
+                            <!-- <header class="tab-header timelinetabs">
+                                <nav>
+                                    <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="general-tab" data-bs-toggle="tab"
+                                            data-bs-target="#general" type="button" role="tab" aria-controls="general"
+                                            aria-selected="false">
+                                            <h6>General
+                                            </h6>
+                                        </button>
+                                        <button class="nav-link" id="settings-tab" data-bs-toggle="tab"
+                                            data-bs-target="#settings" type="button" role="tab" aria-controls="settings"
+                                            aria-selected="false">
+                                            <h6> Settings
+                                            </h6>
+                                        </button>
+                                        <button class="nav-link" id="logs-tab" data-bs-toggle="tab"
+                                            data-bs-target="#logs" type="button" role="tab" aria-controls="logs"
+                                            aria-selected="false">
+                                            <h6>Logs</h6>
+                                        </button>
+
+                                    </div>
+                                </nav>
+                            </header> -->
+                            <header class="tab-header timelinetabs">
+                                <nav>
+                                  <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                                    <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="false">
+                                      <h6>General </h6>
+                                    </button>
+                                    <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">
+                                      <h6> Settings</h6>
+                                    </button>
+                                    <button class="nav-link" id="logs-tab" data-bs-toggle="tab" data-bs-target="#logs" type="button" role="tab" aria-controls="logs" aria-selected="false">
+                                      <h6>Summary</h6>
+                                    </button>
+
+                                  </div>
+                                </nav>
+                              </header>
+                            <div class="tab-body p-4">
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div id="general" class="tab-pane fade list-group-section active show"
+                                        role="tabpanel" aria-labelledby="general-tab">
+                                        <ul class="list-group contact-social-list list-group-flush">
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Name</label>
+                                                    <div class="col-md-10">
+                                                        <input name="" class="form-control"
+                                                            [(ngModel)]="location_details.location.name">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> City</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option [value]="location_details.city.name" selected>
+                                                                {{location_details.city.name}}</option>
+                                                            <option>Lahore</option>
+                                                            <option>Islamabad</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Floors </label>
+                                                    <div class="col-md-10">
+                                                      <div class="floating-item select-pills mb-4 bg-white" data-select2-id="select2-data-13-jzwu">
+                                                        <div class="form-floating" data-select2-id="select2-data-12-1087">
+                                                          <p style="margin-bottom: 0px;">Floors </p>
+
+
+
+                                                            <mat-select [formControl]="LocationDetails" multiple style="margin: 5px;">
+
+                                                                <mat-select-trigger>
+                                                                    <mat-chip-list>
+                                                                        <mat-chip *ngFor="let floors of LocationDetails.value" [removable]="true" (removed)="onCatRemovedFloor(floors)"
+                                                                             style="background-color:#2F9DF2; color:#ffffff; border-radius: 5px!important;" selected>
+                                                                            {{ floors }}
+                                                                            <mat-icon matChipRemove>cancel</mat-icon>
+                                                                        </mat-chip>
+                                                                    </mat-chip-list>
+                                                                </mat-select-trigger>
+
+                                                                <mat-option *ngFor="let floors of location_details.floors" [value]="floors.floor.name">
+
+                                                                  {{floors.floor.name}}
+                                                                </mat-option>
+                                                            </mat-select>
+
+
+                                                        </div>
+
+
+
+                                                          <!-- <div class="form-floating">
+                                                                <p>Floors </p>
+                                                                <select
+                                                                    class="js-example-theme-multiple form-control select2"
+                                                                    multiple>
+                                                                    <option
+                                                                        *ngFor="let floors of location_details.floors"
+                                                                        [value]="floors.floor.id">{{floors.floor.name}}
+                                                                    </option>
+
+                                                                </select>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label class="col-md-2"> Type</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option [value]="location_details.location.building_Type"
+                                                                selected>{{location_details.location.building_Type}}
+                                                            </option>
+                                                            <option>Warehouse</option>
+                                                            <option>Factory</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label for="address" class="col-md-2">Address</label>
+                                                    <div class="col-md-10">
+                                                        <textarea name="address" cols="20" rows="4" id="address"
+                                                            placeholder="Address" class="form-control"
+                                                            placeholder="Mailing address" spellcheck="false"> {{location_details.location.address}}
+                        </textarea>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                        <footer class="footer">
+                                            <div class="ps-3 pe-3">
+                                                <div
+                                                    class="icon-buttons-wrapper d-flex justify-content-between pt-3 pb-4">
+                                                    <div class="row w-100">
+                                                        <div class="col-md-4">
+
+
+                                                        </div>
+                                                        <div class="col-md-8 justify-content-end d-flex">
+                                                            <div class="buttons-wrap d-flex">
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary btn-medium me-2 px-4"
+                                                                    data-bs-toggle="modal" data-bs-target=""
+                                                                    routerLink="/dashboard/listoflocations/">Cancel
+                                                                </button>
+                                                                <button type="button"
+                                                                    class="btn btn-success ms-e f-saveBtn btn-large d-none"></button>
+                                                                <button type="button"
+                                                                    class="btn skyBg ms-2 px-4 btn-medium saveBtn"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#save-group-modal">Save</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </footer>
+
+                                    </div>
+                                    <div id="settings" class="tab-pane fade list-group-section" role="tabpanel"
+                                        aria-labelledby="settings-tab">
+                                        <!-- <h5 class="fw-bold pb-3">Social Links</h5>
+                                        <ul class="list-group contact-social-list list-group-flush">
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label for="facebook" class="col-md-2">Facebook</label>
+                                                    <div class="col-md-10">
+                                                        <input name="facebook" id="facebook" class="form-control"
+                                                            placeholder="https://www.facebook.com/">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label for="twitter" class="col-md-2">Twitter</label>
+                                                    <div class="col-md-10">
+                                                        <input name="twitter" id="twitter" class="form-control"
+                                                            placeholder="https://twitter.com/">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label for="linkedin" class="col-md-2">Linkedin</label>
+                                                    <div class="col-md-10">
+                                                        <input name="linkedin" id="linkedin" class="form-control"
+                                                            placeholder="https://www.linkedin.com/">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label for="youtube" class="col-md-2">Youtube</label>
+                                                    <div class="col-md-10">
+                                                        <input name="youtube" id="youtube" class="form-control"
+                                                            placeholder="https://www.youtube.com/">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <label for="instagram" class="col-md-2">Instagram</label>
+                                                    <div class="col-md-10">
+                                                        <input name="instagram" id="instagram" class="form-control"
+                                                            placeholder="https://instagram.com/">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul> -->
+                                    </div>
+                                    <!-- <div id="logs" class="tab-pane fade" role="tabpanel" aria-labelledby="logs-tab">
+                                        <div class="w-100 p-4 pt-0 inbox-container">
+                                            <div class="filter-toolbar">
+                                                <div class="d-flex align-items-center">
+                                                    <ul class="list-inline m-0 d-flex align-items-center">
+                                                        <li class="list-inline-item">
+                                                            <div class="searchbar-click">
+                                                                <form class="searchbox">
+                                                                    <input placeholder="Search" name="search"
+                                                                        class="searchbox-input" required>
+                                                                    <span class="searchbox-icon medium iconButton">
+                                                                        <i class="fa fa-search"></i>
+                                                                    </span>
+                                                                </form>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="list-inline-item">
+                                                            <select class="form-select">
+                                                                <option selected disabled> Floor</option>
+                                                                <option> All</option>
+                                                                <option> Basement</option>
+                                                                <option> Ground Floor</option>
+                                                                <option>First Floor </option>
+                                                                <option>Second Floor </option>
+                                                                <option>Third Floor </option>
+                                                            </select>
+                                                        </li>
+
+
+                                                    </ul>
+                                                    <div class="ms-auto">
+                                                        <a href="create-locations.html" class="btn btn-success"> <i
+                                                                class="fal fa-plus"></i> Create
+                                                            Location
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="filter-container">
+                                                <ul class="list-group list-group-horizontal border-0">
+                                                    <li class="list-group-item border-0 refreshicon" aria-label="..."
+                                                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                        title="Refresh">
+                                                        <i class="fal fa-redo"></i>
+                                                    </li>
+                                                    <li class="list-group-item border-0 after-select-fun"
+                                                        aria-label="..." data-bs-toggle="tooltip"
+                                                        data-bs-placement="bottom" title="Delete">
+                                                        <i class="fal fa-trash"></i>
+                                                    </li>
+                                                </ul>
+                                                <div class="pagination-bar">
+                                                    <div class="dropdown">
+                                                        <button class="btn iconHover" type="button"
+                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            1-6 of 6
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <li><a class="dropdown-item" href="#">Newest</a></li>
+                                                            <li><a class="dropdown-item" href="#"> Oldest</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <span class="iconButton medium iconHover">
+                                                        <i class="fal fa-chevron-left"></i>
+                                                    </span>
+                                                    <span class="iconButton medium iconHover">
+                                                        <i class="fal fa-chevron-right"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="table-section table-scrool-y mb-3 query-container">
+                                                <div class="alert alert-secondary text-center email-info-alert p-2"
+                                                    role="alert" style="display: none;">
+                                                    All <strong>6</strong> conversations on this page are selected.
+                                                    <a href="javascript:void(0);"
+                                                        class="all-conversation fw-bold sky btn">Select all
+                                                        6 conversations in devices</a>
+                                                    <a href="javascript:void(0);" class="clear-selection"
+                                                        style="display: none;">Clear selection</a>
+                                                </div>
+                                                <table class="table table-nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                <div class="filter-container">
+                                                                    <ul
+                                                                        class="list-group list-group-horizontal border-0">
+                                                                        <li
+                                                                            class="list-group-item border-0 all-check-boxes">
+                                                                            <input class="form-check-input me-1"
+                                                                                type="checkbox" aria-label="..."
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="bottom"
+                                                                                title="Check All">
+
+                                                                        </li>
+
+                                                                    </ul>
+
+                                                                </div>
+                                                            </th>
+                                                            <th>Floor </th>
+                                                            <th>Access Point</th>
+                                                            <th>NO. OF DEVICES </th>
+                                                            <th> </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr *ngFor="let floors of location_details.floors">
+                                                            <td><input class="form-check-input me-1" type="checkbox"
+                                                                    aria-label="..."></td>
+
+                                                            <td>{{floors.floor.name}}</td>
+                                                            <td>Ground Floor Main</td>
+                                                            <td>
+                                                                <ul class="devicelisting">
+                                                                    <li>
+                                                                        <em class="device-status online"></em>
+                                                                        <span> DC-TNB2-GF </span>
+                                                                        <span class="badge navyBg"> IN/OUT</span>
+                                                                    </li>
+                                                                </ul>
+
+                                                                <div class="d-inline-block dropdown w-auto device-dd">
+                                                                    <button
+                                                                        class="d-inline-block dropdown w-auto btn ps-0"
+                                                                        type="button" id="dropdownMenu2"
+                                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <span class="silver">+3</span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu w-auto"
+                                                                        aria-labelledby="dropdownMenu2">
+                                                                        <li>
+                                                                            <a class="dropdown-item" href="#">
+                                                                                <span><em
+                                                                                        class="device-status online"></em>
+                                                                                    Device 3 </span>
+                                                                                <span class="badge navyBg">
+                                                                                    IN/OUT</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="dropdown-item" href="#">
+                                                                                <span><em
+                                                                                        class="device-status online"></em>
+                                                                                    Device 4</span>
+                                                                                <span class="badge mangoBg">OUT</span>
+                                                                            </a>
+                                                                        </li>
+
+
+                                                                        <li>
+                                                                            <a class="dropdown-item" href="#">
+                                                                                <span><em
+                                                                                        class="device-status online"></em>
+                                                                                    Device 5</span>
+                                                                                <span class="badge oceanBg">IN</span>
+                                                                            </a>
+                                                                        </li>
+
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+
+                                                            <td>
+                                                                <div
+                                                                    class="icons-list d-flex dropstart justify-content-end">
+
+                                                                    <button
+                                                                        class="btn iconButton small iconHover btn-group"
+                                                                        type="button" data-bs-toggle="dropdown"
+                                                                        aria-expanded="false">
+                                                                        <i class="far fa-ellipsis-v"></i>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu fade">
+                                                                        <li>
+                                                                            <a class="dropdown-item"
+                                                                                href="../engage/edit-device-form.html">
+                                                                                <i class="fal fa-edit me-2"></i>
+                                                                                Edit</a>
+                                                                        </li>
+
+                                                                        <li>
+                                                                            <a class="dropdown-item delete-dd" href="#">
+                                                                                <i class="fal fa-trash me-2"></i>
+                                                                                Delete</a>
+                                                                        </li>
+
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div> -->
+
+                                    <div id="logs" class="tab-pane fade" role="tabpanel" aria-labelledby="logs-tab">
+                                        <div class="w-100">
+                                          <div class="filter-toolbar">
+                                            <div class="d-flex align-items-center">
+                                              <ul class="list-inline m-0 d-flex align-items-center">
+                                                <li class="list-inline-item">
+                                                  <div class="searchbar-click">
+                                                    <form class="searchbox">
+                                                      <input placeholder="Search" name="search" class="searchbox-input" required>
+                                                      <span class="searchbox-icon medium iconButton">
+                                                        <i class="fa fa-search"></i>
+                                                      </span>
+                                                    </form>
+                                                  </div>
+                                                </li>
+
+                                                <li class="list-inline-item">
+                                                  <select class="form-select">
+                                                    <option selected disabled> Floor</option>
+                                                    <option> All</option>
+                                                    <option> Basement</option>
+                                                    <option> Ground Floor</option>
+                                                    <option>First Floor </option>
+                                                    <option>Second Floor </option>
+                                                    <option>Third Floor </option>
+                                                  </select>
+                                                </li>
+
+
+                                              </ul>
+                                              <div class="ms-auto">
+                                                <a href="create-locations.html" class="btn btn-success"> <i class="fal fa-plus"></i> Create
+                                                  Location
+                                                </a>
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+
+
+                                        </div>
+                                        <h5 class="mt-4">Ground Floor</h5>
+                                        <div class="border mb-4"></div>
+
+                                        <div class="row align-items-start">
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Ground Floor Main</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge oceanBg float-end"> IN</span>
+                                                  </li>
+                                                </ul>
+
+
+
+
+
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Ground Floor Out</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge oceanBg float-end">IN</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <small class="fw-normal badge navyBg float-end"> IN/OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge navyBg float-end">IN/OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <small class="fw-normal badge navyBg float-end"> IN/OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <small class="fw-normal badge navyBg float-end"> IN/OUT</small>
+                                                  </li>
+
+                                                </ul>
+
+
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Enterance 1</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <small class="fw-normal badge navyBg float-end"> IN/OUT</small>
+                                                  </li>
+
+                                                </ul>
+
+
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+
+
+                                        </div>
+
+                                         <h5 class="mt-4">First Floor</h5>
+                                        <div class="border mb-4"></div>
+
+                                        <div class="row align-items-start">
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Ground Floor Main</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge oceanBg float-end"> IN</span>
+                                                  </li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Ground Floor Out</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+
+                                                </ul>
+
+
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Enterance 1</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+
+                                                </ul>
+
+
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Enterance 2</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+
+                                                </ul>
+
+
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+                                        </div>
+
+                                         <h5 class="mt-4">Second Floor</h5>
+                                        <div class="border mb-4"></div>
+
+                                        <div class="row align-items-start">
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Ground Floor Main</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <small class="fw-normal badge navyBg float-end"> IN/OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <small class="fw-normal badge oceanBg float-end"> IN</small>
+                                                  </li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Ground Floor Out</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+
+                                                </ul>
+
+
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Enterance 1</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+
+                                                </ul>
+
+
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-3">
+                                            <div class="card mb-4">
+                                              <div class="card-body">
+                                                <strong> Enterance 2</strong>
+                                                <ul class="list-group mt-3 list-group-flush list-cards">
+                                                  <li class="list-group-item">
+                                                    <em class="device-status online"></em>
+                                                    <span> HK Vision </span>
+                                                    <small class="fw-normal badge mangoBg float-end">OUT</small>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                    <em class="device-status offline"></em>
+                                                    <span> DC-TNB2-GF </span>
+                                                    <span class="fw-normal badge navyBg float-end"> IN/OUT</span>
+                                                  </li>
+
+                                                </ul>
+
+
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+                                        </div>
+                                      </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="manageSkill" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header align-items-center saltBg">
+        <button class="iconButton medium">
+            <i class="fal fa-clone"></i>
+        </button>
+        <h5 id="offcanvasRightLabel" class="darkblue fw-bold m-0">Manage Skills</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="off-canvas-wrap d-flex flex-column h-100">
+        <div class="offcanvas-body pb-0">
+            <p class="silver ps-3 mb-4">An User can have up-to 35 skills, drag and drop skills to reorder them by order
+                of preference</p>
+            <div class="row">
+                <div class="col-lg-6 select-skill-list border-end">
+                    <div class="skill-select-wrapper">
+                        <div
+                            class="skill-head d-flex justify-content-between align-items-center border-bottom border-primary pb-2 ps-3">
+                            <h6 class="m-0 charcoal fw-bold">28 Skills</h6>
+                            <div class="skill-head-search d-flex">
+                                <div class="search-btn small-search-btn">
+                                    <button class="iconButton medium searchButton">
+                                        <i class="fal fa-search silver"></i>
+                                    </button>
+                                    <input placeholder="Search">
+                                </div>
+                                <div class="iconButton medium">
+                                    <label class="list-group-item checkbox-tick border-0" id="skillAll">
+                                        <input class="form-check-input me-1 m-0 check-all" type="checkbox">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-list" data-scrollbar="data-scrollbar">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="form-check-label checkbox-txt" for="flexCheckDefault">
+                                        Technical Support
+                                    </label>
+
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-2"> Sales</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-3">MNP</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-4"> Product Support</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-5">Online Order</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-6">Complaint Deals</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-7">Technical Support</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-8">Sales</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-9"> MNP</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-10"> Product Support</label>
+                                </li>
+
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="select-skill-11"> Online Order</label>
+                                </li>
+                                <li class="list-group-item checkbox-tick">
+                                    <input class="form-check-input me-1 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox">Complaint Deals</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="skill-select-wrapper selected_box">
+                        <div
+                            class="skill-head d-flex justify-content-between align-items-center border-bottom border-success pb-3 ps-3">
+                            <h6 class="m-0 fw-bold mint mt-1 pt-2">4 Selected</h6>
+                            <div class="skill-head-search d-flex" id="skillAllRemove">
+                                <label class="list-group-item checkbox-minus checkbox-tick border-0">
+                                    <input class="form-check-input me-1 m-0 check-all" type="checkbox">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="selected-skill-list" data-scrollbar="data-scrollbar">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item checkbox-minus checkbox-tick">
+                                    <input class="form-check-input me-2 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox"></label>
+                                    <p class="flex-grow-1 m-0 checkbox-txt night">English</p>
+                                    <span class="coal">4</span>
+                                </li>
+                                <li class="list-group-item checkbox-minus checkbox-tick">
+                                    <input class="form-check-input me-2 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox"></label>
+                                    <p class="flex-grow-1 m-0 checkbox-txt night">Urdu</p>
+                                    <span class="coal">8</span>
+                                </li>
+                                <li class="list-group-item checkbox-minus checkbox-tick">
+                                    <input class="form-check-input me-2 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox"></label>
+                                    <p class="flex-grow-1 m-0 checkbox-txt night">Support</p>
+                                    <span class="coal">7</span>
+                                </li>
+                                <li class="list-group-item checkbox-minus checkbox-tick">
+                                    <input class="form-check-input me-2 rounded-circle" type="checkbox"
+                                        aria-label="...">
+                                    <label class="checkbox-txt" for="checkbox"></label>
+                                    <p class="flex-grow-1 m-0 checkbox-txt night">Roman English</p>
+                                    <span class="coal">4</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="off-canvaas-footer border-top p-3">
+            <div class="icon-buttons-wrapper d-flex justify-content-between">
+                <div class="f-icon-txt-wrapper d-flex align-items-center">
+                    <button class="iconButton medium iconHover" id="btnShowModal">
+                        <i class="fal fa-trash radical"></i>
+                    </button>
+                    <p class="f-icon-txt ms-1 m-0 radical">Delete Manage Skills </p>
+                </div>
+                <div class="buttons-wrap d-flex">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas"
+                        aria-label="Close">Cancel</button>
+                    <button type="button" class="btn btn-success ms-2 f-nextBtn" data-bs-dismiss="offcanvas"
+                        aria-label="Close" id="saveSkills ">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,11 @@
+.example-chip-list {
+  width: 100%;
+}
+mat-form-field {
+   background-color: #f9f8f8; /* Set the background color to a light gray */
+}
+
+/* Target the option elements */
+.mat-option {
+  background-color: #FFFFFF; /* Set the background color to white */
+}

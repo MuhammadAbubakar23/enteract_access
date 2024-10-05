@@ -1,0 +1,12 @@
+.em-holder {
+  background-color: #fafafa;
+  width: 100%;
+  min-width: 275px;
+  max-width: 275px;
+  height: 275px;
+}
+
+.em-holder i {
+  color: #a9a9a9;
+  font-size: 42px
+}

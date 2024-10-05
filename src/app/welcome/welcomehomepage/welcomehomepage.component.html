@@ -1,0 +1,55 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div id="loginWrapper">
+  <div class="main-body">
+    <div class="left-panel box-shade h-100">
+      <div class="header mb-5">
+        <nav>
+          <div class="logo">
+            <img src="../../../assets/Images/enteract-access.svg" alt="-" />
+          </div>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item silver" aria-current="page">
+              Welcome to enteract.access
+            </li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="left-content-wrap pt-0" id="main-login-form">
+        <div class="form w-100">
+          <p class="darkerblue mb-5 pb-4 fs-5">
+            <span class="iconButton medium d-inline-flex bg-light me-3"
+              ><i class="fa-light fa-building fs-6"></i
+            ></span>
+            Choose a building to see its associated users.
+          </p>
+
+          <div class="row align-items-start">
+            <div class="col-md-4" *ngFor="let obj of data">
+              <div class="card text-bg-dark buildingcard" (click)="redirectToRecentVisitors(obj.title)">
+                <a class="cardlink">
+                  <img
+                    src="{{obj.image}}"
+                    class="card-img"
+                    alt="..."
+
+                  />
+                  <div class="card-img-overlay">
+                    <h5 class="card-title">{{obj.title}}</h5>
+                  </div>
+                  <i class="fa-light fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="login-footer">
+        <div class="copyright">
+          © 2023 enteract.eccess | All rights reserved
+          <a href="#"><img class="logo" src="../../../assets/Images/ibex-logo.svg" /></a>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,502 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+<div class="main-wrapper d-flex">
+  <div class="middle-wrapper d-flex w-100 flex-column">
+    <div class="content-box-wrapper d-flex w-100">
+      <div class="middle-content d-flex">
+        <div class="p-4 w-100 inbox-container">
+          <div class="filter-toolbar">
+            <div class="row">
+              <div class="col-lg-12">
+                <ul class="list-inline m-0 d-flex align-items-center">
+                  <li class="list-inline-item">
+                    <div class="searchbar-click">
+                      <form class="searchbox">
+                        <input
+                          [(ngModel)]="search"
+                          (ngModelChange)="
+                            this.search.length >= 4 && getAllLogs()
+                          "
+                          placeholder="Search"
+                          name="search"
+                          class="searchbox-input"
+                          required
+                        />
+                        <span class="searchbox-icon medium iconButton">
+                          <i class="fa fa-search"></i>
+                        </span>
+                      </form>
+                      <div class="search-filters">
+                        <header class="d-flex justify-content-between my-3">
+                          <span>Filter Search </span>
+                          <a href="#0" class="coal">
+                            <u>Clear all</u>
+                          </a>
+                        </header>
+                        <div class="search-body">
+                          <div class="row mb-3">
+                            <div class="col-3">
+                              <label class="ps-2">From</label>
+                            </div>
+                            <div class="col-9">
+                              <input
+                                class="form-control"
+                                type="datetime-local"
+                              />
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-3">
+                              <label class="ps-2">To</label>
+                            </div>
+                            <div class="col-9">
+                              <input
+                                class="form-control"
+                                type="datetime-local"
+                              />
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-3">
+                              <label class="ps-2">City</label>
+                            </div>
+                            <div class="col-9">
+                              <select class="cityselect" placeholder="city">
+                                <option></option>
+                                <option>Karachi</option>
+                                <option>Lahore</option>
+                                <option>Islamabad</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-3">
+                              <label class="ps-2">Location</label>
+                            </div>
+                            <div class="col-9">
+                              <select class="location" placeholder="Locations">
+                                <option></option>
+                                <option>SkyTower</option>
+                                <option>IBEX 1</option>
+                                <option>IBEX 2</option>
+                                <option>IBEX 3</option>
+                                <option>Ibex Tower</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-3">
+                              <label class="ps-2">Name</label>
+                            </div>
+                            <div class="col-9">
+                              <input class="form-control" />
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-3">
+                              <label class="ps-2">Device Name</label>
+                            </div>
+                            <div class="col-9">
+                              <input class="form-control" />
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-3">
+                              <label class="ps-2">User ID</label>
+                            </div>
+                            <div class="col-9">
+                              <input class="form-control" />
+                            </div>
+                          </div>
+                        </div>
+                        <footer class="py-3">
+                          <div class="buttons-wrap d-flex justify-content-end">
+                            <button
+                              type="button"
+                              class="btn btn-outline-secondary closefilter"
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-success ms-2 px-4"
+                            >
+                              Apply
+                            </button>
+                          </div>
+                        </footer>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-inline-item hideclass">
+                    <select class="form-select" placeholder="city">
+                      <option>Karachi</option>
+                      <option>Lahore</option>
+                      <option>Islamabad</option>
+                    </select>
+                  </li>
+                  <li class="list-inline-item hideclass">
+                    <select class="form-select" placeholder="Locations">
+                      <option>SkyTower</option>
+                      <option>IBEX 1</option>
+                      <option>IBEX 2</option>
+                      <option>IBEX 3</option>
+                      <option>Ibex Tower</option>
+                    </select>
+                  </li>
+
+                  <li class="list-inline-item">
+                    <div class="daterangepicker">
+                      <input
+                        class="form-control"
+                        placeholder=" Start Date Time"
+                        type="datetime-local"
+                        [(ngModel)]="startDateTime"
+                      />
+                      <i class="fa-light fa-calendar-range"></i>
+                    </div>
+                    <!-- </li>type="datetime-local" (ngModelChange)="getAllLogs()" -->
+                  </li>
+
+                  <li class="list-inline-item">
+                    <div class="daterangepicker">
+                      <input
+                        class="form-control"
+                        placeholder=" End Date Time"
+                        type="datetime-local"
+                        [(ngModel)]="endDateTime"
+                      />
+                      <i class="fa-light fa-calendar-range"></i>
+                    </div>
+                  </li>
+
+                  <li class="list-inline-item">
+                    <button
+                      class="btn btn-link advancesearch"
+                      (click)="getAllLogs()"
+                    >
+                      Advance Search
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-content-wrapper dashboard">
+            <div class="w-auto w-100 inbox-container chat-message-component">
+              <div class="d-flex main-body-wrapper">
+                <div class="agent-page-main-content">
+                  <div class="filter-container">
+                    <ul class="list-group list-group-horizontal border-0">
+                      <li
+                        (click)="reloadComponent()"
+                        class="list-group-item border-0 refreshicon"
+                        aria-label="..."
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        title="Refresh"
+                      >
+                        <i class="fal fa-redo"></i>
+                      </li>
+                      <!-- <li [ngStyle]="{'display': isChecked==true  ? 'block' : 'none'}" class="list-group-item border-0 after-select-fun" aria-label="..." data-bs-toggle="tooltip" 
+                                            data-bs-placement="bottom" title="" data-bs-original-title="Delete">
+                                                <i class="fal fa-trash"></i>
+                                              </li>
+                                              <li [ngStyle]="{'display': isChecked==true  ? 'block' : 'none'}" class="list-group-item border-0 after-select-fun" aria-label="..." data-bs-toggle="tooltip" 
+                                              data-bs-placement="bottom" title="" data-bs-original-title="Disable">
+                                                <i class="fal fa-ban"></i>
+                                              </li> -->
+                    </ul>
+                    <div class="selected-row" style="display: none">
+                      Last refresh 5 mins ago
+                    </div>
+                    <div class="pagination-bar">
+                      <div class="dropdown">
+                        <button
+                          class="btn iconHover"
+                          type="button"
+                          id="dropdownMenuButton1"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="true"
+                        >
+                          <span
+                            >{{ Starting_Point }}-{{ Ending_Point }} of
+                            {{ logsCount }}</span
+                          >
+                        </button>
+                        <ul
+                          class="dropdown-menu"
+                          aria-labelledby="dropdownMenuButton1"
+                          style="
+                            position: absolute;
+                            inset: 0px auto auto 0px;
+                            margin: 0px;
+                            transform: translate(0px, 38px);
+                          "
+                          data-popper-placement="bottom-start"
+                        >
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              (click)="getsortValue($event)"
+                              >Newest</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              (click)="getsortValue($event)"
+                              >Oldest</a
+                            >
+                          </li>
+                        </ul>
+                        <span style="margin-right: 6px">
+                          <i
+                            class="fal fa-chevron-left"
+                            (click)="openModalPrevious(popupPrevious)"
+                          ></i>
+                        </span>
+                        <span
+                          data-bs-toggle="modal"
+                          data-bs-target="#cancel-changes"
+                          style="margin-left: 6px"
+                        >
+                          <i
+                            class="fal fa-chevron-right"
+                            (click)="openModalNext(popupNext)"
+                          ></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="table-section smtable query-container table-scrollbar"
+                  >
+                    <div
+                      [ngStyle]="{
+                        display: isCheckedAll == true ? 'block' : 'none'
+                      }"
+                      class="alert alert-secondary text-center email-info-alert p-2"
+                      role="alert"
+                      style="display: none"
+                    >
+                      All Logs on this page are selected.
+                      <!-- <a href="javascript:void(0);"
+                              class="all-conversation fw-bold sky btn">Select all
+                              569 records in logs</a>
+                          <a href="javascript:void(0);" class="clear-selection"
+                              style="display: none;">Clear selection</a> -->
+                    </div>
+                    <table class="table table-sm table-nowrap table-scrollbar">
+                      <thead>
+                        <tr [class.selected]="isChecked == true">
+                          <th>
+                            <div class="filter-container p-0">
+                              <ul
+                                class="list-group list-group-horizontal border-0"
+                              >
+                                <li
+                                  class="list-group-item border-0 all-check-boxes p-0"
+                                >
+                                  <input
+                                    class="form-check-input me-1"
+                                    type="checkbox"
+                                    aria-label="..."
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom"
+                                    title="Check All"
+                                    [checked]="masterSelected"
+                                    value="m1"
+                                    (change)="checkUncheckAll($event)"
+                                  />
+                                </li>
+                              </ul>
+                            </div>
+                          </th>
+                          <th>ID <i class="fad fa-sort-alt"></i></th>
+                          <th>Name</th>
+                          <th>Department</th>
+                          <th>Shift Date</th>
+                          <th>Platform</th>
+                          <th>Check In</th>
+                          <th>Check Out</th>
+                          <th>Worked</th>
+                          <th>City</th>
+                          <th>Location</th>
+                          <th>Floor</th>
+                          <th>Access Point</th>
+                          <th>IP</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          [class.selected]="log.isChecked == true"
+                          *ngFor="
+                            let log of Logs
+                              | paginate
+                                : {
+                                    itemsPerPage: itemsPerPage,
+                                    currentPage: p,
+                                    totalItems: logsCount
+                                  };
+                            index as index
+                          "
+                        >
+                          <td>
+                            <input
+                              [checked]="log.isChecked"
+                              value="{{ log.id }}"
+                              (change)="isAllSelected($event, index)"
+                              class="form-check-input me-1"
+                              type="checkbox"
+                              aria-label="..."
+                            />
+                          </td>
+                          <td>{{ log.employee_Id }}</td>
+                          <td>{{ log.name }}</td>
+                          <td>{{ log.department }}</td>
+                          <td>
+                            {{
+                              (log.log_Time | date : "M/d/yyyy") || log.log_Time
+                                | date : "M/d/yyyy"
+                            }}
+                          </td>
+                          <td></td>
+                          <td>
+                            {{
+                              (log.door_No === 1 ? log.log_Time : "")
+                                | date : "HH:mm:ss"
+                            }}
+                          </td>
+                          <td>
+                            {{
+                              (log.door_No === 2 ? log.log_Time : "")
+                                | date : "HH:mm:ss"
+                            }}
+                          </td>
+                          <td></td>
+                          <td>{{ log.city }}</td>
+                          <td>{{ log.location }}</td>
+                          <td></td>
+                          <td></td>
+                          <td>{{ log.machine_Ip }}</td>
+
+                          <!-- <td> {{log.card_No }}</td>
+                                                    <td >{{log.door_No === 1 ? 'IN' : 'OUT'}}</td>
+                                                    <td>{{log.log_Time}}</td> -->
+                          <!--
+                                                <td>500 mins</td>
+                                                <td>04 mins</td>
+                                                <td>Karachi </td>
+                                                <td>Sky Tower</td>
+                                                <td>First one </td>
+                                                <td>Enterance 1 </td>
+                                                <td>Main Gate</td>
+                                                <td>-</td>
+                                                <td>10.109.5.245</td> -->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #popupNext class="modal-dialog modal-dialog-centered">
+  <div class="modal-header">
+    <h5 class="modal-title line-head" id="cancel-changes-Label">Confirm</h5>
+    <button
+      type="button"
+      class="btn iconHover pt-0 pb-0"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <i class="fal fa-times ice"></i>
+    </button>
+  </div>
+  <div class="modal-body py-4">
+    <div class="d-flex align-items-center">
+      <div class="icon-circle iconButton me-4 errorbg">
+        <i class="fal fa-times"></i>
+      </div>
+      <p class="line-txt darkblue">
+        Selected checkboxes will be un-selected, Do you want to continue?
+      </p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      data-bs-dismiss="modal"
+      (click)="modalRef.hide()"
+    >
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger modal_cancel-data"
+      data-bs-dismiss="modal"
+      (click)="maketrueNext()"
+    >
+      Yes
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #popupPrevious class="modal-dialog modal-dialog-centered">
+  <div class="modal-header">
+    <h5 class="modal-title line-head" id="cancel-changes-Label">Confirm</h5>
+    <button
+      type="button"
+      class="btn iconHover pt-0 pb-0"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <i class="fal fa-times ice"></i>
+    </button>
+  </div>
+  <div class="modal-body py-4">
+    <div class="d-flex align-items-center">
+      <div class="icon-circle iconButton me-4 errorbg">
+        <i class="fal fa-times"></i>
+      </div>
+      <p class="line-txt darkblue">
+        Selected checkboxes will be un-selected, Do you want to continue?
+      </p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      data-bs-dismiss="modal"
+      (click)="modalRef.hide()"
+    >
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger modal_cancel-data"
+      data-bs-dismiss="modal"
+      (click)="maketruePrevious()"
+    >
+      Yes
+    </button>
+  </div>
+</ng-template>

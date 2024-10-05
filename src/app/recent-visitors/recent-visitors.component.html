@@ -1,0 +1,78 @@
+<main class="main-wrapper">
+  <section class="left-content">
+
+    <div class="row">
+      <div class="col-xl-5 col-lg-5 col-md-12">
+        <figure>
+          <div class="passportimg">
+            <img src={{visitor.image}} (error)="onImgError($event)" class="img-fluid" alt="">
+          </div>
+          <figcaption>
+            <h2>{{visitor.strName}}</h2>
+            <p>
+              <img src="../../assets/Images/briefcase.svg" alt="">
+              <span>designation</span>
+              <strong>{{visitor.designation}}</strong>
+            </p>
+            <p>
+              <img src="../../assets/Images/building.svg" alt="">
+              <span>department</span>
+              <strong>{{visitor.department}}</strong>
+            </p>
+          </figcaption>
+        </figure>
+
+      </div>
+      <div class="col-xl-6 col-lg-7 col-md-12">
+        <header class="userheader">
+          <div class="media">
+            <img src="../../assets/Images/checkcircle.png" class="mr-2" alt="">
+            <div class="media-body">
+              <h2 class="">Access Granted </h2>
+              <p>{{visitor.log_Time | date:'EEEE MMMM d, yyyy, h:mm:ss a'}}</p>
+            </div>
+          </div>
+        </header>
+        <ul class="list-group list-group-flush infolist">
+          <li class="list-group-item"> <span>Location</span> <strong>{{visitor.Location}}</strong> </li>
+          <!-- <li class="list-group-item"><span>Allowed Area </span><strong>Lounges / Apron</strong> </li>
+
+
+          <li class="list-group-item"><span>Access Type</span> <strong>Permanent Pass</strong> </li> -->
+        </ul>
+      </div>
+    </div>
+
+
+  </section>
+  <aside class="rightsidebar">
+    <h2>Recent Visitors</h2>
+    <div class="cardscroll">
+      <ul class="list-group visitor-list">
+        <li class="list-group-item" *ngFor="let rv of data">
+
+          <div class="media">
+            <img src={{rv.profile_Image}} (error)="onImgError($event)" class="vistorimg-sm" alt="">
+            <div class="media-body">
+              <h4>{{rv.strName}}</h4>
+              <p class="mb-2">{{rv.department}}</p>
+              <p>
+                <img src="../../assets/Images/check.svg" alt="">
+                <span>{{rv.log_Time | removeminutespipe:visitor.Time_Difference |date:'MMMM d, yyyy, h:mm:ss a'}}</span>
+              </p>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </aside>
+
+</main>
+<footer class="footer1">
+  <span>
+    <span class="mr-2">Powerd By </span>
+    <img src="../../assets/Images/enteract.png" alt="">
+  </span>
+</footer>

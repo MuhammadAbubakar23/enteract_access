@@ -1,0 +1,84 @@
+
+.daterangepicker input {
+    padding: .375rem .75rem .375rem .75rem;}
+.dotgreen {
+    background-color: #B5E4CA; }
+      
+.dotpurple {
+    background-color: #CABDFF; }
+      
+.dotblue {
+    background-color: #2A85FF; }
+
+    /* .list-inline-item{
+      word-wrap: break-word;
+      overflow-wrap: break-word; 
+    } */
+
+    .console-contact-detail .about-profile {
+        padding: 1rem 1rem 0;
+    }
+    .about-profile .inner .card{
+        min-height: 215px;
+    }
+
+    /* .example-chip-list {
+        width: 100%;
+      } */
+      
+      .example-chip-list {
+        width: 100%;
+      }
+      
+      .mat-chip {
+        background-color: #34B2BB; 
+        color: #FEFEFE; 
+        border-radius: 8px; 
+        margin: 4px; 
+        padding: 4px 8px; 
+        font-size: 14px; 
+      }
+      
+      .mat-chip.mat-chip-removable {
+        border: 1px solid #ccc; 
+      }
+      
+      .mat-chip.mat-chip-removable .mat-icon {
+        color: #FEFEFE; 
+      }
+      
+ 
+      
+      .mat-form-field {
+        width: 100%; 
+      }
+      
+      .mat-form-field-label {
+        color: #555; 
+      }
+      
+      .mat-autocomplete-panel {
+        background-color: #ffffff; 
+        border: 1px solid #ccc; 
+        border-radius: 18px; 
+      }
+      
+      .mat-option {
+        font-size: 14px; 
+      }
+      
+      .mat-option:hover {
+        background-color: #34B3BC; 
+      }
+      
+      .mat-chip{
+        background-color: #2f9df2;
+    color: #FEFEFE;
+    border-radius: 50px;
+      }
+      .mat-form-field.mat-focused .mat-form-field-ripple {
+        background-color: #2f9df2 !important;
+    }
+    .mat-option:hover {
+        background-color: #b2ddff;
+    } 

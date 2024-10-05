@@ -1,0 +1,11 @@
+.invalid-user .username.h1 .badge, .invalid-user h1.username .badge {
+    font-size: 18px;
+    padding: 6px 16px !important;
+}
+.userheader p {
+    color: #222222;
+}
+.username {
+    margin-bottom: 32px;
+}
+

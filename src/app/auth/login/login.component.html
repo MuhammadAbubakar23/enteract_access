@@ -1,0 +1,116 @@
+<div id="loginWrapper">
+    <div class="main-body">
+        <div class="left-panel box-shade h-100">
+            <div class="header">
+                <nav>
+                    <div class="logo">
+                        <img src="../assets/Images/enteract-access.svg" alt="-">
+                    </div>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a routerLink="/auth/login">
+                                Sign In 
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="left-content-wrap" id="main-login-form">
+                <div class="center-content">
+                    <h4 class="darkerblue">Glad to see you again!</h4>
+                    <p class="silver mb-5">
+                        Login with your enteract access credentials
+                    </p>
+               
+                    <div class="form w-100">
+                        <form [formGroup]="loginForm" (submit)="onSubmit()">
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="username-email" placeholder="enter email or username"
+                                    value="syed.ahmed@jazz.com.pk" formControlName="Username">
+                                <label for="username-email">Username</label>
+                                <div class="invalid-feedback">
+                                    Please enter a valid phone number
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3 password">
+                                <input [type]="show ? 'text' : 'password'" class="form-control" id="floatingInputPassword"
+                                    placeholder="Password" formControlName="Password">
+                                <i [ngClass]="show ? 'fas fa-eye' : 'fas fa-eye-slash'" class="show-pass metal" (click)="password()"></i>
+                                <label for="floatingInputPassword">Password</label>
+                                <div id="password_msg"></div>
+                            </div>
+
+                            <!-- Removed for now, will be added later on -->
+
+                            <!-- <div class="col-12 d-flex justify-content-between">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                    <label class="form-check-label coal" for="gridCheck">
+                                        Remeber me
+                                    </label>
+                                </div>
+                                <div id="register-link">
+                                    <a routerLink="/auth/forgetpassword" class="text-info forgot-password-btn"
+                                        id="forgot-password-btn">Forgot Password</a>
+                                </div>
+                            </div> -->
+                            <div class="form-btn d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success w-100" id="loginBtn" tabindex="-1"
+                                    role="button">Sign In</button>
+                            </div>
+                            <!-- <div class="form-btn d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success w-100"  tabindex="-1"
+                                routerLink="/auth/register"
+                                    role="button">Register</button>
+                            </div> -->
+                           <a routerLink="/auth/register" class="text-info"> Register</a>
+                        </form>
+
+                        <!-- Removed for now, will be added later on -->
+<!--                         
+                        <div>
+                            <p class="silver">You don't have an account? <a routerLink="/auth/register"
+                                    class="text-info" id="registed">Register</a>
+                            </p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+
+
+            <footer class="login-footer">
+                <div class="copyright">
+                    Copyrights © - 2022 | All Copyrights are reserved by
+                    <a href="#"><img class="logo" src="../assets/Images/ibex-logo.svg"></a>
+                </div>
+            </footer>
+        </div>
+
+
+        <div class="right-panel saltBg">
+            <div class="graphicBg">
+                <img src="../assets/Images/front-page-graphic.png">
+            </div>
+            <div class="tagline">
+                <h4 class="ambassador_blue">Let's <span class="radical fw-bold">connect</span> the world on a single
+                    <span class="radical fw-bold">expression.</span></h4>
+            </div>
+            <footer class="login-footer">
+                <ul class="footer-links">
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+                    <li>
+                        <a href="#">Learn more</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+
+    </div>
+</div>
